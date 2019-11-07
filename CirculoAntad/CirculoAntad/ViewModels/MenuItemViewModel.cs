@@ -1,6 +1,11 @@
-﻿using System;
+﻿using CirculoAntad.Helpers;
+using CirculoAntad.Views;
+using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace CirculoAntad.ViewModels
 {
@@ -13,21 +18,21 @@ namespace CirculoAntad.ViewModels
         #endregion
 
         #region Commands
-        /*public ICommand GotoCommand
+        public ICommand GotoCommand
         {
             get
             {
                 return new RelayCommand(GoTo);
             }
 
-        }*/
+        }
 
 
 
         #endregion
 
         #region Methods
-        /*private void GoTo()
+        private void GoTo()
         {
 
             if (this.PageName == "LoginPage")
@@ -40,8 +45,8 @@ namespace CirculoAntad.ViewModels
             }
             if (this.PageName == "misucursal")
             {
-                MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
-                Application.Current.MainPage = new Master(new IntramuroPage());
+                /*MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+                Application.Current.MainPage = new Master(new IntramuroPage());*/
 
             }
             if (this.PageName == "Bienvenido")
@@ -59,7 +64,7 @@ namespace CirculoAntad.ViewModels
             }
 
 
-        }*/
+        }
         #endregion
     }
 }

@@ -18,7 +18,6 @@ namespace CirculoAntad.ViewModels
     {
 
         #region Atributes
-        private MediaFile file;
         private ImageSource imageSourceFoto;
         private bool isRunning;
         private bool isEnabled;
@@ -88,57 +87,7 @@ namespace CirculoAntad.ViewModels
         }
 
         
-        /*public ICommand CargarImagenPruebaCommand
-        {
-            get
-            {
-                return new RelayCommand(CargarImagenPrueba);
-            }
 
-        }
-
-        private async void CargarImagenPrueba()
-        {
-            await CrossMedia.Current.Initialize();
-
-            var source = await Application.Current.MainPage.DisplayActionSheet(
-               "Donde",
-                "Cancelar",
-                null,
-                "Galeria",
-                "Nueva foto");
-
-            if (source == "Cancelar")
-            {
-                this.file = null;
-                return;
-            }
-
-            if (source == "Nueva foto")
-            {
-                this.file = await CrossMedia.Current.TakePhotoAsync(
-                    new StoreCameraMediaOptions
-                    {
-                        Directory = "Sample",
-                        Name = "test.jpg",
-                        PhotoSize = PhotoSize.Small,
-                    }
-                );
-            }
-            else
-            {
-                this.file = await CrossMedia.Current.PickPhotoAsync();
-            }
-
-            if (this.file != null)
-            {
-                this.ImageSourceFoto = ImageSource.FromStream(() =>
-                {
-                    var stream = this.file.GetStream();
-                    return stream;
-                });
-            }
-        }*/
 
         [Obsolete]
         public ICommand LoginCommand

@@ -16,6 +16,9 @@ namespace CirculoAntad.ViewModels
         public PreregistroViewModel Preregistro { get; set; }
         public RegistroUnoViewModel RegistroUno { get; set; }
         public RegistroExitosoViewModel RegistroExitoso { get; set; }
+        public PromotorViewModel Promotor { get; set; }
+
+        public EventoDetalleViewModel EventoDeta { get; set; }
         /*
 
         public LoginViewModel Login { get; set; }
@@ -34,13 +37,12 @@ namespace CirculoAntad.ViewModels
 
         public EventoOperacionViewModel EventoOperacion { get; set; }
 
-        public EventoDetalleViewModel EventoDeta { get; set; }
 
         public UsuariosViewModel Usuarios { get; set; }
 
         public IntramuroViewModel Intramuro { get; set; }
 
-        public PromotorViewModel Promotor { get; set; }
+
 
         public AgregarUsuarioViewModel AgregarUsuario { get; set; }
 
