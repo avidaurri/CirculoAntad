@@ -62,6 +62,21 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Black.otf">
+      <Link>Resources\Fonts\Montserrat-Black.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Bold.otf">
+      <Link>Resources\Fonts\Montserrat-Bold.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Hairline.otf">
+      <Link>Resources\Fonts\Montserrat-Hairline.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Light.otf">
+      <Link>Resources\Fonts\Montserrat-Light.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Regular.otf">
+      <Link>Resources\Fonts\Montserrat-Regular.otf</Link>
+    </BundleResource>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,5 +150,23 @@
       <Project>{755DADF4-4706-423A-9583-63950EA76F7F}</Project>
       <Name>CirculoAntad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fondosplash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoantad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoapp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menudetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fondoaltt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fondobar.png" />
   </ItemGroup>
 </Project>
