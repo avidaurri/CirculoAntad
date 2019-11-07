@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
 using Plugin.CurrentActivity;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace CirculoAntad.Droid
 {
@@ -21,8 +22,10 @@ namespace CirculoAntad.Droid
 
             base.OnCreate(savedInstanceState);
             //añadido
-
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            ImageCircleRenderer.Init();
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

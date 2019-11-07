@@ -3,20 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
              mc:Ignorable="d"
              x:Class="CirculoAntad.Views.Bienvenido"
                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondoaltt"
              Title="ANTAD">
-    <ContentPage.Content>
-        <!--<StackLayout BindingContext="{Binding Bienvenido}" >
-            <Label Text="Bienvenido " FontSize="30"
-                VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Center"
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="IR A MIS ACTIVIDADES"  VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" BackgroundColor="BlueViolet" TextColor="White" CornerRadius="10"  Command="{Binding DireccionarCommand}" />
-        </StackLayout>-->
-        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- FlipAnimation-->
+            <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
+                                     Target="{x:Reference framepre}">
+                <xamanimation:FlipAnimation Duration="200" />
+
+            </xamanimation:StoryBoard>
+            <xamanimation:StoryBoard x:Key="rep" 
+                                     Target="{x:Reference imagerep}">
+                <xamanimation:HeartAnimation 
+             
+               />
+
+            </xamanimation:StoryBoard>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation 
+                Animation="{StaticResource FloatingButtonEnter}"/>
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation
+                Animation="{StaticResource rep}"/>
+        </EventTrigger>
+    </Page.Triggers>
+    <ContentPage.Content >
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30" x:Name="framepre">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -39,7 +62,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="2">
-                    <Button Text="VER GUIA" BackgroundColor="Purple" TextColor="White"/>
+                    <Button Text="VER GUIA" BackgroundColor="Purple" TextColor="White" x:Name="imagerep"/>
 
                 </StackLayout>
 

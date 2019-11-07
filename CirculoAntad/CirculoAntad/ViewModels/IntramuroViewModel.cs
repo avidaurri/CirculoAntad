@@ -1,13 +1,16 @@
 ﻿using CirculoAntad.Helpers;
 using CirculoAntad.Services;
+using CirculoAntad.Views;
 using GalaSoft.MvvmLight.Command;
 using ModelsLibraryAntad.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace CirculoAntad.ViewModels
 {
@@ -127,13 +130,13 @@ namespace CirculoAntad.ViewModels
 
         #region Commands
         //public ICommand SaveCommand { get; private set; }
-        /*public ICommand ScanCommand
+        public ICommand ScanCommand
         {
             get
             {
                 return new RelayCommand(Scan);
             }
-        }*/
+        }
         public ICommand RefreshCommand
         {
             get
@@ -141,7 +144,7 @@ namespace CirculoAntad.ViewModels
                 return new RelayCommand(CargarSucursal);
             }
         }
-        /*private async void Scan()
+        private async void Scan()
         {
             var scannerPage = new ZXingScannerPage();
             scannerPage.Title = "Lector QR";
@@ -162,7 +165,7 @@ namespace CirculoAntad.ViewModels
                     if (!connection.IsSuccess)
                     {
 
-                        await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                        await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                         return;
                     }
 
@@ -179,7 +182,7 @@ namespace CirculoAntad.ViewModels
                     var response = await this.apiService.GetDetalleEvento(url, prefix, controller, usser);
                     if (!response.IsSuccess)
                     {
-                        await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                        await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
                         return;
                     }
 
@@ -199,15 +202,14 @@ namespace CirculoAntad.ViewModels
                     else if (this.Estadodelevento.Equals(4))
                     {
                         //evento no inicializado
-                        MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom, clvemp.ToString());
-                        //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+                        //MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom, clvemp.ToString());
                         await App.Navigator.PushAsync(new ValidacionAutorizarPage());
                     }
 
                 });
             };
 
-        }*/
+        }
         #endregion
         #region Methods
 

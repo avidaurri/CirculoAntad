@@ -3,13 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
              mc:Ignorable="d"
              x:Class="CirculoAntad.Views.IntramuroPage"
                            BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
              Title="Mi Centro de Trabajo">
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- FlipAnimation-->
+            <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
+                                     Target="{x:Reference framepre}">
+                <xamanimation:FlipAnimation Duration="200" />
+
+            </xamanimation:StoryBoard>
+            <xamanimation:StoryBoard x:Key="rep" 
+                                     Target="{x:Reference imagerep}">
+                <xamanimation:HeartAnimation 
+             
+               />
+
+            </xamanimation:StoryBoard>
+            <xamanimation:StoryBoard x:Key="repd" 
+                                     Target="{x:Reference imagerepd}">
+                <xamanimation:HeartAnimation 
+             
+               />
+
+            </xamanimation:StoryBoard>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation 
+                Animation="{StaticResource FloatingButtonEnter}"/>
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation
+                Animation="{StaticResource rep}"/>
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation
+                Animation="{StaticResource repd}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <ContentPage.Content>
-        <AbsoluteLayout BindingContext="{Binding Intramuro}" >
+        <AbsoluteLayout BindingContext="{Binding Intramuro}" x:Name="framepre">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All">
                 
@@ -41,7 +81,7 @@
                     </Frame>
                     <StackLayout IsVisible="{Binding Sucursal.existeOperacion}"  Grid.Row="1"  VerticalOptions="End">
                     <StackLayout Orientation="Vertical" Spacing="10"  VerticalOptions="EndAndExpand">
-                        <Image Source="scan_code" WidthRequest="150" >
+                            <Image Source="scan_code" WidthRequest="150"  x:Name="imagerep">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ScanCommand}"/>
                             </Image.GestureRecognizers>
@@ -62,7 +102,7 @@
 
             </Grid>
         </StackLayout>
-            <Frame CornerRadius="15" HasShadow="True" Opacity=".9" BackgroundColor="White" 
+            <Frame CornerRadius="15" HasShadow="True" Opacity=".9" BackgroundColor="White" x:Name="imagerepd"
                    AbsoluteLayout.LayoutBounds="0.5,0.4,0.8,0.3" Padding="3,30,3,20" AbsoluteLayout.LayoutFlags="All"
                    IsVisible="{Binding MensajeSuc}">
                 <Label

@@ -70,6 +70,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout  Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <Button Text="Cerrar Sesión" BackgroundColor="Red" TextColor="White" Command="{Binding CerrarSesionCommand}"></Button>
+
+            </StackLayout>
+
         </StackLayout>
 
     </ContentPage.Content>

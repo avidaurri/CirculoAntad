@@ -1,6 +1,8 @@
 ﻿using CirculoAntad.Services;
+using CirculoAntad.Views;
 using GalaSoft.MvvmLight.Command;
 using ModelsLibraryAntad.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -80,7 +82,7 @@ namespace CirculoAntad.ViewModels
             string usuario = this.clvemp.ToString();
             string folioEvento = this.folioevento.ToString();
 
-           // PopupNavigation.Instance.PushAsync(new PopupView(usuario, folioEvento));
+            PopupNavigation.Instance.PushAsync(new PopupView(usuario, folioEvento));
         }
 
         private void UpdateDetail()

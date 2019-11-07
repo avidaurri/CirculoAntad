@@ -1,10 +1,14 @@
 ﻿using CirculoAntad.Helpers;
+using CirculoAntad.Views;
+using GalaSoft.MvvmLight.Command;
 using ModelsLibraryAntad.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace CirculoAntad.ViewModels
 {
@@ -79,7 +83,7 @@ namespace CirculoAntad.ViewModels
                 {
                     Icon = "ic_misucursal",
                     PageName = "misucursal",
-                    Title = "Mi Sucursal",
+                    Title = "Mi Centro de Trabajo",
                 });
                 this.Menu.Add(new MenuItemViewModel
                 {
@@ -94,7 +98,7 @@ namespace CirculoAntad.ViewModels
                     PageName = "misincidencias",
                     Title = "Incidencias",
                 });
-                this.Menu.Add(new MenuItemViewModel
+                /*this.Menu.Add(new MenuItemViewModel
                 {
                     Icon = "ic_misautorizaciones",
                     PageName = "misautorizaciones",
@@ -105,7 +109,7 @@ namespace CirculoAntad.ViewModels
                     Icon = "ic_misrechazos",
                     PageName = "misrechazos",
                     Title = "Mis Rechazos",
-                });
+                });*/
             }
             else if (roo.Equals("1"))
             {
@@ -145,33 +149,51 @@ namespace CirculoAntad.ViewModels
         #endregion
 
         #region Command
-
-        /*public ICommand DireccionarCommand
+        
+        public ICommand CerrarSesionCommand
         {
             get
             {
 
-                return new RelayCommand(Direccionar);
+                return new RelayCommand(CerrarSesion);
 
             }
         }
 
-        private async void Direccionar()
+        private void CerrarSesion()
         {
-            string roo = this.Puesto;
-            if (roo.Equals("3"))
-            {
-                //intramuro
-                MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
-                await App.Navigator.PushAsync(new IntramuroPage());
-            }
-            else if (roo.Equals("1"))
-            {
-                //promotor
-                MainViewModel.GetInstance().Promotor = new PromotorViewModel();
-                await App.Navigator.PushAsync(new PromotorPage());
-            }
-        }*/
+            Settings.Usuario = string.Empty;
+            Settings.Password = string.Empty;
+            Settings.IsRemembered = false;
+            MainViewModel.GetInstance().Login = new LoginViewModel();
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
+        }
+        /*public ICommand DireccionarCommand
+{
+   get
+   {
+
+       return new RelayCommand(Direccionar);
+
+   }
+}
+
+private async void Direccionar()
+{
+   string roo = this.Puesto;
+   if (roo.Equals("3"))
+   {
+       //intramuro
+       MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+       await App.Navigator.PushAsync(new IntramuroPage());
+   }
+   else if (roo.Equals("1"))
+   {
+       //promotor
+       MainViewModel.GetInstance().Promotor = new PromotorViewModel();
+       await App.Navigator.PushAsync(new PromotorPage());
+   }
+}*/
 
         #endregion
     }

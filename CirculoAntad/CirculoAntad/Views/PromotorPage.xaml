@@ -3,13 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
              mc:Ignorable="d"
              x:Class="CirculoAntad.Views.PromotorPage"
                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondoaltt"
              Title="Mis Eventos">
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- FlipAnimation-->
+            <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
+                                     Target="{x:Reference framepre}">
+                <xamanimation:FlipAnimation Duration="200" />
+
+            </xamanimation:StoryBoard>
+            <xamanimation:StoryBoard x:Key="rep" 
+                                     Target="{x:Reference imagerep}">
+                <xamanimation:HeartAnimation 
+             
+               />
+
+            </xamanimation:StoryBoard>
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation 
+                Animation="{StaticResource FloatingButtonEnter}"/>
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation
+                Animation="{StaticResource rep}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <ContentPage.Content>
-        <AbsoluteLayout BindingContext="{Binding Promotor}">
+        <AbsoluteLayout BindingContext="{Binding Promotor}" x:Name="framepre">
             <StackLayout  
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All"
@@ -120,7 +150,7 @@
 
         </Grid>
         </StackLayout>
-            <Frame CornerRadius="15" HasShadow="True" Opacity=".9" BackgroundColor="White" IsVisible="{Binding ExistenEventos}" 
+            <Frame CornerRadius="15" HasShadow="True" Opacity=".9" BackgroundColor="White" IsVisible="{Binding ExistenEventos} " x:Name="imagerep"
                    AbsoluteLayout.LayoutBounds="0.5,0.4,0.8,0.3" Padding="3,30,3,20"
                 AbsoluteLayout.LayoutFlags="All">
                            <Label
