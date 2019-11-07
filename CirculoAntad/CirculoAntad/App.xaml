@@ -49,7 +49,7 @@
             <x:String x:Key="UrlEvento">/Evento</x:String>
             <x:String x:Key="UrlIntramuro">/Intramuro</x:String>
 
-            <x:String x:Key="UrlRegistro">/Registro</x:String>
+           
            
          
             -->
@@ -57,6 +57,7 @@
             <x:String x:Key="UrlPrefix">/api</x:String>
             <x:String x:Key="UrlLoginApp">/UserSession</x:String>
             <x:String x:Key="UrlGetCatalogo">/CatalogoRegistro</x:String>
+            <x:String x:Key="UrlRegistro">/Registro</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

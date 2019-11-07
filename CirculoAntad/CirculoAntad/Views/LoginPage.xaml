@@ -38,6 +38,9 @@
                 <Image  
                     HeightRequest="200"
                     Source="logoantad">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CargarImagenPruebaCommand}"/>
+                    </Image.GestureRecognizers>
                 </Image>
                 <Frame   BackgroundColor="Transparent" 
                        HasShadow="True" CornerRadius="10" Margin="5" Padding="20,0,20,0"
