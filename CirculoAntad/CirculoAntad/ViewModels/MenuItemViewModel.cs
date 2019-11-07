@@ -45,8 +45,8 @@ namespace CirculoAntad.ViewModels
             }
             if (this.PageName == "misucursal")
             {
-                /*MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
-                Application.Current.MainPage = new Master(new IntramuroPage());*/
+                MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+                Application.Current.MainPage = new Master(new IntramuroPage());
 
             }
             if (this.PageName == "Bienvenido")
