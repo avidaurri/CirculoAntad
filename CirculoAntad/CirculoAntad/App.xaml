@@ -49,6 +49,7 @@
             <x:String x:Key="UrlEvento">/Evento</x:String>
  
             -->
+            <x:String x:Key="UrlValidaEvento">/ValidaEvento</x:String>
             <x:String x:Key="UrlAPI">https://apiantaddemo.trademetrix.online</x:String>
             <x:String x:Key="UrlPrefix">/api</x:String>
             <x:String x:Key="UrlLoginApp">/UserSession</x:String>

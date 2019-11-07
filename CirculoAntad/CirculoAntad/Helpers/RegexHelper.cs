@@ -43,6 +43,9 @@ namespace CirculoAntad.Helpers
                 return false;
             }
         }
+
+
+
         public static bool IsValidTel(string telefono)
         {
             //Regex Val = new Regex("^.*(?=.{18})(?=.*[0-9])(?=.*[A-ZÑ]).*$");

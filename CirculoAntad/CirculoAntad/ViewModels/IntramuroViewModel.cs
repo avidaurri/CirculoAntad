@@ -158,7 +158,18 @@ namespace CirculoAntad.ViewModels
                     string evento = result.Text;
 
                     string eventom = evento.Split('/').Last();
-                    int clvemp = Convert.ToInt32(evento.Split('/').First());
+                    int clvemp = 0;
+                    try
+                    {
+                        clvemp = Convert.ToInt32(evento.Split('/').First());
+                    }
+                    catch (Exception)
+                    {
+
+                        await Application.Current.MainPage.DisplayAlert("Mensaje", "El código QR no es valido", "Aceptar");
+                        return;
+                    }
+                   
 
                     var connection = await this.apiService.CheckConnection();
 
@@ -202,7 +213,7 @@ namespace CirculoAntad.ViewModels
                     else if (this.Estadodelevento.Equals(4))
                     {
                         //evento no inicializado
-                        //MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom, clvemp.ToString());
+                        MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom, clvemp.ToString());
                         await App.Navigator.PushAsync(new ValidacionAutorizarPage());
                     }
 
