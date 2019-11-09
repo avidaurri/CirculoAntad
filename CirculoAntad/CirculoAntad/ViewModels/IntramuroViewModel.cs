@@ -198,16 +198,17 @@ namespace CirculoAntad.ViewModels
                     }
 
                     usser = (Evento)response.Result;
-                    this.Estadodelevento = usser.clvEdoEvento;
+                    this.Estadodelevento = usser.clvEdoEventoUsuario;
 
 
 
-                    if (this.Estadodelevento.Equals(3))
+                    if (this.Estadodelevento.Equals(3)|| this.Estadodelevento.Equals(8) || this.Estadodelevento.Equals(11) )
                     {
                         // evento inicializado
                         // MainViewModel.GetInstance().ValidacionActividad = new ValidacionActividadViewModel(eventom, clvemp.ToString());
                         // await App.Navigator.PushAsync(new ValidacionActividadPage());
-
+                        await Application.Current.MainPage.DisplayAlert("Mensaje", "Ver detalle de evento", "Aceptar");
+                        return;
 
                     }
                     else if (this.Estadodelevento.Equals(4))
@@ -215,6 +216,15 @@ namespace CirculoAntad.ViewModels
                         //evento no inicializado
                         MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom, clvemp.ToString());
                         await App.Navigator.PushAsync(new ValidacionAutorizarPage());
+                    }
+                    else if (this.Estadodelevento.Equals(1)|| this.Estadodelevento.Equals(13) || this.Estadodelevento.Equals(14) || this.Estadodelevento.Equals(20) )
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Mensaje", "El Código no es valido", "Aceptar");
+                        return;
+                    }
+                    else
+                    {
+
                     }
 
                 });

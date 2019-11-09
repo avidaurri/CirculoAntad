@@ -155,6 +155,8 @@ namespace CirculoAntad.ViewModels
                 fechaFinal = p.fechaFinal,
                 estadoEvento = p.estadoEvento,
                 clvEdoEvento = p.clvEdoEvento,
+                estadoEventoUsuario = p.estadoEventoUsuario,
+                clvEdoEventoUsuario = p.clvEdoEventoUsuario,
                 fotoCadenaCentroTrabajo = p.fotoCadenaCentroTrabajo,
 
                 agencia = p.agencia,

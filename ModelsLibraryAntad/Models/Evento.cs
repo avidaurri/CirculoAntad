@@ -11,6 +11,8 @@ namespace ModelsLibraryAntad.Models
         public string fechaFinal { get; set; }
         public int clvEdoEvento { get; set; }
         public string estadoEvento { get; set; }
+        public int clvEdoEventoUsuario { get; set; }
+        public string estadoEventoUsuario { get; set; }
         public int clvTipoEvento { get; set; }
         public string tipoEvento { get; set; }
         public int clvEmp { get; set; }
@@ -27,6 +29,10 @@ namespace ModelsLibraryAntad.Models
         public bool seeUpdate { get; set; }
 
 
+        //detalle evento
+        public bool muestraBoton { get; set; }
+        public string textoBoton { get; set; }
+        public string textoEspera { get; set; }
 
         public string agencia { get; set; }
         public string folioProyecto { get; set; }

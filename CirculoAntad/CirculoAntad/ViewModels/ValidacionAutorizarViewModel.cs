@@ -17,6 +17,7 @@ namespace CirculoAntad.ViewModels
         private string evento;
         private ApiService apiService;
         private string usuario;
+        private int clvEdoEvento;
         private ValidaEvento validaEvento { get; set; }
 
         #endregion
@@ -43,10 +44,10 @@ namespace CirculoAntad.ViewModels
             this.apiService = new ApiService();
             this.evento = eventom;
             this.usuario = usuariom;
-           // this.traerEvento();
+            this.traerEvento();
         }
 
-       /* private async void traerEvento()
+        private async void traerEvento()
         {
             //this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
@@ -78,8 +79,18 @@ namespace CirculoAntad.ViewModels
                 return;
             }
             this.ValidaEvento = (ValidaEvento)response.Result;
+            this.clvEdoEvento = this.ValidaEvento.clvEstatusEventoUsuario;
+            if (this.ValidaEvento.validacionFinal)
+            {
+                await Application.Current.MainPage.DisplayAlert("Mensaje", "El usuario cuenta con todos los requisitos", "Aceptar");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Mensaje", "El usuario no cuenta con todos los requisitos", "Aceptar");
+            }
 
-        }*/
+
+        }
 
 
         #endregion
@@ -87,7 +98,7 @@ namespace CirculoAntad.ViewModels
 
         #region Commands
 
-        /*public ICommand ConcederCommand
+        public ICommand ConcederCommand
         {
             get
             {
@@ -97,9 +108,22 @@ namespace CirculoAntad.ViewModels
 
         private async void Conceder()
         {
-            //throw new NotImplementedException();
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+            "¿Esta seguro de autorizar el acceso?",
+            "Cancelar",
+            null,
+            "SI",
+            "NO");
 
+            if (source == "NO")
+            {
+                return;
+            }
+
+            //throw new NotImplementedException();
+            int clvEdoE = this.clvEdoEvento;
             string folio = this.evento;
+            int clvEmp = Convert.ToInt32(this.usuario);
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
@@ -108,18 +132,21 @@ namespace CirculoAntad.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                 return;
             }
-
+            //20
             var usser = new ParamValidarEvento
             {
                 folioEvento = folio,
+                idUsuario= clvEmp,
+                clvEdoEventoActual= clvEdoE,
+                clvEdoEventoNuevo=3
 
 
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlDar"].ToString();
-            var response = await this.apiService.Dar(url, prefix, controller, usser);
+            var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
+            var response = await this.apiService.Put<ParamValidarEvento>(url, prefix, controller, usser,clvEmp);
             if (!response.IsSuccess)
             {
                 //this.IsRefreshing = false;
@@ -127,12 +154,23 @@ namespace CirculoAntad.ViewModels
                 return;
             }
 
+            usser = (ParamValidarEvento)response.Result;
 
-            await Application.Current.MainPage.DisplayAlert("Mensaje", "Aprobación exitosa", "aceptar");
+            /*if (usser.seValido)
+            {
+                await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
+                await App.Navigator.PopAsync();
+            }
+            else
+            {
+
+            }*/
+
+            await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
             await App.Navigator.PopAsync();
 
 
-        }*/
+        }
 
         public ICommand RechazarCommand
         {
@@ -144,6 +182,66 @@ namespace CirculoAntad.ViewModels
 
         private async void Rechazar()
         {
+
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+            "¿Esta seguro de rechazar el acceso al evento?",
+            "Cancelar",
+            null,
+            "SI",
+            "NO");
+
+            if (source == "NO")
+            {
+                return;
+            }
+
+            //throw new NotImplementedException();
+            int clvEdoE = this.clvEdoEvento;
+            string folio = this.evento;
+            int clvEmp = Convert.ToInt32(this.usuario);
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                //this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
+                return;
+            }
+            
+            var usser = new ParamValidarEvento
+            {
+                folioEvento = folio,
+                idUsuario = clvEmp,
+                clvEdoEventoActual = clvEdoE,
+                clvEdoEventoNuevo = 20
+
+
+            };
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
+            var response = await this.apiService.Put<ParamValidarEvento>(url, prefix, controller, usser, clvEmp);
+            if (!response.IsSuccess)
+            {
+                //this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                return;
+            }
+
+            usser = (ParamValidarEvento)response.Result;
+
+            /*if (usser.seValido)
+            {
+                await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
+                await App.Navigator.PopAsync();
+            }
+            else
+            {
+
+            }*/
+
+            await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
             await App.Navigator.PopAsync();
         }
         #endregion

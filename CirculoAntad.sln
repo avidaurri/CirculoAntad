@@ -7,9 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirculoAntad.Android", "Cir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirculoAntad.iOS", "CirculoAntad\CirculoAntad.iOS\CirculoAntad.iOS.csproj", "{AB736D20-B310-4C17-B26A-47A4334E4987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirculoAntad", "CirculoAntad\CirculoAntad\CirculoAntad.csproj", "{4CAF7C97-2FA1-42BA-AD7E-231BAA9BC699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CirculoAntad", "CirculoAntad\CirculoAntad\CirculoAntad.csproj", "{4CAF7C97-2FA1-42BA-AD7E-231BAA9BC699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsLibraryAntad", "ModelsLibraryAntad\ModelsLibraryAntad.csproj", "{22253CA8-8D87-454C-81E1-2AB1DDE0DC1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsLibraryAntad", "ModelsLibraryAntad\ModelsLibraryAntad.csproj", "{22253CA8-8D87-454C-81E1-2AB1DDE0DC1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirculoAntadAPI", "CirculoAntadAPI\CirculoAntadAPI.csproj", "{AAEA8210-0F4A-4128-9D50-84837856C381}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadBiblioteca", "AntadBiblioteca\AntadBiblioteca.csproj", "{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +91,30 @@ Global
 		{22253CA8-8D87-454C-81E1-2AB1DDE0DC1E}.Release|iPhone.Build.0 = Release|Any CPU
 		{22253CA8-8D87-454C-81E1-2AB1DDE0DC1E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{22253CA8-8D87-454C-81E1-2AB1DDE0DC1E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Release|iPhone.Build.0 = Release|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{AAEA8210-0F4A-4128-9D50-84837856C381}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Release|iPhone.Build.0 = Release|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{87C44E0A-14D9-4802-82CA-BA1C6695DC7F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
