@@ -29,7 +29,7 @@
             </controls:CircleImage>
 
 
-            <ListView
+            <ListView 
                 BackgroundColor="Transparent"
                 ItemsSource="{Binding Menu}"
                 HasUnevenRows="True"

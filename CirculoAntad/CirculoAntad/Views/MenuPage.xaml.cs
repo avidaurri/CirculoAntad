@@ -16,6 +16,12 @@ namespace CirculoAntad.Views
         {
             InitializeComponent();
             this.BackgroundImageSource = ImageSource.FromFile("menudetail");
+            
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
         }
     }
 }

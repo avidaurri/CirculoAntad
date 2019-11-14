@@ -117,7 +117,7 @@
 
                     </Grid>
                 </Frame>
-                
+
                 <Frame Grid.Row="2"   HasShadow="True" CornerRadius="10" Margin="2" Padding="0" VerticalOptions="Start">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
@@ -157,11 +157,11 @@
                 <StackLayout Grid.Row="3" Padding="5">
                     <ListView ItemsSource="{Binding ValidaEvento.requisitosRangos}"
                          HasUnevenRows="True">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
 
-                                    <ViewCell >
-                                        <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
+                                <ViewCell >
+                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
@@ -194,20 +194,20 @@
                                     </Frame>
 
 
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
                 </StackLayout>
                 <StackLayout Grid.Row="4" Padding="5">
                     <ListView ItemsSource="{Binding ValidaEvento.requisitosValores}"
                          HasUnevenRows="True">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
 
-                                    <ViewCell >
-                                        <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
+                                <ViewCell >
+                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
 
                                         <Grid>
 
@@ -238,42 +238,42 @@
                                     </Frame>
 
 
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-             
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
                 </StackLayout>
                 <StackLayout Grid.Row="5"   Padding="5">
-                       <ListView ItemsSource="{Binding ValidaEvento.requisitoCursos}"
+                    <ListView ItemsSource="{Binding ValidaEvento.requisitoCursos}"
                          HasUnevenRows="True">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
 
-                                    <ViewCell >
-                                        <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
+                                <ViewCell >
+                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
 
 
-                                            <Grid>
+                                        <Grid>
 
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
 
                                             <Label Grid.ColumnSpan="2" Grid.Column="0" Text="Requisito" FontSize="Micro" FontFamily="{StaticResource MontserratBold}" />
                                             <Label Grid.ColumnSpan="2" Grid.Column="2" Text="{Binding nombreRequisito}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
-                                                <StackLayout Grid.ColumnSpan="2" Grid.Column="4" Orientation="Horizontal">
+                                            <StackLayout Grid.ColumnSpan="2" Grid.Column="4" Orientation="Horizontal">
                                                 <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="30"/>
                                                 <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="30"/>
                                             </StackLayout>
@@ -290,18 +290,18 @@
 
                                             <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0" Text="mensaje"  FontSize="Micro" />
                                             <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2" Text="{Binding mensaje}"  FontSize="Micro" />
-                                            </Grid>
+                                        </Grid>
 
-                                        </Frame>
+                                    </Frame>
 
 
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                  
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
                 </StackLayout>
-               
+
                 <StackLayout   Grid.Row="6" Orientation="Vertical" VerticalOptions="End"  >
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -311,7 +311,7 @@
 
                 </StackLayout>
 
-            </Grid>  
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

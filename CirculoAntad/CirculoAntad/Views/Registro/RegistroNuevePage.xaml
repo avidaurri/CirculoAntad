@@ -86,8 +86,12 @@
 
                         <Label Text="Confirmar Contraseña" FontSize="Micro" HorizontalOptions="End" HorizontalTextAlignment="End" 
                                Margin="0,-10,0,0"/>
-
-
+                       
+                        <ActivityIndicator
+                            IsRunning="{Binding IsRunning}"
+                            VerticalOptions="CenterAndExpand">
+                        </ActivityIndicator>
+                        <Label IsVisible="{Binding IsRunning}" Text="Registrando" TextColor="Purple" FontSize="15" FontFamily="{StaticResource MontserratBold}" HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </ScrollView>
                 <StackLayout  Grid.Row="3" Orientation="Vertical" VerticalOptions="End" >
@@ -103,7 +107,7 @@
                             </Button.Triggers>
                         </Button>
 
-                        <Button Text="GUARDAR REGISTRO" BackgroundColor="Purple" TextColor="White" CornerRadius="3" x:Name="Heart"
+                        <Button Text="REGISTRARME" BackgroundColor="Purple" TextColor="White" CornerRadius="3" x:Name="Heart"
                                 HorizontalOptions="FillAndExpand" Command="{Binding GuardarRegistroUsuarioCommand}"  
                                 IsEnabled="{Binding IsEnabled}"   >
                             <Button.Triggers>

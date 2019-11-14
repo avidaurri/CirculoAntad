@@ -55,7 +55,7 @@
                 <StackLayout Grid.Row="0" 
                    
                     Padding="5">
-                <ScrollView>
+
 
                     <ListView
                          HasUnevenRows="True"
@@ -123,7 +123,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </ScrollView>
+             
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ExistenEventos}"  Grid.Row="1" Orientation="Vertical" VerticalOptions="EndAndExpand">
                         <Button BackgroundColor="Purple" Text="Actualizar" TextColor="White"  Command="{Binding RecargarEventosCommand}" ></Button>

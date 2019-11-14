@@ -17,6 +17,13 @@ namespace CirculoAntad.Views
             InitializeComponent();
             App.Navigator = new NavigationPage(pagina);
             this.Detail = App.Navigator;
+            //IsPresented = false;
+            //this.Master.IsVisible = false;
+            //this.IsPresented = false;
+         
+
         }
+
+        
     }
 }

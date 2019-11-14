@@ -60,7 +60,9 @@ namespace CirculoAntad.ViewModels
 
                 MainViewModel.GetInstance().Promotor = new PromotorViewModel();
                 Application.Current.MainPage = new Master(new PromotorPage());
-                 //App.Navigator.PushAsync(new PromotorPage());
+                // App.Navigator.PushAsync(new PromotorPage());
+
+
             }
 
 

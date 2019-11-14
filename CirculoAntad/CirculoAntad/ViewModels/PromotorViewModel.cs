@@ -102,6 +102,7 @@ namespace CirculoAntad.ViewModels
             this.apiService = new ApiService();
             this.ExistenEventos = false;
             this.CargarEventos();
+           
         }
 
         private async void CargarEventos()

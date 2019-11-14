@@ -27,6 +27,7 @@ namespace CirculoAntad.ViewModels
         private ImageSource imageSourceIdentificacion;
         private ApiService apiService;
         private Registro registro;
+        private bool isRunning;
         private List<CatalogoRegistro.Banco> bancoList { get; set; }
         private List<CatalogoRegistro.EstadoCivil> estadoCivilList { get; set; }
         private List<CatalogoRegistro.GradoEstudios> gradoEstudiosList { get; set; }
@@ -37,6 +38,15 @@ namespace CirculoAntad.ViewModels
         #endregion
 
         #region Properties
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set
+            {
+                isRunning = value;
+                OnPropertyChanged();
+            }
+        }
         public bool IsEnabled
         {
             get { return this.isEnabled; }
@@ -263,6 +273,7 @@ namespace CirculoAntad.ViewModels
         private async void cargaMun(string val)
         {
             this.IsEnabled = false;
+          
             //this.MunicipiosList.Clear();
             var connection = await this.apiService.CheckConnection();
 
@@ -286,6 +297,7 @@ namespace CirculoAntad.ViewModels
                 return;
             }
             this.IsEnabled = true;
+         
             CatalogoRegistro cat = new CatalogoRegistro();
             cat = (CatalogoRegistro)response.Result;
 
@@ -1120,6 +1132,7 @@ namespace CirculoAntad.ViewModels
 
         private async void GuardarRegistroUsuario()
         {
+
             //Login
             if (string.IsNullOrEmpty(this.Login))
             {
@@ -1173,8 +1186,17 @@ namespace CirculoAntad.ViewModels
             this.Registro.comprobanteDomiciliario = "";
 
 
+            this.IsEnabled = false;
+            this.IsRunning = true;
+            var connection = await this.apiService.CheckConnection();
 
-
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Aviso", connection.Message, "Aceptar");
+                return;
+            }
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
@@ -1183,14 +1205,18 @@ namespace CirculoAntad.ViewModels
 
             if (!response.IsSuccess)
             {
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     "Mensaje",
-                    response.Message,
+                   response.Message,
                     "Aceptar");
                 return;
+                // "Hubo un problema con su conexión, por favor inténtalo una vez mas presionando el botón REGISTRARME.",
             }
 
+            this.IsRunning = false;
             this.IsEnabled = true;
 
             Registro respuesta = (Registro)response.Result;

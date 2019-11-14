@@ -14,7 +14,9 @@ namespace CirculoAntad.Views
     {
         public PromotorPage()
         {
+            //NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+          
         }
     }
 }

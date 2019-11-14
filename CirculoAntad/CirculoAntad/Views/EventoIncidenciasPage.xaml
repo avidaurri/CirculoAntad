@@ -10,6 +10,9 @@
                  Title="incidencias"
              IconImageSource="ic_incidenciastab">
     <!--   Title="Incidencias" -->
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_desarrollotab" Command="{Binding ReloadStatusEventCommand}"/>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding EventoDeta}" >
 
@@ -20,7 +23,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Frame Grid.Row="0" Opacity=".9" HeightRequest="160" Padding="0">
+                <Frame Grid.Row="0" Opacity=".9" HeightRequest="160" Padding="0" >
                     <Grid>
                         <Grid.RowDefinitions >
                             <RowDefinition Height="Auto"/>
@@ -83,6 +86,7 @@
                     </ScrollView>
 
                 </Frame>
+
             </Grid>
         </StackLayout>
     </ContentPage.Content>
