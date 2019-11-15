@@ -33,6 +33,9 @@
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
+            <Grid>
+                
+      
             <StackLayout x:Name="framelogin"
                 Padding="5" >
                 <Image  
@@ -125,10 +128,10 @@
                         <TapGestureRecognizer Command="{Binding ForgotPasswordComand}"/>
                     </Label.GestureRecognizers>
                 </Label>
-                <ActivityIndicator
+                <!--<ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
-                </ActivityIndicator>
+                </ActivityIndicator> -->
                 <Label
                     HorizontalOptions="Center"
                     Text="Registrarse"
@@ -143,6 +146,12 @@
 
 
             </StackLayout>
+                <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}">
+                    <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+                </Grid>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

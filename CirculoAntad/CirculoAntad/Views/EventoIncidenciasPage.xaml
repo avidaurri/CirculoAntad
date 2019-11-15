@@ -7,14 +7,17 @@
              x:Class="CirculoAntad.Views.EventoIncidenciasPage"
                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
                BackgroundImageSource="fondoaltt"
-                 Title="incidencias"
+               
              IconImageSource="ic_incidenciastab">
     <!--   Title="Incidencias" -->
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_desarrollotab" Command="{Binding ReloadStatusEventCommand}"/>
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding EventoDeta}" >
+        <Grid BindingContext="{Binding EventoDeta}" >
+            
+
+        <StackLayout >
 
             <Grid>
                 <Grid.RowDefinitions >
@@ -89,5 +92,11 @@
 
             </Grid>
         </StackLayout>
+            <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}">
+                <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

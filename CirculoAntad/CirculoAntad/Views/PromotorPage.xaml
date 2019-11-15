@@ -140,10 +140,15 @@
                 AbsoluteLayout.LayoutFlags="All">
                            <Label
                 Text="No tienes eventos asignados, por favor solicitalos con tu jefe inmediato"
-                       HorizontalTextAlignment="Center" TextColor="Purple"  FontFamily="{StaticResource MontserratRegular}"
+                       HorizontalTextAlignment="Center" TextColor="DimGray"  FontFamily="{StaticResource MontserratRegular}"
                        FontSize="19"/>
             </Frame>
- 
+            <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}"  AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All">
+                <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+            </Grid>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

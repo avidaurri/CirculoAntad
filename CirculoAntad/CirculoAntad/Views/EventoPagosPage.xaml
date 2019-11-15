@@ -7,11 +7,11 @@
              x:Class="CirculoAntad.Views.EventoPagosPage"
                          BindingContext="{Binding Main, Source={StaticResource Locator}}"
                BackgroundImageSource="fondoaltt"
-             Title="Pagos"
              IconImageSource="ic_pagostab">
     <!-- Title="Pagos" -->
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding EventoDeta}" >
+        <Grid BindingContext="{Binding EventoDeta}" >
+               <StackLayout >
 
             <Grid>
                 <Grid.RowDefinitions >
@@ -85,5 +85,12 @@
                 </Frame>
             </Grid>
         </StackLayout>
+            <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}">
+                <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+            </Grid>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

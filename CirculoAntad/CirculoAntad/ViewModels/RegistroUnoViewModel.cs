@@ -272,6 +272,7 @@ namespace CirculoAntad.ViewModels
         }
         private async void cargaMun(string val)
         {
+            this.IsRunning = true;
             this.IsEnabled = false;
           
             //this.MunicipiosList.Clear();
@@ -279,6 +280,7 @@ namespace CirculoAntad.ViewModels
 
             if (!connection.IsSuccess)
             {
+                this.IsRunning = false;
                 //await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 await Application.Current.MainPage.DisplayAlert("Mensaje", "Hubo un problema al cargar tu municipio, por favor selecciona tu estado nuevamente", "Aceptar");
                 return;
@@ -291,13 +293,13 @@ namespace CirculoAntad.ViewModels
             var response = await this.apiService.Post(url, prefix, controller, Convert.ToInt32(val));
             if (!response.IsSuccess)
             {
-
+                this.IsRunning = false;
                 //await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 await Application.Current.MainPage.DisplayAlert("Mensaje", "Hubo un problema al cargar tu municipio, por favor selecciona tu estado nuevamente", "Mensaje");
                 return;
             }
             this.IsEnabled = true;
-         
+            this.IsRunning = false;
             CatalogoRegistro cat = new CatalogoRegistro();
             cat = (CatalogoRegistro)response.Result;
 

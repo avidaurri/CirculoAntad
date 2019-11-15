@@ -6,33 +6,34 @@
              mc:Ignorable="d"
              x:Class="CirculoAntad.Views.ValidacionAutorizarPage"
                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundImageSource="fondosplash"
              Title="Validar Acceso">
     <ContentPage.Content >
-        <StackLayout>
+        <Grid BindingContext="{Binding ValidarAutorizar}">
 
 
-
-            <Grid BindingContext="{Binding ValidarAutorizar}" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                   
+           
+            <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="60" />
+                    <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="60" />
 
                 </Grid.RowDefinitions>
 
-                <Frame Grid.Row="0"  HasShadow="True" CornerRadius="10" Margin="2" Padding="0" VerticalOptions="Start">
+                <StackLayout Grid.Row="0" HeightRequest="60"  Margin="0" Padding="5,0,5,0" VerticalOptions="Start">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <!--<RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />-->
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -43,7 +44,7 @@
                         <Label Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" Text="{Binding ValidaEvento.nombreUsuario}"  FontFamily="{StaticResource MontserratLight}"
                               FontSize="Micro" HorizontalTextAlignment="Start"/>
                         <StackLayout Grid.RowSpan="4" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-                            <Image  Source="{Binding ValidaEvento.fotoUsuario}"  HeightRequest="100" VerticalOptions="Center"/>
+                            <Image  Source="{Binding ValidaEvento.fotoUsuario}"  HeightRequest="50" VerticalOptions="Center"/>
                             <!-- Source="{Binding ValidaEvento.fotoUsuario}" -->
                         </StackLayout>
 
@@ -55,19 +56,19 @@
                          HorizontalTextAlignment="Start"/>
                         <Label Grid.Row="2" Grid.Column="2" Text="{Binding ValidaEvento.clv_Empleado}" TextColor="Gray" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"
                         HorizontalTextAlignment="Start"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="Genero" TextColor="Gray" FontSize="Micro" FontFamily="{StaticResource MontserratBold}"
+                        <!--<Label Grid.Row="3" Grid.Column="1" Text="Genero" TextColor="Gray" FontSize="Micro" FontFamily="{StaticResource MontserratBold}"
                          HorizontalTextAlignment="Start"/>
                         <Label Grid.Row="3" Grid.Column="2" Text="{Binding ValidaEvento.sexoUsuario}" TextColor="Gray" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"
                         HorizontalTextAlignment="Start"/>
                         <Label Grid.Row="4" Grid.Column="1" Text="Imss" TextColor="Gray" FontSize="Micro" FontFamily="{StaticResource MontserratBold}"
                          HorizontalTextAlignment="Start"/>
                         <Label Grid.Row="4" Grid.Column="2" Text="{Binding ValidaEvento.imssUsuario}" TextColor="Gray" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"
-                          HorizontalTextAlignment="Start"/>
+                          HorizontalTextAlignment="Start"/>-->
 
                     </Grid>
-                </Frame>
+                </StackLayout>
 
-                <Frame Grid.Row="1"   HasShadow="True" CornerRadius="10" Margin="2" Padding="0" VerticalOptions="Start">
+                <StackLayout Grid.Row="1"  Padding="5,0,5,0"  VerticalOptions="Start">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -106,20 +107,20 @@
                         <Label Grid.Row="2" Grid.Column="3" Text="{Binding ValidaEvento.fechaFinalEvento}" TextColor="Gray"  FontFamily="{StaticResource MontserratLight}"
                        FontSize="Micro"   HorizontalTextAlignment="Start"/>
 
-                        <Label Grid.Row="3" Grid.Column="0" Text="Inicio actividad" TextColor="Gray" FontFamily="{StaticResource MontserratBold}"
+                        <Label Grid.Row="3" Grid.Column="0" Text="Inicio act." TextColor="Gray" FontFamily="{StaticResource MontserratBold}"
                       FontSize="Micro"   HorizontalTextAlignment="Start"/>
                         <Label Grid.Row="3" Grid.Column="1" Text="{Binding ValidaEvento.fechaInicioEventoEmpleado}" TextColor="Gray"  FontFamily="{StaticResource MontserratLight}"
                        FontSize="Micro"  HorizontalTextAlignment="Start"/>
-                        <Label Grid.Row="3" Grid.Column="2" Text="Fin actividad" TextColor="Gray" FontFamily="{StaticResource MontserratBold}"
+                        <Label Grid.Row="3" Grid.Column="2" Text="Fin act." TextColor="Gray" FontFamily="{StaticResource MontserratBold}"
                        FontSize="Micro"   HorizontalTextAlignment="Start"/>
                         <Label Grid.Row="3" Grid.Column="3" Text="{Binding ValidaEvento.fechaFinalEventoEmpleado}" TextColor="Gray"  FontFamily="{StaticResource MontserratLight}"
                        FontSize="Micro"   HorizontalTextAlignment="Start"/>
 
                     </Grid>
-                </Frame>
+                </StackLayout>
 
-                <Frame Grid.Row="2"   HasShadow="True" CornerRadius="10" Margin="2" Padding="0" VerticalOptions="Start">
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout Grid.Row="2" Padding="5,0,5,0" VerticalOptions="Start">
+                    <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -153,15 +154,14 @@
                             <Image Source="ic_errorvalidacion" IsVisible="{Binding ValidaEvento.errorIms}" WidthRequest="20"/>
                         </StackLayout>
                     </Grid>
-                </Frame>
-                <StackLayout Grid.Row="3" Padding="5">
-                    <ListView ItemsSource="{Binding ValidaEvento.requisitosRangos}"
-                         HasUnevenRows="True">
+                </StackLayout>
+
+                    <StackLayout Grid.Row="3" Padding="5,0,5,0"  >
+    
+                    <ListView ItemsSource="{Binding ValidaEvento.requisitosRangos}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-
                                 <ViewCell >
-                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
@@ -177,30 +177,109 @@
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.ColumnSpan="2" Grid.Column="0" Text="Requisito" FontSize="Micro" FontFamily="{StaticResource MontserratBold}" />
                                             <Label Grid.ColumnSpan="2" Grid.Column="2" Text="{Binding nombreRequisito}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
-                                            <StackLayout Grid.ColumnSpan="2" Grid.Column="4" Orientation="Horizontal">
-                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="30"/>
-                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="30"/>
+                                            <StackLayout Grid.ColumnSpan="2" Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End">
+                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="20"/>
+                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="20"/>
                                             </StackLayout>
-                                            <Label Grid.Row="1" Text="rango menor" Grid.Column="0" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <Label Grid.Row="1" Text="menor valor permitido" Grid.Column="0" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
                                             <Label Grid.Row="1" Text="{Binding menor}" Grid.Column="1" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
-                                            <Label Grid.Row="1" Text="rango mayor" Grid.Column="2" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <Label Grid.Row="1" Text="mayor valor permitido" Grid.Column="2" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
                                             <Label Grid.Row="1" Text="{Binding mayor}" Grid.Column="3" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
-                                            <Label Grid.Row="1" Text="rango valor" Grid.Column="4" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <Label Grid.Row="1" Text="valor" Grid.Column="4" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
                                             <Label Grid.Row="1" Text="{Binding valor}" Grid.Column="5" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
-                                            <!--<Image Grid.Column="5"  IsVisible="{Binding validado}" Source="ic_okvalidacion" />-->
-
                                         </Grid>
-
-                                    </Frame>
-
-
-                                </ViewCell>
+                                    </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
 
-                </StackLayout>
-                <StackLayout Grid.Row="4" Padding="5">
+
+                    
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Padding="5,0,5,0"  >
+                        <ListView ItemsSource="{Binding ValidaEvento.requisitosValores}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label  Grid.Column="0" Text="Requisito" FontSize="Micro" FontFamily="{StaticResource MontserratBold}" />
+                                            <Label  Grid.Column="1" Text="{Binding nombreRequisito}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <StackLayout Grid.ColumnSpan="2" Grid.Column="3" Orientation="Horizontal" HorizontalOptions="Center">
+                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="20"/>
+                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="20"/>
+                                            </StackLayout>
+                                            <Label Grid.Row="1" Text="valor requerido" Grid.Column="0" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <Label Grid.Row="1" Text="{Binding valorRequerido}" Grid.Column="1" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <Label Grid.Row="1" Text="valor" Grid.Column="2" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                            <Label Grid.Row="1" Text="{Binding valor}" Grid.Column="3" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Padding="5,0,5,0"  >
+                        <ListView ItemsSource="{Binding ValidaEvento.requisitoCursos}"
+                         HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                       
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.ColumnSpan="2" Grid.Column="0" Text="Requisito" FontSize="Micro" FontFamily="{StaticResource MontserratBold}" />
+                                            <Label Grid.ColumnSpan="2" Grid.Column="2" Text="{Binding nombreCurso}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <StackLayout Grid.ColumnSpan="2" Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End">
+                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="20"/>
+                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="20"/>
+                                            </StackLayout>
+                                            <Label Grid.Row="1" Text="Cal menor permitida" Grid.Column="0" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <Label Grid.Row="1" Text="{Binding menor}" Grid.Column="1" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <Label Grid.Row="1" Text="Cal matoy permitida" Grid.Column="2" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <Label Grid.Row="1" Text="{Binding mayor}" Grid.Column="3" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <Label Grid.Row="1" Text="Calificación" Grid.Column="4" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <Label Grid.Row="1" Text="{Binding valor}" Grid.Column="5" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+
+                                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Text="Caducidad"  FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+                                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="2" Text="{Binding caducidad}"  FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
+
+                                            <Label Grid.Row="2" Grid.ColumnSpan="2"  Grid.Column="4" Text="{Binding mensaje}"  FontSize="Micro" />
+                                           
+                                        </Grid>
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <!--<StackLayout Grid.Row="4" Padding="5">
                     <ListView ItemsSource="{Binding ValidaEvento.requisitosValores}"
                          HasUnevenRows="True">
                         <ListView.ItemTemplate>
@@ -225,8 +304,8 @@
                                             <Label  Grid.Column="0" Text="Requisito" FontSize="Micro" FontFamily="{StaticResource MontserratBold}"/>
                                             <Label  Grid.Column="1" Text="{Binding nombreRequisito}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
                                             <StackLayout Grid.RowSpan="3" Grid.Column="2" Orientation="Vertical" VerticalOptions="Center">
-                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="30"/>
-                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="30"/>
+                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="20"/>
+                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="20"/>
                                             </StackLayout>
                                             <Label  Grid.Row="1" Text="valor requerido" Grid.Column="0" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
                                             <Label Grid.Row="1" Text="{Binding valorRequerido}" Grid.Column="1" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
@@ -244,6 +323,7 @@
                     </ListView>
 
                 </StackLayout>
+             
                 <StackLayout Grid.Row="5"   Padding="5">
                     <ListView ItemsSource="{Binding ValidaEvento.requisitoCursos}"
                          HasUnevenRows="True">
@@ -274,8 +354,8 @@
                                             <Label Grid.ColumnSpan="2" Grid.Column="0" Text="Requisito" FontSize="Micro" FontFamily="{StaticResource MontserratBold}" />
                                             <Label Grid.ColumnSpan="2" Grid.Column="2" Text="{Binding nombreRequisito}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
                                             <StackLayout Grid.ColumnSpan="2" Grid.Column="4" Orientation="Horizontal">
-                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="30"/>
-                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="30"/>
+                                                <Image Source="ic_okvalidacion" IsVisible="{Binding validado}" WidthRequest="20"/>
+                                                <Image Source="ic_errorvalidacion" IsVisible="{Binding errorvaidado}" WidthRequest="20"/>
                                             </StackLayout>
 
                                             <Label Grid.Row="1" Text="rango menor" Grid.Column="0" FontSize="Micro" FontFamily="{StaticResource MontserratLight}"/>
@@ -300,7 +380,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                </StackLayout>
+                </StackLayout>-->
 
                 <StackLayout   Grid.Row="6" Orientation="Vertical" VerticalOptions="End"  >
 
@@ -312,6 +392,13 @@
                 </StackLayout>
 
             </Grid>
-        </StackLayout>
+             
+            </StackLayout>
+            <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}">
+                <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

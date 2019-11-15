@@ -16,6 +16,7 @@ namespace CirculoAntad.ViewModels
     public class PromotorViewModel : BaseViewModel
     {
         #region Attributes
+        private bool isRunning;
         private bool isRefreshing;
         private ApiService apiService;
         private bool existenEventos;
@@ -24,6 +25,15 @@ namespace CirculoAntad.ViewModels
 
 
         #region Properties
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set
+            {
+                isRunning = value;
+                OnPropertyChanged();
+            }
+        }
         public bool ExistenEventos
         {
             get { return this.existenEventos; }
@@ -99,6 +109,7 @@ namespace CirculoAntad.ViewModels
         #region Contructors
         public PromotorViewModel()
         {
+           
             this.apiService = new ApiService();
             this.ExistenEventos = false;
             this.CargarEventos();
@@ -107,12 +118,14 @@ namespace CirculoAntad.ViewModels
 
         private async void CargarEventos()
         {
+            this.IsRunning = true;
             this.ExistenEventos = false;
             this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
+                this.IsRunning = false;
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                 return;
@@ -134,6 +147,7 @@ namespace CirculoAntad.ViewModels
             var response = await this.apiService.PostList<Evento>(url, prefix, controller, usser);
             if (!response.IsSuccess)
             {
+                this.IsRunning = false;
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
                 return;
@@ -167,6 +181,7 @@ namespace CirculoAntad.ViewModels
             });
 
             this.Eventos = new ObservableCollection<EventoItemViewModel>(myList);
+            this.IsRunning = false;
             this.IsRefreshing = false;
             //this.MyUsuarios = (List<Usuario>)response.Result;
             //this.RefreshList();

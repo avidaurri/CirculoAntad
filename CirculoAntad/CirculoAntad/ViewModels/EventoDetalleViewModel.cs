@@ -14,6 +14,7 @@ namespace CirculoAntad.ViewModels
     public class EventoDetalleViewModel : BaseViewModel
     {
         #region Attributes
+        private bool isRunning;
         private ApiService apiService;
         private Evento eventodetalle { get; set; }
         private int clvemp;
@@ -21,6 +22,15 @@ namespace CirculoAntad.ViewModels
         #endregion
 
         #region Properties
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set
+            {
+                isRunning = value;
+                OnPropertyChanged();
+            }
+        }
         public Evento Eventodetalle
         {
             get { return this.eventodetalle; }
@@ -95,6 +105,7 @@ namespace CirculoAntad.ViewModels
 
         private async void getDetalleEvento(int clvEmp, string folioEvento)
         {
+            this.IsRunning = true;
             /*   string usuario = this.clvEmp.ToString();
                string folioEvento = this.folioEvento;*/
 
@@ -102,7 +113,7 @@ namespace CirculoAntad.ViewModels
 
             if (!connection.IsSuccess)
             {
-
+                this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                 return;
             }
@@ -120,10 +131,11 @@ namespace CirculoAntad.ViewModels
             var response = await this.apiService.GetDetalleEvento(url, prefix, controller, usser);
             if (!response.IsSuccess)
             {
+                this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
                 return;
             }
-
+            this.IsRunning = false;
             this.Eventodetalle = (Evento)response.Result;
 
             /*if (this.eventodetalle.clvEdoEvento.Equals(3))

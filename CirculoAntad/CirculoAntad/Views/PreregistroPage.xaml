@@ -34,7 +34,9 @@
         </EventTrigger>
     </Page.Triggers>
     <ContentPage.Content>
-        <Frame Margin="30" BackgroundColor="White" Padding="20" HasShadow="True" BindingContext="{Binding Preregistro}" x:Name="framepre" Opacity=".6">
+        <Grid BindingContext="{Binding Preregistro}">
+
+        <Frame Margin="30" BackgroundColor="White" Padding="20" HasShadow="True"  x:Name="framepre" Opacity=".6">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -147,5 +149,12 @@
 
             </Grid>
         </Frame>
+        <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}">
+            <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+        </Grid>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

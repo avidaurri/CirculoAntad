@@ -115,6 +115,7 @@ namespace CirculoAntad.ViewModels
         #region Contructors
         public IntramuroViewModel()
         {
+            this.IsRunning = true;
             this.IsEnabled = true;
             this.apiService = new ApiService();
             this.MensajeSuc = false;
@@ -154,6 +155,7 @@ namespace CirculoAntad.ViewModels
                 scannerPage.IsScanning = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+
                     await App.Navigator.PopAsync();
                     string evento = result.Text;
 
@@ -169,13 +171,13 @@ namespace CirculoAntad.ViewModels
                         await Application.Current.MainPage.DisplayAlert("Mensaje", "El código QR no es valido", "Aceptar");
                         return;
                     }
-                   
 
+                    this.IsRunning = true;
                     var connection = await this.apiService.CheckConnection();
 
                     if (!connection.IsSuccess)
                     {
-
+                        this.IsRunning = false;
                         await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                         return;
                     }
@@ -193,10 +195,11 @@ namespace CirculoAntad.ViewModels
                     var response = await this.apiService.GetDetalleEvento(url, prefix, controller, usser);
                     if (!response.IsSuccess)
                     {
+                        this.IsRunning = false;
                         await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
                         return;
                     }
-
+                    this.IsRunning = false;
                     usser = (Evento)response.Result;
                     this.Estadodelevento = usser.clvEdoEventoUsuario;
 
@@ -241,6 +244,7 @@ namespace CirculoAntad.ViewModels
 
             if (!connection.IsSuccess)
             {
+                this.IsRunning = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                 return;
             }

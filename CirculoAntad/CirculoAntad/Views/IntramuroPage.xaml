@@ -86,16 +86,16 @@
                                 <TapGestureRecognizer Command="{Binding ScanCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                            <Label Text="Presiona la imagen para escanear"  HorizontalTextAlignment="Center" TextColor="Purple"  FontFamily="{StaticResource MontserratRegular}"
+                            <Label Text="Presiona la imagen para escanear"  HorizontalTextAlignment="Center" TextColor="DimGray"  FontFamily="{StaticResource MontserratRegular}"
                        FontSize="19" 
                                     IsVisible="{Binding Sucursal.existeOperacion}" />
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Grid.Row="2" IsVisible="{Binding Sucursal.errorOperacion}" Orientation="Vertical" VerticalOptions="EndAndExpand" >
-                    <ActivityIndicator
+                   <!-- <ActivityIndicator
                 IsRunning="{Binding Sucursal.IsRunning}"
                 VerticalOptions="CenterAndExpand">
-                    </ActivityIndicator>
+                    </ActivityIndicator>-->
                     <Button IsEnabled="{Binding Sucursal.IsEnabled}" VerticalOptions="End"
                             Command="{Binding RefreshCommand}" BackgroundColor="Purple" Text="Actualizar" TextColor="White"></Button>
                 </StackLayout>
@@ -103,18 +103,22 @@
             </Grid>
         </StackLayout>
             <Frame CornerRadius="15" HasShadow="True" Opacity=".9" BackgroundColor="White" x:Name="imagerepd"
-                   AbsoluteLayout.LayoutBounds="0.5,0.4,0.8,0.3" Padding="3,30,3,20" AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0.5,0.4,0.8,0.3" Padding="3,35,3,20" AbsoluteLayout.LayoutFlags="All"
                    IsVisible="{Binding MensajeSuc}">
                 <Label
                Text="{Binding Sucursal.mensajeSucursal}" 
-                       HorizontalTextAlignment="Center" TextColor="Purple"  FontFamily="{StaticResource MontserratRegular}"
-                       FontSize="19"/>
-                <!--<Button IsVisible="{Binding Sucursal.existeOperacion}" BackgroundColor="DarkBlue"  
-                                    Text="ESCANEAR QR" TextColor="White"  Command="{Binding ScanCommand}" VerticalOptions="End" />-->
+                       HorizontalTextAlignment="Center" TextColor="DimGray"  FontFamily="{StaticResource MontserratRegular}"
+                       FontSize="18"/>
 
 
 
             </Frame>
+            <Grid Opacity=".8" BackgroundColor="Black"
+              IsVisible="{Binding IsRunning}"  AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All">
+                <ActivityIndicator IsRunning="{Binding IsRunning}"
+                               HorizontalOptions="Center"></ActivityIndicator>
+            </Grid>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

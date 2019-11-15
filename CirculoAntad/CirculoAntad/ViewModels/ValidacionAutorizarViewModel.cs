@@ -14,6 +14,7 @@ namespace CirculoAntad.ViewModels
 
 
         #region Attributes
+        private bool isRunning;
         private string evento;
         private ApiService apiService;
         private string usuario;
@@ -24,6 +25,15 @@ namespace CirculoAntad.ViewModels
 
 
         #region Properties
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set
+            {
+                isRunning = value;
+                OnPropertyChanged();
+            }
+        }
         public ValidaEvento ValidaEvento
         {
 
@@ -49,11 +59,13 @@ namespace CirculoAntad.ViewModels
 
         private async void traerEvento()
         {
+            this.IsRunning = true;
             //this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
+                this.IsRunning = false;
                 //this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
                 return;
@@ -74,10 +86,12 @@ namespace CirculoAntad.ViewModels
 
             if (!response.IsSuccess)
             {
+                this.IsRunning = false;
                 //this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
                 return;
             }
+            this.IsRunning = false;
             this.ValidaEvento = (ValidaEvento)response.Result;
             this.clvEdoEvento = this.ValidaEvento.clvEstatusEventoUsuario;
             if (this.ValidaEvento.validacionFinal)
@@ -108,6 +122,7 @@ namespace CirculoAntad.ViewModels
 
         private async void Conceder()
         {
+           
             var source = await Application.Current.MainPage.DisplayActionSheet(
             "¿Esta seguro de autorizar el acceso?",
             "Cancelar",
@@ -115,59 +130,67 @@ namespace CirculoAntad.ViewModels
             "SI",
             "NO");
 
-            if (source == "NO")
+            if (source == "SI")
             {
-                return;
-            }
+                this.IsRunning = true;
+                //throw new NotImplementedException();
+                int clvEdoE = this.clvEdoEvento;
+                string folio = this.evento;
+                int clvEmp = Convert.ToInt32(this.usuario);
+                var connection = await this.apiService.CheckConnection();
 
-            //throw new NotImplementedException();
-            int clvEdoE = this.clvEdoEvento;
-            string folio = this.evento;
-            int clvEmp = Convert.ToInt32(this.usuario);
-            var connection = await this.apiService.CheckConnection();
-
-            if (!connection.IsSuccess)
-            {
-                //this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
-                return;
-            }
-            //20
-            var usser = new ParamValidarEvento
-            {
-                folioEvento = folio,
-                idUsuario= clvEmp,
-                clvEdoEventoActual= clvEdoE,
-                clvEdoEventoNuevo=3
+                if (!connection.IsSuccess)
+                {
+                    this.IsRunning = false;
+                    //this.IsRefreshing = false;
+                    await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
+                    return;
+                }
+                //20
+                var usser = new ParamValidarEvento
+                {
+                    folioEvento = folio,
+                    idUsuario = clvEmp,
+                    clvEdoEventoActual = clvEdoE,
+                    clvEdoEventoNuevo = 3
 
 
-            };
+                };
 
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
-            var response = await this.apiService.Put<ParamValidarEvento>(url, prefix, controller, usser,clvEmp);
-            if (!response.IsSuccess)
-            {
-                //this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-                return;
-            }
+                var url = Application.Current.Resources["UrlAPI"].ToString();
+                var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+                var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
+                var response = await this.apiService.Put<ParamValidarEvento>(url, prefix, controller, usser, clvEmp);
+                if (!response.IsSuccess)
+                {
+                    this.IsRunning = false;
+                    //this.IsRefreshing = false;
+                    await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                    return;
+                }
 
-            usser = (ParamValidarEvento)response.Result;
+                usser = (ParamValidarEvento)response.Result;
 
-            /*if (usser.seValido)
-            {
+                /*if (usser.seValido)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
+                    await App.Navigator.PopAsync();
+                }
+                else
+                {
+
+                }*/
+
                 await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
+                this.IsRunning = false;
                 await App.Navigator.PopAsync();
             }
             else
             {
+                return;
+            }
 
-            }*/
 
-            await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
-            await App.Navigator.PopAsync();
 
 
         }
@@ -190,59 +213,67 @@ namespace CirculoAntad.ViewModels
             "SI",
             "NO");
 
-            if (source == "NO")
+            if (source == "SI")
             {
-                return;
-            }
+                this.IsRunning = true;
+                //throw new NotImplementedException();
+                int clvEdoE = this.clvEdoEvento;
+                string folio = this.evento;
+                int clvEmp = Convert.ToInt32(this.usuario);
+                var connection = await this.apiService.CheckConnection();
 
-            //throw new NotImplementedException();
-            int clvEdoE = this.clvEdoEvento;
-            string folio = this.evento;
-            int clvEmp = Convert.ToInt32(this.usuario);
-            var connection = await this.apiService.CheckConnection();
+                if (!connection.IsSuccess)
+                {
+                    this.IsRunning = false;
+                    //this.IsRefreshing = false;
+                    await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
+                    return;
+                }
 
-            if (!connection.IsSuccess)
-            {
-                //this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Mensaje", connection.Message, "Aceptar");
-                return;
-            }
-            
-            var usser = new ParamValidarEvento
-            {
-                folioEvento = folio,
-                idUsuario = clvEmp,
-                clvEdoEventoActual = clvEdoE,
-                clvEdoEventoNuevo = 20
+                var usser = new ParamValidarEvento
+                {
+                    folioEvento = folio,
+                    idUsuario = clvEmp,
+                    clvEdoEventoActual = clvEdoE,
+                    clvEdoEventoNuevo = 20
 
 
-            };
+                };
 
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
-            var response = await this.apiService.Put<ParamValidarEvento>(url, prefix, controller, usser, clvEmp);
-            if (!response.IsSuccess)
-            {
-                //this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
-                return;
-            }
+                var url = Application.Current.Resources["UrlAPI"].ToString();
+                var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+                var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
+                var response = await this.apiService.Put<ParamValidarEvento>(url, prefix, controller, usser, clvEmp);
+                if (!response.IsSuccess)
+                {
+                    this.IsRunning = false;
+                    //this.IsRefreshing = false;
+                    await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                    return;
+                }
 
-            usser = (ParamValidarEvento)response.Result;
+                usser = (ParamValidarEvento)response.Result;
 
-            /*if (usser.seValido)
-            {
+                /*if (usser.seValido)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
+                    await App.Navigator.PopAsync();
+                }
+                else
+                {
+
+                }*/
+
                 await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
+                this.IsRunning = false;
                 await App.Navigator.PopAsync();
             }
             else
             {
+                return;
+            }
 
-            }*/
 
-            await Application.Current.MainPage.DisplayAlert("Mensaje", usser.mensajeValidacion, "aceptar");
-            await App.Navigator.PopAsync();
         }
         #endregion
 
