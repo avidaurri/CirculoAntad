@@ -4,9 +4,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace CirculoAntad
-{
+{ 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application
     {
+       
         public static NavigationPage Navigator { get; set; }
         public App()
         {

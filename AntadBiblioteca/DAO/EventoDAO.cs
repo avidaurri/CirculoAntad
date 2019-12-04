@@ -103,6 +103,7 @@ namespace AntadBiblioteca.DAO
         public Evento getDetalleEvento(int clvEmp, string eve)
         {
 
+
             string select = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, " +
                 "ec.fecha_final as fechaFinal, ec.clv_edo_evento as clvEdoEvento, ee.descripcion as estadoEvento, " +
                 "ep.clv_edo_evento_personal as clvEdoEventoUsuario, eee.descripcion as estadoEventoUsuario, " +
@@ -160,8 +161,10 @@ namespace AntadBiblioteca.DAO
                 switch (evento.clvEdoEventoUsuario)
                 {
                     case 4:
-                        evento.muestraBoton = false;
-                        evento.textoBoton = "";
+                       // evento.muestraBoton = false;
+                       // evento.textoBoton = "";
+                        evento.muestraBoton = true;
+                        evento.textoBoton = "Validar Mi Acceso";
                         evento.textoEspera = "En espera de acceso";
                         break;
                     case 3:

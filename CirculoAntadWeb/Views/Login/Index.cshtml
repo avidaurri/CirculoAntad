@@ -1,0 +1,95 @@
+﻿
+@{
+    //ViewBag.Title = "Index";
+    Layout = null;
+
+
+    if (Session["UsuarioSession"] != null)
+    {
+        Response.Redirect("~/Home/MisTickets");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Circulo Antad</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="shortcut icon" href="~/Contenido/vistas/img/plantilla/original_simplet.png" />
+        <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../Contenido/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../Contenido/bower_components/Ionicons/css/ionicons.min.css">
+        <link href="~/Contenido/bower_components/jquery-loading/loading_ver1.css" rel="stylesheet" />
+        <!-- <link rel="stylesheet" href="../../Contenido/dist/css/AdminLTE.css">-->
+        <link href="~/Contenido/dist/css/skins/skin-simpletv1.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+        <!--<link href="~/Contenido/bower_components/jquery-loading/loading.css" rel="stylesheet" />-->
+
+    </head>
+
+    <body class="hold-transition login-page">
+
+
+        <div id="back"></div>
+        <div class="login-box">
+            <div class="login-logo">
+                <p><b>Circulo</b>ANTAD</p>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <p class="login-box-msg">Autenticación</p>
+
+                <form autocomplete="nope" method="post" id="formlogin">
+
+                    <div class="form-group has-feedback">
+
+                        <input type="text" name="loginentrar" class="form-control" id="loginentrar" placeholder="Login" autocomplete="nope">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+
+                        <input type="password" name="passwordentrar" class="form-control" id="inputpassword" placeholder="Password">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+
+                        <!-- /.col -->
+
+                        <div class="col-xs-12">
+                            <a class="btn btn-login btn-block ">Iniciar Sesión</a>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+                <br>
+
+                <small class="form-text text-muted mensajelogin"> </small>
+
+
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+
+
+
+
+        <!-- /.login-box -->
+        <script src="../../Contenido/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../Contenido/bower_components/jquery/dist/jquery-ui.js"></script>
+        <script src="../../Contenido/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="~/Contenido/bower_components/jquery-loading/loading_ver2.js"></script>
+        <script src="~/Scripts/auth_ver8.js"></script>
+
+    </body>
+</html>
+
+

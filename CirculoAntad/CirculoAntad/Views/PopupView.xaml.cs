@@ -28,8 +28,6 @@ namespace CirculoAntad.Views
             barcode.BarcodeOptions.Width = 500;
             barcode.BarcodeOptions.Height = 500;
             barcode.BarcodeValue = usuario+ "/" + evento;
-            //mensajePop.Text = mensaje;
-            // Task.Delay(500);
             stackPrinc.Children.Insert(1, barcode);
            
         }

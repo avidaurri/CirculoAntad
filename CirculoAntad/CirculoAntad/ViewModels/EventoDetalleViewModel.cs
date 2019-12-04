@@ -91,7 +91,6 @@ namespace CirculoAntad.ViewModels
         {
             string usuario = this.clvemp.ToString();
             string folioEvento = this.folioevento.ToString();
-
             PopupNavigation.Instance.PushAsync(new PopupView(usuario, folioEvento));
         }
 

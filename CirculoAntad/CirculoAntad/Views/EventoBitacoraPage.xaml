@@ -7,8 +7,9 @@
              x:Class="CirculoAntad.Views.EventoBitacoraPage"
                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
                BackgroundImageSource="fondoaltt"
+             Title="Bitacora"
              IconImageSource="ic_bitacoratab">
-    <!-- Title="Bitacora" -->
+    <!--  -->
     <ContentPage.Content>
         <Grid BindingContext="{Binding EventoDeta}" >
                  <StackLayout>

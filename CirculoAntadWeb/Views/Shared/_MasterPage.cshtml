@@ -1,0 +1,756 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Circulo | Antad</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="shortcut icon" href="~/Contenido/vistas/img/plantilla/logoweb.png" />
+
+    <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../../Contenido/bower_components/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../../Contenido/bower_components/Ionicons/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../../Contenido/dist/css/AdminLTEE.css">
+
+    <link href="~/Contenido/dist/css/skins/skin-simpletv1.css" rel="stylesheet" />
+
+
+
+
+    <link rel="stylesheet" href="../../Contenido/dist/css/lightbox.min.css">
+    <link href="~/Contenido/dist/css/tooltipd.css" rel="stylesheet" />
+    <link href="~/Contenido/bower_components/jquery-loading/loading_ver1.css" rel="stylesheet" />
+
+    <script src="../../Contenido/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../../Contenido/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="../../Contenido/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../Contenido/dist/js/adminlte.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.4/dist/sweetalert2.all.min.js"></script>
+
+
+    <script src="~/Contenido/bower_components/jquery-loading/loading_ver2.js"></script>
+
+
+    <script src="~/Contenido/bower_components/jquery-loading/loading_ver2.js"></script>
+
+    <style>
+    </style>
+
+</head>
+
+
+
+
+<body class="hold-transition fixed skin-simplet sidebar-collapse sidebar-expanded-on-hover  "  />
+
+<input type="hidden" id="tipoUsuhidden" name="name" value="@ViewData["tipoUsuario"]" />
+<input type="hidden" id="administradorhidden" name="name" value="@ViewData["administradorUsuario"]" />
+<input type="hidden" id="ClvUsuario" name="name" value="@ViewData["ClvUsuario"]" />
+<input type="hidden" id="Avatar" name="name" value="@ViewData["Avatar"]" />
+<input type="hidden" id="VisualizarHistorico" name="name" value="@ViewData["VisualizarHistorico"]" />
+<input type="hidden" id="EditarHistorico" name="name" value="@ViewData["EditarHistorico"]" />
+<input type="hidden" id="CambiarContrasena" name="name" value="@ViewData["CambiarContrasena"]" />
+
+
+<header class="main-header">
+
+    <a href="#" class="sidebar-toggle iconosMenuslg" data-toggle="push-menu" role="button">
+
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+
+        <div class="container-fluid">
+
+            <div class="navbar-custom-menu">
+
+                <ul class="nav navbar-nav">
+
+                    <!-- <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning sumaNotificaciones">5</span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                        <li class="header">Tu tienes <span class="sumaNotificaciones"></span> notificaciones</li>
+
+                        <li>
+
+                            <a href="#" class="ticketsDesarrolloNoti">
+
+                            </a>
+
+                        </li>
+                    </ul>
+                        </li>-->
+                    <!-- User Account: style can be found in dropdown.less -->
+
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="infousuariotop">
+                            @ViewData["nombreUsuario"] (                     @{
+                                if (@ViewData["tipoUsuario"].Equals(5))
+                                {
+                                    <img src="http://compilacionweb.online/antadweb/marca.png" class="user-image" alt="User Image">
+                                }
+                                else
+                                {
+                                    <img src="https://compilacionweb.online/antadweb/cadena.png" class="user-image" alt="User Image">
+                                }
+                            } )
+
+                            <span class="hidden-xs">
+                                @ViewData["nombreUsuario"] (                     @{
+                                    if (@ViewData["tipoUsuario"].Equals(5))
+                                    {
+                                        <span> MARCA</span>
+                                    }
+                                    else
+                                    {
+                                        <span> CADENA</span> }
+                                } )
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-ellipsis-v menuDerecho" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="background: grey;">
+                            <!-- User image -->
+                            <!--  <li id="licambiarContra"><i class="fa fa-user" aria-hidden="true"></i> <span>Cambiar Contraseña</span></li>-->
+                            <li>
+                                <a href="@Url.Action("CerrarSesion","Login")"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Salir</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+
+
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+
+
+
+        <section class="sidebar">
+
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+
+                <div class="pull-left image">
+                    @{
+                        if (@ViewData["tipoUsuario"].Equals(5))
+                        {
+                            <img src="http://compilacionweb.online/antadweb/marca.png" class="img-circle" alt="User Image">
+                        }
+                        else
+                        {
+                            <img src="http://compilacionweb.online/antadweb/cadena.png" class="img-circle" alt="User Image">
+                        }
+                    }
+
+
+                </div>
+
+                <div class="pull-left info">
+                    <p id="nombreUsuarioMasterPage">@ViewData["nombreUsuario"]</p>
+                    @{
+                        if (@ViewData["tipoUsuario"].Equals(5))
+                        {
+                            <a href="#"><i class="fa fa-circle text-success"></i> MARCA</a>
+                        }
+                        else
+                        {
+                            <a href="#"><i class="fa fa-circle text-success"></i> CADENA</a> }
+                    }
+
+                </div>
+
+            </div>
+
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree" style="height:800px; overflow:scroll;">
+
+
+
+
+                @{
+
+
+                    @*  usuario consultor *@
+                    if (@ViewData["tipoUsuario"].Equals(5))
+                    {
+
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Proveedores</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Items</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Compendio Items</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Lista de Precios</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Regiones</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Centros de trabajo</span></a></li>
+
+                        <li class="active treeview ">
+                            <a href="#" style="font-size:10px;">
+                                <i class="fa fa-dashboard"></i> <span>Campañas</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a style="font-size:10px;" href="index.html"><i class="fa fa-circle-o"></i> Control de Campañas</a></li>
+                                <li class="active"><a style="font-size:10px;" href="index2.html"><i class="fa fa-circle-o"></i> Autorización Campaña</a></li>
+                            </ul>
+                        </li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Proyectos</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Control Presupuestal</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Compras</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Egresos</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Tesorería</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Inventario</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Recursos Humanos</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Nómina</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Utilerías</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Catálogos</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Reportes</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Empresa</span></a></li>
+                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Usuarios</span></a></li>
+                        <!-- <li><a href="TicketsFinalizados"><i class='fa fa-folder'></i> <span>Tickets finalizados</span></a></li> -->
+
+
+                    }
+
+                    @*  usuario cliente *@
+                    else if (ViewData["tipoUsuario"].Equals(6))
+                    {
+
+                        <li class="active treeview ">
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> <span>ERP SIMPLET</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Sucursales</a></li>
+                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i>Calendario Promociones</a></li>
+                                <li><a href="index.html"><i class="fa fa-circle-o"></i>Incidencias</a></li>
+                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Personal interno</a></li>
+                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Catalogo Promotores</a></li>
+                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i>Acreditación</a></li>
+                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                            </ul>
+                        </li>
+
+
+
+                    }
+
+
+                }
+
+
+            </ul>
+
+        </section>
+    </div>
+    <!-- /.sidebar -->
+</aside>
+
+
+<div class="content-wrapper">
+    <!-- Main content -->
+
+    @RenderBody()
+
+
+    <!-- /.content -->
+</div>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+    </div>
+    <strong>
+        Copyright &copy; 2019 ANTAD All rights
+        reserved.
+</footer>
+
+
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
+
+
+
+
+
+<div class="modal fade modalSimplet" id="NuevoTicketModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <h4 id="TituloModal">Nueva solicitud de soporte</h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="CuerpoModal">
+                    <fieldset id="ItemModal">
+                        <div class="form-group ">
+
+                            <select class="form-control " id="DropListCliente">
+                                <option value="" class="opcionDeSelect">-- Selecciona el dominio --</option>
+                            </select>
+                            <small></small>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="DropListCategoria">
+                                <option value="" class="opcionDeSelect">-- Seleccione la categoria--</option>
+                            </select>
+                            <small></small>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="lele" id="DropListSubcategoria">
+                                <option value="" class="opcionDeSelect">-- Selecciona la subcategoria --</option>
+
+                            </select>
+                            <small></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="DescripcionTicket">Detalle del problema</label>
+                            <textarea class="form-control" rows="3" id="DescripcionTicket" placeholder="Proporcione información sobre su problema, así como cualquier mensaje de error"></textarea>
+                            <small class="smalldescripcion"></small>
+                        </div>
+
+                        <div>
+                            <a href="#" class="btn btn-block btn-modal" id="BtnGuardarTicket" tooltip='Guardar Ticket' flow='down'>Crear solicitud de soporte</a>
+                        </div>
+                    </fieldset>
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div id="modalEdicionTicket" class="modal fade modalSimplet" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <h5 class="modal-title"> <b>Edición del detalle de la solicitud de soporte numero <span class="ticketedicion"></span> </b> </h5>
+                <h6>Fecha de apertura <span class="ticketfecha"></span> </h6>
+            </div>
+
+            <div class="modal-body">
+                <form id="formeditarticketcara">
+                    <fieldset>
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="folioTicketEdicion" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="DropListClienteEditar">Selecciona el dominio</label>
+                            <select class="form-control" id="DropListClienteEditar">
+                                <option value="" class="opcionDeSelect">-- Seleccione un dominio --</option>
+                            </select>
+                            <small></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="DropListCategoriaEditar">Selecciona la categoría</label>
+                            <select class="form-control" id="DropListCategoriaEditar">
+                                <option value="" class="opcionDeSelect">-- Seleccione la categoria--</option>
+                            </select>
+                            <small></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="DropListSubcategoriaEditar">Selecciona la subcategoría</label>
+                            <select class="form-control" name="lele" id="DropListSubcategoriaEditar">
+                                <option value="" class="opcionDeSelect">-- Selecciona la subcategoria --</option>
+                            </select>
+                            <small></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="DescripcionTicketEditar">Detalle del problema</label>
+                            <textarea class="form-control" rows="3" id="DescripcionTicketEditar" placeholder="Descripcion del ticket"></textarea>
+                            <small class="smalldescripcion"></small>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-block btn-modal" id="BtnEditarTicket" data-toggle='tooltip' data-placement='top' title='Editar Ticket'>Editar solicitud de soporte</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="modalDetalleTicket" class="modal fade modalSimplet" role="dialog">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <input type="hidden" id="clvClienteDetalle" value="" />
+            <input type="hidden" id="fechaActual" value="" />
+            <input type="hidden" id="CuerpoDetalle" value="">
+            <input type="hidden" id="usuarioAContestar" value="@ViewData["nombreUsuario"]" />
+            <input type="hidden" id="tipoUsuhidden" value="@ViewData["tipoUsuario"]" />
+            <input type="hidden" id="clvCliente" value="" />
+            <input type="hidden" id="clvUsuarioCreador" value="" />
+
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                <h5 class="modal-title">  FOLIO <span class="folioTicket"> </span>  FECHA <span class="fechaAperturaEncabezado"> </span> </h5>
+                <input type="text" id="divId">
+                <div class="col-lg-5">
+
+                    <h6>
+                        DOMINIO<span class="clienteEncabezado">1N </span>
+                        <button class="botonInformacionEncabezado" id="infoDominio"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                        <!--  <button class="botonInformacionEncabezado" id="infoDominio" data-toggle="modal" data-target="#modalInfoDominio"><i class="fa fa-info-circle" aria-hidden="true"></i></button> -->
+                    </h6>
+
+                    <h6>LEVANTADO POR <span class="usuarioAperturaEncabezado"> </span> </h6>
+                    <h6>EMAIL <span class="emailClienteEncabezado">@ViewData["EmailUsuario"]  </span> </h6>
+                    <h6>
+                        TELEFONO <span class="telefonoClienteEncabezado"> @ViewData["TelefonoUsuario"] </span>
+
+                    </h6>
+
+                    <h6 class="estrellasCalificacion"></h6>
+
+                </div>
+
+                <div class="col-lg-1">
+                    <button id="botonActualizarDetalle" tooltip='Recargar conversación' flow='down'> <input type="text" class="dial"></button>
+                    <!--<button href='#' class='btn btn-dangers' data-toggle='tooltip' data-placement='top' title='Cerrar Ticket' onclick='CalificaTicket( " + data.FolioTicket + "," + data.ClvCliente + "," + data.ClvUsuario + ")' > <i class='fa fa-check'></i></button> -->
+                </div>
+
+                <div class="col-lg-6">
+
+                    <h6>DESCRIPCION DEL TICKET  </h6>
+                    <p class="descripcionTicketEncabezado"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi dolore cumque, magnam hic, animi aperiam sequi reiciendis esse mollitia nostrum facilis asper!</p>
+
+                    <h6>
+                        CONSULTOR A CARGO <span class="consultorACargoEncabezado"> Alejandro Vidaurri Moreno</span>
+
+
+                        <button class="botonInformacionEncabezado" id="infoTiempoTicket">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        </button>
+
+                        <button href='#' class='btn btn-dangers cerrarElTicket' tooltip='Cerrar Ticket' flow='down'>
+                            <i class='fa fa-check'></i> Cerrar
+                        </button>
+
+
+                    </h6>
+                    <h6 id="comentarioCalificacionDetalle">
+                        COMENTARIO DE CALIFICACION <span>
+
+                        </span>
+                    </h6>
+                </div>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="historial_mensajes ">
+
+
+
+
+                </div>
+
+                <h3 class="mensajeTicketDetalle"></h3>
+                <button href='#' class='btn btn-successs btn-block atenderElTicket' tooltip='Atender Ticket' flow='down'> <i class='fa fa-thumbs-o-up' aria-hidden='true'></i> Atender Ticket</button>
+                <div class="tipo_msg">
+
+                    <div class="mensaje_entrada form-group">
+
+                        <textarea class="write_msg" rows="2" id="mensajeEnviar" placeholder="Escribe tu mensaje"></textarea>
+
+                        <!--<input type="text" class="write_msg" placeholder="Escribe tu mensaje" id="mensajeEnviar" />-->
+
+                        <button class="img_send_btn" type="button" id="mandarFoto"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
+
+                        <button class="msg_send_btn" type="button" id="enviar"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        <span id="archivoCargado" style="color:white;"></span>
+                    </div>
+                    <form action="javascripts:;" method="post" id="formAdjuntar">
+                        <input type="file" id="fileUpload" name="fileUpload" />
+                        <input type="button" id="btn-send-ajax" value="enviar" />
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="modalInfoDominio" class="modal fade modalSimplet" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">DOMINIO <span></span></h5>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="modalInfoTiempoTicket" class="modal fade modalSimplet" role="dialog">
+
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">TIEMPOS DEL TICKET <span></span> </h5>
+            </div>
+            <div class="modal-body">
+
+
+
+                <div class="main">
+
+                    <ul class="cbp_tmtimeline">
+                        <!-- <li>
+                            <time class="cbp_tmtime"><span>4/10/13</span> <span>18:30</span></time>
+
+                            <div class="cbp_tmlabel">
+                                <h3>Alejandro</h3>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <time class="cbp_tmtime" datetime="2013-04-15 13:15"><span>4/15/13</span> <span>13:15</span></time>
+
+                            <div class="cbp_tmlabel">
+                                <h3>Watercress ricebean</h3>
+
+                            </div>
+                        </li> -->
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div id="modalCalificarTicket" class="modal fade modalSimplet" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Antes de cerrar el ticket, ayúdanos y califica nuestro servicio </h5>
+            </div>
+            <div class="modal-body">
+
+
+
+
+
+                <input type="hidden" value="" id="folio_ticketCalificacion">
+                <input type="hidden" value="" id="clienteCalificacion">
+                <input type="hidden" value="" id="ClvUsuarioCalificacion">
+
+
+
+                <div class="form-group text-center etiquetasEstrellas">
+
+                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="5">5.0 Excelente</label>
+                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="4">4.0 Muy Bueno</label>
+                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="3">3.0 Bueno</label>
+                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="2">2.0 Regular</label>
+                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="1">1.0 Malo</label>
+
+                </div>
+
+                <div class="form-group">
+
+                    <textarea class="form-control" rows="5" id="ComentarioCierreTicket" placeholder="Ayudanos a mejorar con un comentario"></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <button id="btnCalificacionTicket" class="btn btn-modal modalAceptarOperacion"><i class='fa fa-check'></i> Cerrar Ticket</button>
+                    <button id="btnCancelarCalificacionTicket" class="btn modalCancelarOperacion">Cancelar</button>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="modalSeleccionarHistoricoTicket" class="modal fade modalSimplet" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <h4>Selecciona el historico</h4>
+            </div>
+            <div class="modal-body">
+
+                <input type="hidden" value="" id="folio_ticketHistorico">
+                <input type="hidden" value="" id="clienteHistorico">
+                <input type="hidden" value="" id="clvhistoricoTicket">
+
+                <div class="form-group text-center" id="selectContenidoHistorico">
+
+
+
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <button id="btnPasarHistoricoTicket" class="btn btn-modal modalAceptarOperacion"><i class='fa fa-check'></i> Archivar Ticket</button>
+                    <button id="btnCancelarArchivarTicket" class="btn modalCancelarOperacion">Cancelar</button>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="modalCambiarContrasena" class="modal fade modalSimplet" role="dialog">
+
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header encabezado-ticket">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <h4 class="modal-title">Por seguridad cambie su contraseña </h4>
+
+            </div>
+            <div class="modal-body modal-body-contrasena">
+                <!--<h4>Por seguridad cambie su contraseña</h4>-->
+                <div class="form-group ">
+
+                    <div class="form-group">
+                        <label for="inputCambiarPassword">Escriba la nueva contraseña</label>
+                        <input type="password" class="form-control typepass" id="inputCambiarPassword">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputCambiarPasswordDos">Repita la nueva contraseña</label>
+                        <input type="password" class="form-control typepass" id="inputCambiarPasswordDos">
+
+                    </div>
+
+                    <small> * La contraseña debe tener un mínimo de 8 caracteres y un máximo de 20.</small>
+
+                    </br>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <button id="btnCambiarContrasena" class="btn btn-modal modalAceptarOperacion"><i class='fa fa-check'></i> Cambiar Contraseña</button>
+                    <button class="btn modalCancelarOperacion" id="cancelaCambiarContra"><i class="fa fa-sign-out" aria-hidden="true"></i> Cancelar y Cerrar Sesión</button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
+

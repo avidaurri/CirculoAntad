@@ -7,9 +7,9 @@
              x:Class="CirculoAntad.Views.EventoIncidenciasPage"
                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
                BackgroundImageSource="fondoaltt"
-               
+               Title="Incidencias"
              IconImageSource="ic_incidenciastab">
-    <!--   Title="Incidencias" -->
+    <!--    -->
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_desarrollotab" Command="{Binding ReloadStatusEventCommand}"/>
     </ContentPage.ToolbarItems>-->

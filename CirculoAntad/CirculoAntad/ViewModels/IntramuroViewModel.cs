@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using ZXing;
+using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
 namespace CirculoAntad.ViewModels
@@ -147,7 +149,25 @@ namespace CirculoAntad.ViewModels
         }
         private async void Scan()
         {
-            var scannerPage = new ZXingScannerPage();
+            var options = new MobileBarcodeScanningOptions();
+
+            options.PossibleFormats = new List<BarcodeFormat>()
+            {
+                ZXing.BarcodeFormat.EAN_8,
+                ZXing.BarcodeFormat.EAN_13,
+                ZXing.BarcodeFormat.AZTEC,
+                ZXing.BarcodeFormat.QR_CODE
+            };
+
+            var overlay = new ZXingDefaultOverlay
+            {
+                ShowFlashButton = false,
+                TopText = "Coloca el código de barras frente al dispositivo",
+                BottomText = "El escaneo es automático",
+                Opacity = 1
+            };
+
+            var scannerPage = new ZXingScannerPage(options, overlay);
             scannerPage.Title = "Lector QR";
             await App.Navigator.PushAsync(scannerPage);
             scannerPage.OnScanResult += (result) =>
@@ -197,6 +217,7 @@ namespace CirculoAntad.ViewModels
                     {
                         this.IsRunning = false;
                         await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
+                       // await Application.Current.MainPage.DisplayAlert("Mensaje", response.Message, "Aceptar");
                         return;
                     }
                     this.IsRunning = false;

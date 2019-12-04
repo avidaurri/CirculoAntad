@@ -7,8 +7,9 @@
              x:Class="CirculoAntad.Views.EventoPagosPage"
                          BindingContext="{Binding Main, Source={StaticResource Locator}}"
                BackgroundImageSource="fondoaltt"
+             Title="Pagos"
              IconImageSource="ic_pagostab">
-    <!-- Title="Pagos" -->
+    <!--  -->
     <ContentPage.Content>
         <Grid BindingContext="{Binding EventoDeta}" >
                <StackLayout >
