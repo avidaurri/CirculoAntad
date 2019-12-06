@@ -9,9 +9,8 @@
                            BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
              Title="Mi Centro de Trabajo">
-    <Page.Resources>
+    <!--<Page.Resources>
         <ResourceDictionary>
-            <!-- FlipAnimation-->
             <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
                                      Target="{x:Reference framepre}">
                 <xamanimation:FlipAnimation Duration="200" />
@@ -47,7 +46,7 @@
             <xamanimation:BeginAnimation
                 Animation="{StaticResource repd}"/>
         </EventTrigger>
-    </Page.Triggers>
+    </Page.Triggers>-->
     <ContentPage.Content>
         <AbsoluteLayout BindingContext="{Binding Intramuro}" x:Name="framepre">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"

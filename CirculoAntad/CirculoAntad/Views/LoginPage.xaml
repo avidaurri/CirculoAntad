@@ -9,9 +9,8 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
              Title="BIENVENIDO">
-    <Page.Resources>
+    <!--<Page.Resources>
         <ResourceDictionary>
-            <!-- FlipAnimation-->
             <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
                                      Target="{x:Reference framelogin}">
                 <xamanimation:TranslateToAnimation Duration="100" TranslateY="800" />
@@ -29,7 +28,7 @@
             <xamanimation:BeginAnimation 
                 Animation="{StaticResource FloatingButtonEnter}"/>
         </EventTrigger>
-    </Page.Triggers>
+    </Page.Triggers> -->
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
@@ -107,12 +106,12 @@
                         IsEnabled="{Binding IsEnabled}"
                         Text="Iniciar Sesión"
                         TextColor="White">
-                        <Button.Triggers>
+                        <!--<Button.Triggers>
                             <EventTrigger Event="Clicked">
                                 <xamanimation:BeginAnimation
                                                 Animation="{StaticResource HeartAnimation}" />
                             </EventTrigger>
-                        </Button.Triggers>
+                        </Button.Triggers>-->
                     </Button>
 
                 </StackLayout>

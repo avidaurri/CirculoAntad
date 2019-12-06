@@ -128,22 +128,52 @@ namespace CirculoAntad.ViewModels
                 });
                 this.Menu.Add(new MenuItemViewModel
                 {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Ofertas Laborales",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Acreditaciones",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Certificaciones",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Pagos Recibidos",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Pagos por cobrar",
+                });
+                /*this.Menu.Add(new MenuItemViewModel
+                {
                     Icon = "ic_misautorizaciones",
                     PageName = "mihistorial",
                     Title = "Mis Historial",
-                });
+                });*/
 
             }
 
 
 
 
-            this.Menu.Add(new MenuItemViewModel
+           /* this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",
                 PageName = "LoginPage",
                 Title = "Salir",
-            });
+            });*/
         }
 
         #endregion
