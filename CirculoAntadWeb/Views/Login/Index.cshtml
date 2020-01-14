@@ -15,68 +15,138 @@
 <html>
 
 <head>
-    <head>
+    
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Circulo Antad</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="~/Contenido/vistas/img/plantilla/original_simplet.png" />
-        <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="shortcut icon" href="~/Contenido/images/logologinantad.png" />
+
+       <!--  <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../Contenido/bower_components/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../../Contenido/bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="../../Contenido/bower_components/Ionicons/css/ionicons.min.css">-->
         <link href="~/Contenido/bower_components/jquery-loading/loading_ver1.css" rel="stylesheet" />
-        <!-- <link rel="stylesheet" href="../../Contenido/dist/css/AdminLTE.css">-->
         <link href="~/Contenido/dist/css/skins/skin-simpletv1.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-        <!--<link href="~/Contenido/bower_components/jquery-loading/loading.css" rel="stylesheet" />-->
+
+        <link rel="stylesheet" href="../../Contenido/plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="../../Contenido/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+        <link rel="stylesheet" href="../../Contenido/dist/css/adminlte.css">
+        <link rel="stylesheet" href="../../Contenido/css/general.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
 
     </head>
 
-    <body class="hold-transition login-page">
+    <body class="dodylogin hold-transition login-page">
 
-
-        <div id="back"></div>
+        <div id="backd"></div>
         <div class="login-box">
-            <div class="login-logo">
-                <p><b>Circulo</b>ANTAD</p>
-            </div>
-            <!-- /.login-logo -->
-            <div class="login-box-body">
-                <p class="login-box-msg">Autenticación</p>
 
-                <form autocomplete="nope" method="post" id="formlogin">
+            <div class="card">
 
-                    <div class="form-group has-feedback">
+                <div class="login-logo">
+                    <img src="../../Contenido/images/logologinantad.png" class="img-responsive" alt="" style="width: 150px; height: 150px;">
+                </div>
+                <div class="card-body login-card-body">
 
-                        <input type="text" name="loginentrar" class="form-control" id="loginentrar" placeholder="Login" autocomplete="nope">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control inp" placeholder="Usuario" value="" name="loginentrar" id="loginentrar">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group has-feedback">
-
-                        <input type="password" name="passwordentrar" class="form-control" id="inputpassword" placeholder="Password">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <div class="input-group mb-3">
+                        <input type="password" id="inputpassword" class="form-control inp" placeholder="Contraseña" value="">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-
+                        <div class="col-7">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Recordar Password
+                                </label>
+                            </div>
+                        </div>
                         <!-- /.col -->
-
-                        <div class="col-xs-12">
-                            <a class="btn btn-login btn-block ">Iniciar Sesión</a>
+                        <div class="col-5">
+                            <button type="submit" class="btn btn-primary btn-block logi btn-logind">Iniciar Sesión </button>
                         </div>
                         <!-- /.col -->
                     </div>
-                </form>
 
+                    <!-- <div class="row">
+                    <div class="col-6">
+                        <a style="text-align:left; color:#9400D3;" href="forgot-password.html">Olvide mi contraseña</a>
+                    </div>
 
+                    <div class="col-6">
+                        <a style="text-align:right !important; color:#9400D3;" href="register.html" class="text-center">Registrarse</a>
+                    </div>
+
+                </div> -->
+                    <!-- <small class="mb-1 linklogin" style="color:#9400D3;">
+                    <a href="forgot-password.html">Olvide mi contraseña</a>
+                </small>
                 <br>
+                <small class="mb-0 linklogin" style="color:#9400D3;">
+                    <a href="register.html" class="text-center">Registrarse</a>
+                </small> -->
+                    <br>
 
-                <small class="form-text text-muted mensajelogin"> </small>
-
+                    <small class="form-text text-muted mensajelogin"> </small>
+                </div>
 
             </div>
-            <!-- /.login-box-body -->
+            <!-- /.login-logo -->
+            <!-- <div class="login-box-body">
+            <p class="login-box-msg">Autenticación</p>
+
+            <form autocomplete="nope" method="post" id="formlogin">
+
+                <div class="form-group has-feedback">
+
+                    <input type="text" name="loginentrar" class="form-control" id="loginentrar" placeholder="Login" autocomplete="nope">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+
+                    <input type="password" name="passwordentrar" class="form-control" id="inputpassword" placeholder="Password">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+
+                    <div class="col-xs-12">
+                        <a class="btn btn-login btn-block ">Iniciar Sesión</a>
+                    </div>
+
+                </div>
+            </form>
+
+
+            <br>
+
+            <small class="form-text text-muted mensajelogin"> </small>
+
+
+        </div>-->
+
+
+
         </div>
+
+
 
 
 
@@ -87,7 +157,7 @@
         <script src="../../Contenido/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
         <script src="~/Contenido/bower_components/jquery-loading/loading_ver2.js"></script>
-        <script src="~/Scripts/auth_ver8.js"></script>
+        <script src="~/Scripts/auth_ver9.js"></script>
 
     </body>
 </html>

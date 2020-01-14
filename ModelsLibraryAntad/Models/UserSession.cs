@@ -18,6 +18,5 @@ namespace ModelsLibraryAntad.Models
         public string puesto { get; set; }
         public string mensajeLogin { get; set; }
         public bool seLogeo { get; set; }
-
     }
 }

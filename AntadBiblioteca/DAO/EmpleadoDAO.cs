@@ -1,0 +1,49 @@
+﻿using AntadBiblioteca.Util;
+using ModelsLibraryAntad.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AntadBiblioteca.DAO
+{
+    public class EmpleadoDAO
+    {
+        public ConexionDB conexion;
+
+        public EmpleadoDAO(string cadena)
+        {
+            conexion = new ConexionDB(cadena);
+        }
+
+        public List<Empleado> ConsultarEmpleados(UserSessionWeb login)
+        {
+            string sql = "SELECT * FROM empleado";
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro paramCliente = new Parametro();
+            paramCliente.Nombre = "@clv_cli";
+            paramCliente.Valor = "1";
+            parametros.Add(paramCliente);
+
+
+            SqlDataReader reader = conexion.Consultar(sql, parametros);
+
+            List<Empleado> empleados = new List<Empleado>();
+
+            while (reader.Read())
+            {
+                Empleado empleado = new Empleado();
+                //proyecto.ClvCliente = Convert.ToInt32(reader["clv_cli"].ToString());
+                empleado.clv_emp = Convert.ToInt32(reader["clv_emp"].ToString());
+                empleado.nombre = reader["nombre"].ToString();
+                empleados.Add(empleado);
+            }
+            conexion.Cerrar();
+            return empleados;
+        }
+    }
+}

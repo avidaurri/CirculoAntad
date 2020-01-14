@@ -8,8 +8,7 @@
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="shortcut icon" href="~/Contenido/vistas/img/plantilla/logoweb.png" />
-
+    <link rel="shortcut icon" href="~/Contenido/images/logologinantad.png" />
     <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../../Contenido/bower_components/font-awesome/css/font-awesome.min.css">
@@ -20,14 +19,21 @@
 
     <link href="~/Contenido/dist/css/skins/skin-simpletv1.css" rel="stylesheet" />
 
-
-
-
     <link rel="stylesheet" href="../../Contenido/dist/css/lightbox.min.css">
     <link href="~/Contenido/dist/css/tooltipd.css" rel="stylesheet" />
     <link href="~/Contenido/bower_components/jquery-loading/loading_ver1.css" rel="stylesheet" />
 
-    <script src="../../Contenido/bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Contenido/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="~/Contenido/bower_components/select2/css/select2.css">
+    <link rel="stylesheet" href="~/Contenido/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" href="~/Contenido/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="~/Contenido/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <!-- <script src="../../Contenido/bower_components/jquery/dist/jquery.min.js"></script> -->
     <!-- Bootstrap 3.3.7 -->
     <script src="../../Contenido/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -39,9 +45,15 @@
 
 
     <script src="~/Contenido/bower_components/jquery-loading/loading_ver2.js"></script>
-
-
     <script src="~/Contenido/bower_components/jquery-loading/loading_ver2.js"></script>
+
+    <script src="~/Contenido/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Contenido/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Contenido/bower_components/select2/js/select2.js"></script>
+    <script src="~/Contenido/bower_components/moment/min/moment.min.js"></script>
+    <script src="~/Contenido/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+
 
     <style>
     </style>
@@ -51,8 +63,8 @@
 
 
 
-<body class="hold-transition fixed skin-simplet sidebar-collapse sidebar-expanded-on-hover  "  />
-
+<body class="hold-transition fixed skin-simplet sidebar-collapse sidebar-expanded-on-hover  " />
+<div id="backd"></div>
 <input type="hidden" id="tipoUsuhidden" name="name" value="@ViewData["tipoUsuario"]" />
 <input type="hidden" id="administradorhidden" name="name" value="@ViewData["administradorUsuario"]" />
 <input type="hidden" id="ClvUsuario" name="name" value="@ViewData["ClvUsuario"]" />
@@ -76,49 +88,22 @@
 
                 <ul class="nav navbar-nav">
 
-                    <!-- <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning sumaNotificaciones">5</span>
-                    </a>
-                    <ul class="dropdown-menu">
 
-                        <li class="header">Tu tienes <span class="sumaNotificaciones"></span> notificaciones</li>
-
-                        <li>
-
-                            <a href="#" class="ticketsDesarrolloNoti">
-
-                            </a>
-
-                        </li>
-                    </ul>
-                        </li>-->
-                    <!-- User Account: style can be found in dropdown.less -->
 
                     <li class="dropdown user user-menu">
                         <a href="#" class="infousuariotop">
-                            @ViewData["nombreUsuario"] (                     @{
-                                if (@ViewData["tipoUsuario"].Equals(5))
-                                {
-                                    <img src="http://compilacionweb.online/antadweb/marca.png" class="user-image" alt="User Image">
-                                }
-                                else
-                                {
-                                    <img src="https://compilacionweb.online/antadweb/cadena.png" class="user-image" alt="User Image">
-                                }
-                            } )
+                            @ViewData["usuario"]
+                            <img src="http://compilacionweb.online/antadweb/marca.png" class="user-image" alt="User Image">
+
 
                             <span class="hidden-xs">
-                                @ViewData["nombreUsuario"] (                     @{
-                                    if (@ViewData["tipoUsuario"].Equals(5))
-                                    {
-                                        <span> MARCA</span>
-                                    }
-                                    else
-                                    {
-                                        <span> CADENA</span> }
-                                } )
+                                (
+
+                                <span>
+                                    @ViewData["agencia"]
+
+                                </span>
+                                )
                             </span>
                         </a>
                     </li>
@@ -128,9 +113,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-ellipsis-v menuDerecho" aria-hidden="true"></i>
                         </a>
+
                         <ul class="dropdown-menu" style="background: grey;">
-                            <!-- User image -->
-                            <!--  <li id="licambiarContra"><i class="fa fa-user" aria-hidden="true"></i> <span>Cambiar Contraseña</span></li>-->
+
                             <li>
                                 <a href="@Url.Action("CerrarSesion","Login")"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Salir</span></a>
                             </li>
@@ -164,31 +149,15 @@
             <div class="user-panel">
 
                 <div class="pull-left image">
-                    @{
-                        if (@ViewData["tipoUsuario"].Equals(5))
-                        {
-                            <img src="http://compilacionweb.online/antadweb/marca.png" class="img-circle" alt="User Image">
-                        }
-                        else
-                        {
-                            <img src="http://compilacionweb.online/antadweb/cadena.png" class="img-circle" alt="User Image">
-                        }
-                    }
+                    <img src="http://compilacionweb.online/antadweb/marca.png" class="img-circle" alt="User Image">
+
 
 
                 </div>
 
                 <div class="pull-left info">
-                    <p id="nombreUsuarioMasterPage">@ViewData["nombreUsuario"]</p>
-                    @{
-                        if (@ViewData["tipoUsuario"].Equals(5))
-                        {
-                            <a href="#"><i class="fa fa-circle text-success"></i> MARCA</a>
-                        }
-                        else
-                        {
-                            <a href="#"><i class="fa fa-circle text-success"></i> CADENA</a> }
-                    }
+                    <p id="nombreUsuarioMasterPage">@ViewData["usuario"]</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> @ViewData["agencia"]</a>
 
                 </div>
 
@@ -197,84 +166,8 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree" style="height:800px; overflow:scroll;">
-
-
-
-
-                @{
-
-
-                    @*  usuario consultor *@
-                    if (@ViewData["tipoUsuario"].Equals(5))
-                    {
-
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Proveedores</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Items</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Compendio Items</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Lista de Precios</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Regiones</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Centros de trabajo</span></a></li>
-
-                        <li class="active treeview ">
-                            <a href="#" style="font-size:10px;">
-                                <i class="fa fa-dashboard"></i> <span>Campañas</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a style="font-size:10px;" href="index.html"><i class="fa fa-circle-o"></i> Control de Campañas</a></li>
-                                <li class="active"><a style="font-size:10px;" href="index2.html"><i class="fa fa-circle-o"></i> Autorización Campaña</a></li>
-                            </ul>
-                        </li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Proyectos</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Control Presupuestal</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Compras</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Egresos</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Tesorería</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Inventario</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Recursos Humanos</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Nómina</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Utilerías</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Catálogos</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Reportes</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Empresa</span></a></li>
-                        <li><a style="font-size:10px;" href="MisTickets"><i class="fa fa-ticket" aria-hidden="true"></i> <span>Usuarios</span></a></li>
-                        <!-- <li><a href="TicketsFinalizados"><i class='fa fa-folder'></i> <span>Tickets finalizados</span></a></li> -->
-
-
-                    }
-
-                    @*  usuario cliente *@
-                    else if (ViewData["tipoUsuario"].Equals(6))
-                    {
-
-                        <li class="active treeview ">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> <span>ERP SIMPLET</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Sucursales</a></li>
-                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i>Calendario Promociones</a></li>
-                                <li><a href="index.html"><i class="fa fa-circle-o"></i>Incidencias</a></li>
-                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Personal interno</a></li>
-                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Catalogo Promotores</a></li>
-                                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i>Acreditación</a></li>
-                                <li><a href="index.html"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                            </ul>
-                        </li>
-
-
-
-                    }
-
-
-                }
-
-
+                <li><a href="MisPlanes"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Mis Planes</span></a></li>
+                <!-- <li><a href="NuevoPlan"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> <span>Nuevo plan</span></a></li> -->
             </ul>
 
         </section>
@@ -286,24 +179,28 @@
 <div class="content-wrapper">
     <!-- Main content -->
 
+
+
+
+    <img src="../../Contenido/images/lojeje.png" class="user-image imagelat" alt="User Image">
+
+
     @RenderBody()
 
 
     <!-- /.content -->
 </div>
-<footer class="main-footer">
+<!-- <footer class="main-footer">
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
     </div>
-    <strong>
+
         Copyright &copy; 2019 ANTAD All rights
         reserved.
-</footer>
+</footer>-->
 
 
-<!-- /.control-sidebar -->
-<!-- Add the sidebar's background. This div must be placed
-immediately after the control sidebar -->
+
 <div class="control-sidebar-bg"></div>
 
 

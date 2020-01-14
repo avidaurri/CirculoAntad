@@ -93,6 +93,96 @@ namespace AntadBiblioteca.DAO
             return loginn;
         }
 
+
+        public UserSessionWeb LoginUsuarioN(string usuario, string password)
+        {
+            /*Utilidades ser = new Utilidades();
+            string urlServidor = ser.getUrlServidor(conexion);*/
+
+
+
+            /*string select = "select l.clv_emp as clvEmp, DATEDIFF(year, CASE WHEN SUBSTRING(e.curp, 5, 2) < 40 " +
+                "THEN '20' + SUBSTRING(e.curp, 5, 2) ELSE '19' + SUBSTRING(e.curp, 5, 2) end + '-' + SUBSTRING(e.curp, 7, 2) + '-' + SUBSTRING(e.curp, 9, 2), " +
+                "getdate()) as edad, e.genero as genero, e.clv_gen as clvGen, " +
+                "(e.nombre + ' ' + e.apellido_paterno + ' ' + e.apellido_materno) as nombre, l.login as usuario, e.foto_url as foto, " +
+                "e.clv_puesto as clvPuesto, cp.puesto as puesto, l.clv_edo_reg_usr as edoReg, eru.descripcion as estadoRegistro " +
+                "from login l left  join empleado e on e.clv_emp = l.clv_emp left join cat_puesto cp on cp.clv_puesto = e.clv_puesto " +
+                "left join edo_reg_usr eru on eru.clv_edo_reg_usr = l.clv_edo_reg_usr where l.login = @usuario and l.password = @password";*/
+
+            string select = "select l.login as login, d.nombre as nombreDominio, d.folio_dominio as folio_dominio, d.folio_dominio as folioAgencia from login l left join dominio d on l.folio_domino=d.folio_dominio where l.login = @usuario and l.password = @password";
+        
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro paramUsuario = new Parametro();
+            paramUsuario.Nombre = "@usuario";
+            paramUsuario.Valor = usuario;
+            parametros.Add(paramUsuario);
+
+            Parametro paramPassword = new Parametro();
+            paramPassword.Nombre = "@password";
+            paramPassword.Valor = password;
+            parametros.Add(paramPassword);
+
+            SqlDataReader reader = conexion.Consultar(select, parametros);
+
+            UserSessionWeb loginn = new UserSessionWeb();
+            loginn.seLogeo = true;
+
+            if (reader.Read())
+            {
+
+                string fol = reader["folio_dominio"].ToString();
+
+                if (fol != "")
+                {
+                    loginn.usuario = reader["login"].ToString();
+                    loginn.seLogeo = true;
+                    loginn.agencia= reader["nombreDominio"].ToString();
+                    loginn.folioAgencia = reader["folioAgencia"].ToString();
+                    
+                    loginn.mensajeLogin="Bienvenido Agencia "+ reader["nombreDominio"].ToString();
+                }
+                else
+                {
+                    loginn.seLogeo = false;
+                    loginn.mensajeLogin = "No tienes agencia asignada";
+                }
+                /*int estado = Convert.ToInt32(reader["edoReg"]);
+
+                if (estado == 5)
+                {
+
+
+                    loginn.clvEmp = Convert.ToInt32(reader["clvEmp"]);
+                    loginn.edad = Convert.ToInt32(reader["edad"]);
+                    loginn.clvGen = Convert.ToInt32(reader["clvGen"]);
+                    loginn.genero = reader["genero"].ToString();
+                    loginn.nombre = reader["nombre"].ToString();
+                    loginn.usuario = reader["usuario"].ToString();
+                    loginn.foto = reader["foto"].ToString();
+                    loginn.clvPuesto = Convert.ToInt32(reader["clvPuesto"]);
+                    loginn.puesto = reader["puesto"].ToString();
+
+
+                }
+                else
+                {
+
+                    loginn.mensajeLogin = reader["estadoRegistro"].ToString();
+                    loginn.seLogeo = false;
+
+                }*/
+
+            }
+            else
+            {
+                loginn.mensajeLogin = "Usuario y/o contraseña incorrectos";
+                loginn.seLogeo = false;
+            }
+            conexion.Cerrar();
+            return loginn;
+        }
+
         /*public UserSession GetUser(string usuario, string password)
         {
             Utilidades ser = new Utilidades();

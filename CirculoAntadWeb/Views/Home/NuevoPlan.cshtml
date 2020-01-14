@@ -1,0 +1,582 @@
+﻿
+@{
+    ViewBag.Title = "NuevoPlan";
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+
+<div class="container fefe">
+    <!-- contenedor -->
+    <img src="Contenido/images/lojeje.png" class="user-image imagelat" alt="User Image">
+    <div class="row mx-4 pt-5 ">
+        <!--conten -->
+        <div id="regForm" class="col-md-9 col-sm-9">
+            <h4>Configuración de Plan de trabajo</h4>
+            <div style="text-align:center;margin-top:40px;">
+                <ul class="nav nav-tabs">
+                    <!-- onclick="link(0); href="#DatosBasicos""  -->
+                    <li> <button class="step" id="1" name="DatosBasicos">Datos Básicos</button></li>
+                    <!-- onclick="link(1);"  -->
+                    <li> <button class="step" id="2" name="Temporalidades">Temporalidades</button></li>
+                    <!-- onclick="link(2);"  -->
+                    <li> <button class="step" id="3" name="centrosTrabajo">Centros de trabajo</button></li>
+                    <!-- onclick="link(3);"  -->
+                    <li> <button class="step" id="4" name="empleados">Empleados</li></button>
+                    <!--<li> <button class="step" id="5" onclick="link(4);" name="actividades" >Actividades</button></li>
+                    <li> <button class="step" id="6" onclick="link(5);" name="revisarCrear" >Revisar y crear</button></li>-->
+                    <!-- onclick="link(4);"  -->
+                    <li> <button class="step" id="5" name="revisarCrear">Revisar y crear</button></li>
+                </ul>
+            </div>
+            <div class="tab" nombreTab="DatosBasicos" id="DatosBasicos">
+                <!-- =========== DATOS BASICOS ====== -->
+                <div class="container contNewPl">
+                    <div class="row">
+                        <div class="col-md-8 col-lg-5">
+                            <div class="form-group">
+                                <label>Selecciona la marca</label>
+                                <select class="form-control seledos" style="width: 100%;" id="select2marca">
+                                    <option value="">Selecciona una marca</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-lg-5">
+                            <div class="form-group">
+                                <label>Selecciona la campaña</label>
+                                <select class="form-control " style="width: 100%;" id="select2proyecto">
+                                    <option selected="selected" value="">Selecciona una campaña</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-lg-5">
+                            <div class="form-group">
+                                <label for="usr">Agrega una descripción al plan de trabajo:</label>
+                                <input type="text" class="form-control" id="inputdescplantrabajo">
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                          <label>Seleccionar el día inicial:</label>
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-clock-o"></i>
+                            </div>
+                             <input type="text" class="form-control pull-right datepicker" >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                          <div class="form-group">
+                          <label>Seleccionar el día final:</label>
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-clock-o"></i>
+                            </div>
+                             <input type="text" class="form-control pull-right datepicker" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>-->
+                </div>
+                <!-- =========== DATOS BASICOS ====== -->
+            </div>
+
+            <div class="tab tabtemporalidades" nombreTab="Temporalidades">
+                <!-- =========== TEMPORALIDADES ====== -->
+
+                <button class="btn btn-info btn-sm agregaicon" id="agregarTemp">Agregar Temporalidad</button>
+
+                <div class="container contNewPl">
+                    <div class="row renglontem">
+                        <div class="col-md-1 elcarouizq">
+
+                        </div>
+                        <div class="col-md-7 elcarou">
+                            <div class="box-body">
+                                <!--<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                </ol>
+                                  <div class="carousel-inner">
+                                    <div class="item active untemporizador" id="untemporizador1">
+                                      <button class="btn btn-danger eliminarTem btn-sm" id="eliminarTem1" >Eliminar Temporalidad </button>
+                                      <div class="container-fluid contenedorprincipla">
+                                        <div class="row">
+                                          <div class="col-md-5">
+                                            <div class="form-group">
+                                              <label for="tempInputDesc1">Nombre:</label>
+                                              <input type="text" class="form-control" id="tempInputDesc1">
+                                            </div>
+                                          </div>
+                                          <div class="col-md-7">
+                                              <div class="form-group">
+                                              <label>Día inicial y final:</label>
+                                              <div class="input-group">
+                                                <div class="input-group-addon">
+                                                  <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right reservationtime" id="tempInputDiaFinalInicial1">
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <label>Días que aplica :</label>
+                                            <label class="checkbox-inline chklunes1 "><input type="checkbox" value="1">Lu</label>
+                                            <label class="checkbox-inline chkmartes1"><input type="checkbox" value="1">Ma</label>
+                                            <label class="checkbox-inline chkmiercoles1"><input type="checkbox" value="1">Mie</label>
+                                            <label class="checkbox-inline chkjueves1"><input type="checkbox" value="1">Ju</label>
+                                            <label class="checkbox-inline chkviernes1"><input type="checkbox" value="1">Vi</label>
+                                            <label class="checkbox-inline chksabado1"><input type="checkbox" value="1">Sa</label>
+                                            <label class="checkbox-inline chkdomingo1"><input type="checkbox" value="1">Do</label>
+                                          </div>
+
+                                          <div class="col-md-12">
+                                            <br>
+                                            <button class="btn btn-outline-primary btn-sm agregarCentroTrabajoTem" id="agregarCentroTrabajoTem1">Agregar Centro de trabajo</button>
+                                            <br>
+                                          </div>
+                                        </div> -->
+                                <!-- marca de desarrollo agregar centro de trabajo  -->
+                                <!--<div class="row rengloncentrotrabajotempo" id="rengloncentrotrabajotempo1">
+                                  <h5 class="tituloren">Centros de trabajo</h5>
+                                  <div class="col-md-8 frfr">
+                                    <div class="panel-group" id="accordion">
+
+                                      <div class="panel panel-default uncentrotrabajotemporizador" id="uncentrotrabajotemporizador1">
+                                        <div class="panel-heading">
+                                          <h6 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" folioCentroTrabajo="">
+                                            Soriana Echegaray</a>
+                                          </h6>
+                                          <button type="button" class="btn btn-danger btn-sm eliminarcentrotrabajoTemporalidad" id="eliminarcentrotrabajoTemporalidad1" >
+                                            <i class="fa fa-times"></i>
+                                          </button>
+                                        </div>
+                                        <div id="collapse1" class="panel-collapse collapse in">
+                                          <div class="panel-body container-fluid contenedorempleadocentrotrabajotem">
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                <button class="btn btn-sm btn-outline-warning agregarEmpleadoCentroTrabajoTem" id="agregarEmpleadoCentroTrabajoTem1">Agregar Empleado</button>
+                                              </div>
+                                            </div>-->
+                                <!--<div class="row renglonempleadocentrotrabajotempo">
+                                  <h5 class="tituloren">Empleados</h5>
+                                  <div class="col-md-6 frfr">
+                                    <table class="table table-condensed tableespeci">
+                                      <tbody>
+                                        <tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado1">
+                                          <td><label class="labelformu">Alejandra Martinez</label></td>
+                                          <td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                          <td><label class="labelformu">Alejandra Martinez</label></td>
+                                          <td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>-->
+                                <!-- </div>
+                                  </div>
+                                </div>
+
+                                <div class="panel panel-default uncentrotrabajotemporizador" id="uncentrotrabajotemporizador2">
+                                  <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" folioCentroTrabajo="">
+                                      Walmart toreo</a>
+                                    </h4>
+                                    <button type="button" class="btn btn-sm btn-danger eliminarcentrotrabajoTemporalidad" id="eliminarcentrotrabajoTemporalidad2" >
+                                      <i class="fa fa-times"></i>
+                                    </button>
+                                  </div>
+                                  <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body container-fluid contenedorempleadocentrotrabajotem">
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <button class="btn btn-sm btn-outline-warning agregarEmpleadoCentroTrabajoTem" id="agregarEmpleadoCentroTrabajoTem2">Agregar Empleado</button>
+                                        </div>
+                                      </div>-->
+                                <!--<div class="row renglonempleadocentrotrabajotempo">
+                                  <h5 class="tituloren">Empleados</h5>
+                                  <div class="col-md-6 frfr">
+                                    <table class="table table-condensed tableespeci">
+                                      <tbody>
+                                        <tr>
+                                          <td><label class="labelformu">Alejandra Martinez</label></td>
+                                          <td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                        </tr>
+                                        <tr>
+                                          <td><label class="labelformu" clvemp="985">Alejandra Martinez</label></td>
+                                          <td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>-->
+                                <!--</div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>  -->
+                                <!--</div>
+                                    </div>
+                                  </div>
+                                  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                    <span class="fa fa-angle-left"></span>
+                                  </a>
+                                  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                    <span class="fa fa-angle-right"></span>
+                                  </a>
+                                 <button class="btn btn-info iratras btn-sm" > <i class="fa fa-angle-left"></i></button>
+                                  <button class="btn btn-info irfre btn-sm" > <i class="fa fa-angle-right"></i></button>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="col-md-1 elcarouder">
+                        </div>
+                    </div>
+                </div>
+                <!-- =========== TEMPORALIDADES ====== -->
+            </div>
+
+            <div class="tab tabcentrotrabajo" nombreTab="centrosTrabajo">
+                <!-- =========== CENTROS DE TRABAJO ====== -->
+
+
+                <div class="container contNewPl">
+                    <button class="btn btn-info btn-sm " id="agregaCentroTrabajo">Agregar Centro de Trabajo</button>
+                    <!--<div class="row renglonCentroTrabajo">
+                      <h5 class="tituloren">Centros de trabajo</h5>
+                        <div class="col-md-6">
+                            <div class="col-md-8">
+                              <table class="table ">
+                                <tbody>
+                                  <tr class="uncentrotrabajo" id="uncentrotrabajo1">
+                                    <td><label class="labelformu" foliocentrotrabajo="">Soriana Echegaray</label></td>
+                                    <td><button class="btn btn-sm btn-danger eliminarcentrotrabajo" id="eliminarcentrotrabajo1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <!-- =========== CENTROS DE TRABAJO ====== -->
+
+
+            </div>
+
+            <div class="tab tabempleado" nombreTab="empleados">
+                <!-- =========== EMPLEADOS ====== -->
+                <div class="container contNewPl">
+                    <button class="btn btn-info btn-sm " id="agregaempleado">Agregar Empleado</button>
+                    <!--<div class="row renglonempleado">
+                      <h5 class="tituloren">Centros de trabajo</h5>
+                        <div class="col-md-6">
+                            <div class="col-md-8">
+                              <table class="table ">
+                                <tbody>
+                                  <tr class="unempleado" id="unempleado1">
+                                    <td><label class="labelformu" clvempleado="">Soriana Echegaray</label></td>
+                                    <td><button class="btn btn-sm btn-danger eliminarempleado" id="eliminarempleado1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <!-- =========== EMPLEADOS ====== -->
+
+            </div>
+
+
+            <div class="tab" nombreTab="revisarCrear">
+                <!-- =========== REVISAR Y CREAR ====== -->
+                <!-- =========== REVISAR Y CREAR ====== -->
+
+            </div>
+        </div>
+        <div class="col-md-3" id="panelResumenAltaPlan">
+            <h5>Resumen</h5>
+            <table class="table tableresumen">
+                <tbody>
+                    <tr>
+                        <td style="width: 95px"><label class="labelresumen">Marca :</label></td>
+                        <td><small class="labelg marcaseleccionadaresumen"></small></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 95px"><label class="labelresumen">Campaña :</label></td>
+                        <td><small class="labelg campaniaseleccionadaresumen"></small></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 95px"><label class="labelresumen">Nombre : </label></td>
+                        <td><small class="labelg nombreplanseleccionadoresumen"></small></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 95px"><label class="labelresumen">Fecha Inicio :</label></td>
+                        <td><small class="labelg fechainicioseleccionadoresumen"></small></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 95px"><label class="labelresumen">Fecha Fin :</label></td>
+                        <td><small class="labelg fechafin seleccionadoresumen"></small></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="progress" id="baraprogresoconfigurar">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90"
+                     aria-valuemin="0" aria-valuemax="100">
+
+                </div>
+            </div>
+            <!--<button class="btn btn-success hththt">fgfgf</button>-->
+            <button class="btn btn-success " id="mostrarmodalcentrostrabajo">centros</button>
+        </div>
+    </div>
+    <div class="row gegege">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-info btn-block">Anterior</button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="nextBtn" class="btn btn-info btn-block" onclick="nextPrev(1)">Siguiente</button>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+</div>
+
+<!--<div class="container mt-3 fijobottom fixed-bottom">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+       <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="btn btn-info btn-block">Anterior</button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" id="nextBtn" class="btn btn-info btn-block" onclick="nextPrev(1)">Siguiente</button>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+</div>-->
+<!-- ================================= =============  -->
+    </div>
+
+<!--<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+    </div>
+
+        Copyright &copy; 2019 ANTAD All rights
+        reserved.
+</footer>-->
+<!-- The modal -->
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>-->
+                <h4 class="modal-title" id="modalLabel">Agregar Centro de Trabajo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Selecciona el centro de trabajo</label>
+                                <select class="form-control seledos" style="width: 100%;" id="select2centrotrabajo">
+                                    <option value="">Selecciona un centro de trabajo</option>
+      
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed tablacentrotrabajo">
+                                <tbody>
+                                    <!--<tr>
+                                      <td><label class="labelformu centrotrabajomodal" foliocetrotrabajo="">Soriana Echegaray</label></td>
+                                      <td><button class="btn btn-sm btn-danger eliminarcentrotrabajomodal" id="eliminarcentrotrabajomodal1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <a href="#" class="btn btn-info " id="agregarcentrosdetrabajomodal">Agregar</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- The modal -->
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajosolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>-->
+                <h4 class="modal-title" id="modalLabel">Agregar Centro de Trabajo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Selecciona el centro de trabajo</label>
+                                <select class="form-control seledos" style="width: 100%;" id="select2centrotrabajosolo">
+                                    <option value="">Selecciona un centro de trabajo</option>
+      
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed tablacentrotrabajossolo">
+                                <tbody>
+                                    <!--<tr>
+                                      <td><label class="labelformu centrotrabajomodalsolo" foliocetrotrabajo="">Soriana Echegaray</label></td>
+                                      <td><button class="btn btn-sm btn-danger eliminarcentrotrabajomodalsolo" id="eliminarcentrotrabajomodal1"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <a href="#" class="btn btn-info " id="agregarcentrotrabajomodal">Agregar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalwebantad" id="modalagregarempleado" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>-->
+                <h4 class="modal-title" id="modalLabel">Agregar Empleado</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Selecciona el empleado</label>
+                                <select class="form-control seledos" style="width: 100%;" id="select2empleado">
+                                    <option value="">Selecciona un empleado</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed tablaempleado">
+                                <tbody>
+                                    <!--<tr>
+                                      <td><label class="labelformu empleadomodal" clvemp="">Alejandra MArtinez</label></td>
+                                      <td><button class="btn btn-sm btn-danger eliminarempleadomodal" id="eliminarempleado"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <a href="#" class="btn btn-info " id="agregarempleadomodal">Agregar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalwebantad" id="modalagregarempleadosolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Agregar Empleado</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Selecciona el empleado</label>
+                                <select class="form-control seledos" style="width: 100%;" id="select2empleadosolo">
+                                    <option value="">Selecciona un empleado</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-condensed tablaempleadosolo">
+                                <tbody>
+                                    <!--<tr>
+                                      <td><label class="labelformu empleadomodal" clvemp="">Alejandra MArtinez</label></td>
+                                      <td><button class="btn btn-sm btn-danger eliminarempleadomodalsolo" id="eliminarempleado"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <a href="#" class="btn btn-info " id="agregarempleadomodalsolo">Agregar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/plantilla.js"></script>
+<script src="~/Scripts/nuevoPlan.js"></script>

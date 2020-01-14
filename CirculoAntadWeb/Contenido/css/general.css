@@ -1,0 +1,54 @@
+.logi {
+    background: #17A2B8;
+    /*background: #808080;*/
+    border: 1px solid #17A2B8;
+    color: white;
+    transition: .6s all;
+}
+
+    .logi:hover {
+        background: purple;
+        /*background: #808080;*/
+        border: 1px solid purple;
+        color: white;
+        transition: .6s all;
+    }
+.fondologizq{
+	 background-image: url("../images/panelinz.png") !important;
+background-position: left;
+	 background-attachment: fixed;
+}
+
+.dodylogin{
+	 background-image: url("../images/fondolog.jpeg") !important;
+	 background-position: center;
+     background-size:100%;
+}
+.inp{
+	background: transparent;
+	border:none;
+	border-bottom: 2px solid dimgrey;
+	border-radius: 0;
+}
+
+
+.input-group span {
+    color: #17A2B8;
+    /*color: #00BFFF;*/
+    border: none !important;
+}
+
+
+.login-card-body .input-group .input-group-text, .register-card-body .input-group .input-group-text{
+	border:none !important;
+		border-bottom: 2px solid dimgrey !important;
+			border-radius: 0;
+}
+
+.linklogin a{
+	color: #8A2BE2;
+}
+
+.izqlogin{
+	background: red;
+}

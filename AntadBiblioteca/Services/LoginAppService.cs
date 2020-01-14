@@ -23,7 +23,13 @@ namespace AntadBiblioteca.Services
             //return loginAccesoDatos.ValidarUsuario(usuario, password);
 
         }
+        public UserSessionWeb LoginUsuarioN(string usuario, string password)
+        {
 
+            return loginAccesoDatos.LoginUsuarioN(usuario, text_to_ascii(password));
+            //return loginAccesoDatos.ValidarUsuario(usuario, password);
+
+        }
         /*public UserSession GetUser(string usuario, string password)
         {
 

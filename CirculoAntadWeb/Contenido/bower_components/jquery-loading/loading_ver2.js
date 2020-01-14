@@ -49,7 +49,7 @@
      * Message to be rendered on the overlay content
      * Has no effect if a custom overlay is defined
      */
-    message: 'Wait..',
+    message: 'Cargando .....',
 
     /**
      * Theme to be applied on the loading element

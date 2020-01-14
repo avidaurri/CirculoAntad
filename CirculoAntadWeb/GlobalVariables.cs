@@ -14,8 +14,8 @@ namespace CirculoAntadWeb
 
         static GlobalVariables()
         {
-
-            WebApiClient.BaseAddress = new Uri("http://localhost:54452/api/");
+            
+            WebApiClient.BaseAddress = new Uri("https://circuloantadapi.trademetrix.online/api/");
             // WebApiClient.BaseAddress = new Uri("http://api.simplet.online/api/");
             WebApiClient.DefaultRequestHeaders.Clear();
             WebApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
