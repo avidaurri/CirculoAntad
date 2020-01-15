@@ -20,5 +20,11 @@ namespace AntadBiblioteca.Services
         {
             return CentroTrabajoDAO.ConsultarCentrosTrabajo(login);
         }
+
+        public List<CentroTrabajo> ConsultarCentrosTrabajoAgrupador(AgrupadorCentroTrabajo agrupador)
+        {
+            return CentroTrabajoDAO.ConsultarCentrosTrabajoAgrupador(agrupador);
+        }
+        
     }
 }

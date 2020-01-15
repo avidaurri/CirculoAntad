@@ -170,5 +170,68 @@ namespace CirculoAntadWeb.Controllers
 
         }
 
+        public JsonResult ObtenerAgrupacionCentrosTrabajo(AgrupadorCentroTrabajo agrupador) //si
+        {
+            //mandar datos a master page
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            AgrupadorCentroTrabajo miAgrupador = new AgrupadorCentroTrabajo();
+            miAgrupador.folio_proyecto = agrupador.folio_proyecto;
+            miAgrupador.folio_dominio = objLogin.folioAgencia;
+
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("AgrupadorCentroTrabajo", miAgrupador).Result;
+            return Json(response.Content.ReadAsAsync<List<AgrupadorCentroTrabajo>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult ObtenerCentrosTrabajoDeAgrupacion(AgrupadorCentroTrabajo agrupador) //si
+        {
+            //mandar datos a master page
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            AgrupadorCentroTrabajo miAgrupador = new AgrupadorCentroTrabajo();
+            miAgrupador.clv_agrupador_centro_trabajo = agrupador.clv_agrupador_centro_trabajo;
+
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("CentroTrabajoAgrupador", miAgrupador).Result;
+            return Json(response.Content.ReadAsAsync<List<CentroTrabajo>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult ObtenerAgrupacionEmpleado(AgrupadorEmpleado agrupador) //si
+        {
+            //mandar datos a master page
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            AgrupadorEmpleado miAgrupador = new AgrupadorEmpleado();
+            miAgrupador.folio_proyecto = agrupador.folio_proyecto;
+            miAgrupador.folio_dominio = objLogin.folioAgencia;
+
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("AgrupadorEmpleado", miAgrupador).Result;
+            return Json(response.Content.ReadAsAsync<List<AgrupadorEmpleado>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult ObtenerEmpleadosDeAgrupacion(AgrupadorEmpleado agrupador) //si
+        {
+            //mandar datos a master page
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            AgrupadorEmpleado miAgrupador = new AgrupadorEmpleado();
+            miAgrupador.clv_agrupador_empleado = agrupador.clv_agrupador_empleado;
+
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("EmpleadoAgrupador", miAgrupador).Result;
+            return Json(response.Content.ReadAsAsync<List<Empleado>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        
+
     }
 }

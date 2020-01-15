@@ -156,8 +156,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ActividadController.cs" />
+    <Compile Include="Controllers\AgrupadorCentroTrabajoController.cs" />
+    <Compile Include="Controllers\AgrupadorEmpleadoController.cs" />
     <Compile Include="Controllers\CatalogoRegistroController.cs" />
+    <Compile Include="Controllers\CentroTrabajoAgrupadorController.cs" />
     <Compile Include="Controllers\CentroTrabajoController.cs" />
+    <Compile Include="Controllers\EmpleadoAgrupadorController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\EventoDetalleController.cs" />

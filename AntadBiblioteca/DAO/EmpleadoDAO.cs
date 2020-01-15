@@ -45,5 +45,33 @@ namespace AntadBiblioteca.DAO
             conexion.Cerrar();
             return empleados;
         }
+        public List<Empleado> ConsultarEmpleadosAgrupador(AgrupadorEmpleado agrupador)
+        {
+            string sql = "select cct.clv_emp, cct.nombre from agrupador_empleado_deta act " +
+                "left join empleado cct on cct.clv_emp = act.clv_emp where act.clv_agrupador_empleado = @clv_agrupador_empleado";
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro paramClve = new Parametro();
+            paramClve.Nombre = "@clv_agrupador_empleado";
+            paramClve.Valor = agrupador.clv_agrupador_empleado.ToString();
+            parametros.Add(paramClve);
+
+
+            SqlDataReader reader = conexion.Consultar(sql, parametros);
+
+            List<Empleado> empleados = new List<Empleado>();
+
+            while (reader.Read())
+            {
+                Empleado empleado = new Empleado();
+                //proyecto.ClvCliente = Convert.ToInt32(reader["clv_cli"].ToString());
+                empleado.clv_emp = Convert.ToInt32(reader["clv_emp"].ToString());
+                empleado.nombre = reader["nombre"].ToString();
+                empleados.Add(empleado);
+            }
+            conexion.Cerrar();
+            return empleados;
+        }
     }
 }

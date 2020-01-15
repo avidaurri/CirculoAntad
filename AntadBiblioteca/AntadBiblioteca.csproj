@@ -24,7 +24,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\ActividadDAO.cs" />
+    <Compile Include="DAO\AgrupadorCentroTrabajoDAO.cs" />
+    <Compile Include="DAO\AgrupadorEmpleadoDAO.cs" />
     <Compile Include="DAO\CatalogoRegistroDAO.cs" />
     <Compile Include="DAO\CentroTrabajoDAO.cs" />
     <Compile Include="DAO\EmpleadoDAO.cs" />
@@ -54,6 +56,8 @@
     <Compile Include="DAO\ValidaEventoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ActividadService.cs" />
+    <Compile Include="Services\AgrupadorCentroTrabajoService.cs" />
+    <Compile Include="Services\AgrupadorEmpleadoService.cs" />
     <Compile Include="Services\CatalogoRegistroService.cs" />
     <Compile Include="Services\CentroTrabajoService.cs" />
     <Compile Include="Services\EmpleadoService.cs" />

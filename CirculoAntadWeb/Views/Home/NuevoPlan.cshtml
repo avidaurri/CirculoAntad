@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label>Selecciona la campaña</label>
                                 <select class="form-control " style="width: 100%;" id="select2proyecto">
-                                    <option selected="selected" value="">Selecciona una campaña</option>
+                                    <option selected="selected" value="juju">Selecciona una campaña</option>
 
                                 </select>
                             </div>
@@ -257,6 +257,7 @@
 
                 <div class="container contNewPl">
                     <button class="btn btn-info btn-sm " id="agregaCentroTrabajo">Agregar Centro de Trabajo</button>
+                    <button class="btn btn-info btn-sm " id="agregaCentroTrabajogrupo">Agregar Grupo de Centros de Trabajo</button>
                     <!--<div class="row renglonCentroTrabajo">
                       <h5 class="tituloren">Centros de trabajo</h5>
                         <div class="col-md-6">
@@ -282,6 +283,7 @@
                 <!-- =========== EMPLEADOS ====== -->
                 <div class="container contNewPl">
                     <button class="btn btn-info btn-sm " id="agregaempleado">Agregar Empleado</button>
+                    <button class="btn btn-info btn-sm " id="agregaempleadogrupo">Agregar Grupo de Empleados</button>
                     <!--<div class="row renglonempleado">
                       <h5 class="tituloren">Centros de trabajo</h5>
                         <div class="col-md-6">
@@ -407,7 +409,7 @@
                                 <label>Selecciona el centro de trabajo</label>
                                 <select class="form-control seledos" style="width: 100%;" id="select2centrotrabajo">
                                     <option value="">Selecciona un centro de trabajo</option>
-      
+
                                 </select>
                             </div>
                         </div>
@@ -439,6 +441,63 @@
     </div>
 </div>
 
+
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajogrupo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Agregar Agrupación de Centros de Trabajo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table tableagrupacioncentrotrabajotem">
+                                <thead>
+                                    <tr>
+                                        <th><label>Nombre</label> </th>
+                                        <th><label>Tipo</label></th>
+                                        <th><label>Agregar</label></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><label>Ruta Frecuente</label></td>
+                                        <td><label>Agencia</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupocentrotem" grupocentrotrabajo="group1">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta MAFER </label></td>
+                                        <td><label>Ruta de cliente</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupocentrotem" grupocentrotrabajo="group2">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta KACANG </label></td>
+                                        <td><label>Ruta de proyecto</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupocentrotem" grupocentrotrabajo="group3">Agregar</button> </label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <!--<a href="#" class="btn btn-info " id="agregarcentrosdetrabajomodal">Agregar</a>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- The modal -->
 <div class="modal fade modalwebantad" id="modalagregarcentrotrabajosolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -457,7 +516,7 @@
                                 <label>Selecciona el centro de trabajo</label>
                                 <select class="form-control seledos" style="width: 100%;" id="select2centrotrabajosolo">
                                     <option value="">Selecciona un centro de trabajo</option>
-      
+
 
                                 </select>
                             </div>
@@ -482,6 +541,61 @@
                     <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
                     <a href="#" class="btn btn-info " id="agregarcentrotrabajomodal">Agregar</a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajogruposolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Agregar Agrupación de Centros de Trabajo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table tableagrupacioncentrotrabajosolo">
+                                <thead>
+                                    <tr>
+                                        <th><label>Nombre</label> </th>
+                                        <th><label>Tipo</label></th>
+                                        <th><label>Agregar</label></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><label>Ruta Frecuente</label></td>
+                                        <td><label>Agencia</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupocentrosolo" grupocentrotrabajosolo="">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta MAFER </label></td>
+                                        <td><label>Ruta de cliente</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupocentrosolo" grupocentrotrabajosolo="">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta KACANG </label></td>
+                                        <td><label>Ruta de proyecto</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupocentrosolo" grupocentrotrabajosolo="">Agregar</button> </label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <!--<a href="#" class="btn btn-info " id="agregarcentrosdetrabajomodal">Agregar</a>-->
+                </div>
+
             </div>
         </div>
     </div>
@@ -533,6 +647,57 @@
     </div>
 </div>
 
+<div class="modal fade modalwebantad" id="modalagregarempleadogrupo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Agregar Grupo de Empleados</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table tableagrupacionempleadotem">
+                                <thead>
+                                    <tr>
+                                        <th><label>Nombre</label> </th>
+                                        <th><label>Tipo</label></th>
+                                        <th><label>Agregar</label></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><label>Ruta Frecuente</label></td>
+                                        <td><label>Agencia</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupoempleadotem" grupoempleado="">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta MAFER </label></td>
+                                        <td><label>Ruta de cliente</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupoempleadotem" grupoempleado="">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta KACANG </label></td>
+                                        <td><label>Ruta de proyecto</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregargrupoempleadotem" grupoempleado="">Agregar</button> </label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade modalwebantad" id="modalagregarempleadosolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -571,6 +736,61 @@
                     <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
                     <a href="#" class="btn btn-info " id="agregarempleadomodalsolo">Agregar</a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalwebantad" id="modalagregarempleadogruposolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Agregar Agrupación de Empleados</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table tableagrupacionempleadosolo">
+                                <thead>
+                                    <tr>
+                                        <th><label>Nombre</label> </th>
+                                        <th><label>Tipo</label></th>
+                                        <th><label>Agregar</label></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><label>Ruta Frecuente</label></td>
+                                        <td><label>Agencia</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregarempleadosolo" grupoempleadosolo="">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta MAFER </label></td>
+                                        <td><label>Ruta de cliente</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregarempleadosolo" grupoempleadosolo="">Agregar</button> </label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label>Ruta KACANG </label></td>
+                                        <td><label>Ruta de proyecto</label></td>
+                                        <td><label><button class="btn btn-sm btn-outline-primary agregarempleadosolo" grupoempleadosolo="">Agregar</button> </label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+                    <!--<a href="#" class="btn btn-info " id="agregarcentrosdetrabajomodal">Agregar</a>-->
+                </div>
+
             </div>
         </div>
     </div>

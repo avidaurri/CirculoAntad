@@ -20,5 +20,10 @@ namespace AntadBiblioteca.Services
         {
             return EmpleadoDAO.ConsultarEmpleados(login);
         }
+        public List<Empleado> ConsultarEmpleadosAgrupador(AgrupadorEmpleado agrupador)
+        {
+            return EmpleadoDAO.ConsultarEmpleadosAgrupador(agrupador);
+        }
+
     }
 }
