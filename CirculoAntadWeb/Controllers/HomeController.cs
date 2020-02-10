@@ -57,6 +57,31 @@ namespace CirculoAntadWeb.Controllers
 
         }
 
+        public ActionResult EditarPlan(string plan) //si
+        {
+
+            if (Session["UsuarioSession"] == null)
+            {
+                //Response.Redirect("~/Login/Index");
+                return RedirectToAction("Index", "Login");
+            }
+
+            //LISTA DE CLIENTES POR POST
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            ViewData["usuario"] = objLogin.usuario;
+            ViewData["agencia"] = objLogin.agencia;
+            ViewData["folioAgencia"] = objLogin.folioAgencia;
+
+            string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+            ViewData["Url"] = baseUrl;
+            ViewBag.foliotrabajo = plan;
+            return View();
+
+
+        }
+
         public ActionResult MisPlanes() //si
         {
 
@@ -84,7 +109,59 @@ namespace CirculoAntadWeb.Controllers
 
         }
 
+        public ActionResult Tablero() //si
+        {
 
+            //LISTA DE CLIENTES POR POST
+
+            if (Session["UsuarioSession"] == null)
+            {
+                //Response.Redirect("~/Login/Index");
+                return RedirectToAction("Index", "Login");
+            }
+
+            //LISTA DE CLIENTES POR POST
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            ViewData["usuario"] = objLogin.usuario;
+            ViewData["agencia"] = objLogin.agencia;
+            ViewData["folioAgencia"] = objLogin.folioAgencia;
+
+            string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+            ViewData["Url"] = baseUrl;
+
+            return View();
+
+
+        }
+        public ActionResult NuevoPlanG() //si
+        {
+
+            //LISTA DE CLIENTES POR POST
+
+            if (Session["UsuarioSession"] == null)
+            {
+                //Response.Redirect("~/Login/Index");
+                return RedirectToAction("Index", "Login");
+            }
+
+            //LISTA DE CLIENTES POR POST
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            ViewData["usuario"] = objLogin.usuario;
+            ViewData["agencia"] = objLogin.agencia;
+            ViewData["folioAgencia"] = objLogin.folioAgencia;
+
+
+            string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+            ViewData["Url"] = baseUrl;
+
+            return View();
+
+
+        }
 
         public ActionResult NuevoPlan() //si
         {
@@ -149,6 +226,9 @@ namespace CirculoAntadWeb.Controllers
         {
 
             UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+            objLogin.filtrogenero = "";
+           // objLogin.filtroedocivil = "";
+            objLogin.filtropuesto = "";
             HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Empleado", objLogin).Result;
             return Json(response.Content.ReadAsAsync<List<Empleado>>().Result, JsonRequestBehavior.AllowGet);
 
@@ -158,7 +238,7 @@ namespace CirculoAntadWeb.Controllers
 
             UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
             HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Actividad", objLogin).Result;
-            return Json(response.Content.ReadAsAsync<List<Actividad>>().Result, JsonRequestBehavior.AllowGet);
+            return Json(response.Content.ReadAsAsync<List<ActividadWeb>>().Result, JsonRequestBehavior.AllowGet);
 
         }
         public ActionResult ObtenerMarcas() //si
@@ -170,6 +250,31 @@ namespace CirculoAntadWeb.Controllers
 
         }
 
+        public ActionResult ObtenerEstados(AgrupadorCentroTrabajo agrupador) //si
+        {
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Estado", objLogin).Result;
+            return Json(response.Content.ReadAsAsync<List<Estado>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult ObtenerMunicipios(Estado estado) //si
+        {
+
+            //UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Municipio", estado).Result;
+            return Json(response.Content.ReadAsAsync<List<Municipio>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult ObtenerCalificaciones() //si
+        {
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Calificacion", objLogin).Result;
+            return Json(response.Content.ReadAsAsync<List<Calificacion>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
         public JsonResult ObtenerAgrupacionCentrosTrabajo(AgrupadorCentroTrabajo agrupador) //si
         {
             //mandar datos a master page
@@ -215,6 +320,40 @@ namespace CirculoAntadWeb.Controllers
             return Json(response.Content.ReadAsAsync<List<AgrupadorEmpleado>>().Result, JsonRequestBehavior.AllowGet);
 
         }
+        public JsonResult ObtenerActividadesProyecto(ActividadWeb actividad) //si
+        {
+
+            ActividadWeb miActividad = new ActividadWeb();
+            miActividad.folio_proyecto = actividad.folio_proyecto;
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("ActividadProyecto", miActividad).Result;
+            return Json(response.Content.ReadAsAsync<List<ActividadWeb>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult ObtenerRequisitosEmpleado(ActividadWeb actividad) //si
+        {
+
+            ActividadWeb miActividad = new ActividadWeb();
+            miActividad.folio_proyecto = actividad.folio_proyecto;
+    
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("RequisitosEmpleado", miActividad).Result;
+            return Json(response.Content.ReadAsAsync<List<RequisitoEmpleado>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult ObtenerRequisitosCampania(ActividadWeb actividad) //si
+        {
+
+            ActividadWeb miActividad = new ActividadWeb();
+            miActividad.folio_proyecto = actividad.folio_proyecto;
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("RequisitoProyecto", miActividad).Result;
+            return Json(response.Content.ReadAsAsync<List<RequisitoProyecto>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
 
         public JsonResult ObtenerEmpleadosDeAgrupacion(AgrupadorEmpleado agrupador) //si
         {
@@ -223,6 +362,22 @@ namespace CirculoAntadWeb.Controllers
 
             AgrupadorEmpleado miAgrupador = new AgrupadorEmpleado();
             miAgrupador.clv_agrupador_empleado = agrupador.clv_agrupador_empleado;
+            miAgrupador.folio_proyecto = agrupador.folio_proyecto;
+
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("EmpleadoAgrupador", miAgrupador).Result;
+            return Json(response.Content.ReadAsAsync<List<Empleado>>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        public JsonResult ObtenerDatosEjemplo(Datos agrupador) //si
+        {
+            //mandar datos a master page
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            AgrupadorEmpleado miAgrupador = new AgrupadorEmpleado();
+            miAgrupador.clv_agrupador_empleado = 02;
 
 
 
@@ -231,7 +386,48 @@ namespace CirculoAntadWeb.Controllers
 
         }
 
-        
+        public JsonResult GuardarPlanTrabajo(PlanTrabajo plan) //si
+        {
+            //mandar datos a master page
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+            plan.folio_dominio = objLogin.folioAgencia;
+            //PlanTrabajo miAgrupador = new PlanTrabajo();
+            //miAgrupador.clv_agrupador_empleado = 02;
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("PlanTrabajo", plan).Result;
+            return Json(response.Content.ReadAsAsync<PlanTrabajo>().Result, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult ObtenerEmpleadosdata(string filtrogenero, string filtrocalificacion, string filtropuesto, string folioproyecto, string filtroestado,string filtromunicipio) //si
+        {
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+            objLogin.filtrogenero = filtrogenero;
+            objLogin.filtrocalificacion = filtrocalificacion;
+            objLogin.filtropuesto = filtropuesto;
+            objLogin.folioProyecto = folioproyecto;
+            objLogin.filtroestado = filtroestado;
+            objLogin.filtromunicipio = filtromunicipio;
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Empleado", objLogin).Result;
+            return Json(new { data = response.Content.ReadAsAsync<List<Empleado>>().Result }, JsonRequestBehavior.AllowGet);
+
+        }
+        public JsonResult ObtenerListaPlanes(string filtrogenero) //si
+        {
+
+            //string condicion="mistickets";
+            PlanTrabajo lstPlanes= new PlanTrabajo();
+
+            UserSessionWeb objLogin = (UserSessionWeb)Session["UsuarioSession"];
+
+            lstPlanes.folio_dominio = objLogin.agencia;
+
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("MisPlanes", lstPlanes).Result;
+
+            return Json(new { data = response.Content.ReadAsAsync<List<PlanTrabajo>>().Result }, JsonRequestBehavior.AllowGet);
+
+        }
+
 
     }
 }

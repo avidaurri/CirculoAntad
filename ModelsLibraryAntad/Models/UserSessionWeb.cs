@@ -17,9 +17,16 @@ namespace ModelsLibraryAntad.Models
         public int clvPuesto { get; set; }
         public string puesto { get; set; }
         public string mensajeLogin { get; set; }
-
         public string agencia { get; set; }
         public string folioAgencia { get; set; }
         public bool seLogeo { get; set; }
+
+        public string filtrogenero { get; set; }
+        public string filtrocalificacion { get; set; }
+        public string filtropuesto { get; set; }
+        public string folioProyecto { get; set; }
+        public string filtroestado { get; set; }
+        public string filtromunicipio { get; set; }
+
     }
 }

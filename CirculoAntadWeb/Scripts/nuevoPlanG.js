@@ -1,4 +1,4 @@
-var listaRequisitosCampania = [];
+﻿var listaRequisitosCampania = [];
 var listaRequisi = [];
 var listaClavePuesto = [];
 var listaCantidadClavePuesto = [];
@@ -57,7 +57,7 @@ $.get("/Home/ObtenerMarcas", function (data, statusText) { //si
 obtenerEstados()
 
 function obtenerEstados() {
-  
+
     var datosssa = {
         "nombre": "prueba"
     };
@@ -101,7 +101,7 @@ function agregarAgrupacionCentrosTrabajo() {
 
     $(".tableagrupacioncentrotrabajotem tbody").empty();
     $(".tableagrupacioncentrotrabajosolo tbody").empty();
-    
+
 
     var folio_proyecto = $("#select2proyecto").val()
     //console.log("folio_proyecto ", folio_proyecto)
@@ -123,12 +123,12 @@ function agregarAgrupacionCentrosTrabajo() {
 
                 for (i = 0; i < Agrupador.length; i++) {
 
-                   // console.log("Agrupador i ", Agrupador[i].descripcion)
+                    // console.log("Agrupador i ", Agrupador[i].descripcion)
 
-                    renglonagru = '<tr>'+
-                        '<td> <label >' + Agrupador[i].descripcion +'</label></td>'+
-                        ' <td><label >' + Agrupador[i].tipo +'</label></td>'+
-                        ' <td><label ><button class="btn btn-sm btn-outline-primary agregargrupocentrotem" grupocentrotrabajo="' + Agrupador[i].clv_agrupador_centro_trabajo +'">Agregar</button> </label></td>'+
+                    renglonagru = '<tr>' +
+                        '<td> <label >' + Agrupador[i].descripcion + '</label></td>' +
+                        ' <td><label >' + Agrupador[i].tipo + '</label></td>' +
+                        ' <td><label ><button class="btn btn-sm btn-outline-primary agregargrupocentrotem" grupocentrotrabajo="' + Agrupador[i].clv_agrupador_centro_trabajo + '">Agregar</button> </label></td>' +
                         ' <td><label ><button class="btn btn-sm btn-outline-warning verdetallegrupocentrotrabajo" grupocentrotrabajo="' + Agrupador[i].clv_agrupador_centro_trabajo + '" nomcentrotrabajo="' + Agrupador[i].descripcion + '">Ver detalle</button> </label></td>' +
                         '</tr>';
 
@@ -161,7 +161,7 @@ function agregarAgrupacionCentrosTrabajo() {
 
 $(".mandarDatos").on("click", function () {
 
-   // mandarDatos()
+    // mandarDatos()
     swal({
 
         type: "success",
@@ -311,14 +311,14 @@ function agregarrequisitoscampania() {
         "folio_proyecto": folio_proyecto
     };
 
-    listaRequisitosCampania.length=0
+    listaRequisitosCampania.length = 0
     listaRequisi.length = 0
     $.ajax({
         type: "POST",
         url: "/Home/ObtenerRequisitosCampania", //si
         data: datosss,
         success: function (Empleado) {
-           // console.log("requisitos", Empleado)
+            // console.log("requisitos", Empleado)
 
             if (Empleado.length > 0) {
 
@@ -339,9 +339,9 @@ function agregarrequisitoscampania() {
 
                     //console.log("Agrupador i ", Empleado[i].descripcion)
                     banderactividad++
-                    Empleado[i].clv_actividad 
-                    rengloacti = '<tr> <td> <label class="labelresumenempleado">' + Empleado[i].puesto+'</label></td>'+
-                        '<td><small class="labelg labelresumenempleado">' + Empleado[i].cantidad +'</small></td> </tr>'
+                    Empleado[i].clv_actividad
+                    rengloacti = '<tr> <td> <label class="labelresumenempleado">' + Empleado[i].puesto + '</label></td>' +
+                        '<td><small class="labelg labelresumenempleado">' + Empleado[i].cantidad + '</small></td> </tr>'
 
                     $(".tableresumenempleado tbody").append(rengloacti)
 
@@ -387,14 +387,14 @@ function agregarRequisitosEmpleado() {
         url: "/Home/ObtenerRequisitosEmpleado", //si
         data: datosss,
         success: function (Empleado) {
-             console.log("requisitos empleado", Empleado)
+            console.log("requisitos empleado", Empleado)
 
             if (Empleado.length > 0) {
 
                 for (i = 0; i < Empleado.length; i++) {
 
                     rengloacti = '<tr> <td><small class="labelg ">' + Empleado[i].puesto + '</small></td>' +
-                        '<td><small class="labelg ">' + Empleado[i].nombreRequisito + '</small></td> '+
+                        '<td><small class="labelg ">' + Empleado[i].nombreRequisito + '</small></td> ' +
                         '<td> <small class="labelg ">' + Empleado[i].valor + '</small></td ></tr > '
 
                     $(".tableresumenempleadorequisitos tbody").append(rengloacti)
@@ -437,9 +437,9 @@ function agregarActividades() {
         url: "/Home/ObtenerActividadesProyecto", //si
         data: datosss,
         success: function (Empleado) {
-          //  console.log("actividades", Empleado)
-           // console.log("cantidad0", $(".tableactividades .unaactividad").length)
-           //  console.log("Empleado.length ", Empleado.length )
+            //  console.log("actividades", Empleado)
+            // console.log("cantidad0", $(".tableactividades .unaactividad").length)
+            //  console.log("Empleado.length ", Empleado.length )
             if (Empleado.length > 0) {
 
                 for (i = 0; i < Empleado.length; i++) {
@@ -452,31 +452,31 @@ function agregarActividades() {
                         'data-placement="left" data-content="' + Empleado[i].descripcion + '" > <i class="fa fa-eye" ></i> </button ></td>' +
                         '<td><button class="btn btn-sm btn-danger eliminaactividad" ><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                         ' </tr>'
-                  //  console.log("añadir")
+                    //  console.log("añadir")
                     $(".tableactividades tbody").append(rengloacti)
 
 
                     $('#select2actividad').append(" <option value=" + Empleado[i].clv_actividad + " class='opcionDeSelect'>" + Empleado[i].descripcion + "</option>")
-                 //   console.log("cantidad77", $(".tableactividades .unaactividad").length)
+                    //   console.log("cantidad77", $(".tableactividades .unaactividad").length)
                 }
-              //  console.log("cantidad1", $(".tableactividades .unaactividad").length)
+                //  console.log("cantidad1", $(".tableactividades .unaactividad").length)
             } else if (Empleado.length == 0) {
-                
-               // console.log("borrar combo ");
+
+                // console.log("borrar combo ");
                 $('#select2actividad').empty();
                 $('#select2actividad').append("<option value=''>Selecciona una mision</option>")
-                
-            
+
+
             }
 
             $(".eliminaactividad").on('click', function () {
 
-               // console.log("idasasasa", id);
-               
+                // console.log("idasasasa", id);
 
-               // console.log("cantidad", $(".tableactividades .unaactividad").length)
+
+                // console.log("cantidad", $(".tableactividades .unaactividad").length)
                 if ($(".tableactividades .unaactividad ").length == 1) {
-                   // $(this).parent().parent().parent().parent().parent().parent().parent().hide("slow", function () { $(this).remove(); })
+                    // $(this).parent().parent().parent().parent().parent().parent().parent().hide("slow", function () { $(this).remove(); })
                     var id = $(this).parent().parent().hide("slow", function () { $(this).remove(); })
                 } else {
                     //$("#uncentrotrabajo"+id).hide("slow", function(){ $(this).remove(); })
@@ -502,11 +502,11 @@ $('#select2proyecto').on('select2:select', function (e) {
 
     $(".campaniaseleccionadaresumen").html(data.text)
     if (data.text != "") {
-       // console.log("borra msn")
+        // console.log("borra msn")
         $(".mensajevalidaciocampania").html("")
     }
 
-  
+
     if (data.text != "" || data.text.trim() != "") {
         agregarActividades()
         agregarRequisitosEmpleado()
@@ -739,7 +739,7 @@ function nextPrev(n) {
 
     console.log("currentTab", currentTab);
     console.log(" x.length", x.length);
-   
+
 
 
     /* if (currentTab >= x.length) {// si esta al final de la vista enviardatos porfas
@@ -776,7 +776,7 @@ function nextPrev(n) {
     } else if (currentTab >= x.length) {
 
         guardarPlanTrabajo()
-    } else if(currentTab == 0) {
+    } else if (currentTab == 0) {
         //desglosarresumen(currentTab)
         showTab(currentTab);
     } else {
@@ -1030,28 +1030,28 @@ function desglosarresumen(currentTab, opcion) {
             ' <th> <label>Misión</label></th > ' +
             '</tr> ' +
             '</thead> ' +
-            ' <tbody> ' 
+            ' <tbody> '
 
         var dere = '</tbody> ' +
-            ' </table> ' 
+            ' </table> '
         tablainterior = izqui + tablainterior + dere
 
         varincru = '<div class="row">' +
             ' <div class="col-md-8" >' +
             ' <table class="table  tableavisaryvrearuno table-wrapper-scroll-y">' +
             '<tr>' +
-            '<th><label>Temporalidad : ' + descripcion+'</label> </th>' +
-            ' <th><label>Fecha Inicial : ' + fecha_inicial +'</label> </th>' +
-            '<th><label>Fecha Final : ' + fecha_final +'  </label> </th>' +
-            '<th><label>  ' + cantidadcc +' Centro de trabajo</label></th>' +
-            '<th><label> ' + cantidademp +' Empleado</label></th>' +
-            '<th><a class="verdetal" data-toggle="collapse" data-target="#demo' + banderarevi +'">Ver Detalles</a></th>' +
+            '<th><label>Temporalidad : ' + descripcion + '</label> </th>' +
+            ' <th><label>Fecha Inicial : ' + fecha_inicial + '</label> </th>' +
+            '<th><label>Fecha Final : ' + fecha_final + '  </label> </th>' +
+            '<th><label>  ' + cantidadcc + ' Centro de trabajo</label></th>' +
+            '<th><label> ' + cantidademp + ' Empleado</label></th>' +
+            '<th><a class="verdetal" data-toggle="collapse" data-target="#demo' + banderarevi + '">Ver Detalles</a></th>' +
             '</tr>' +
             '</table>' +
             '</div>' +
             '</div> ' +
-            '<div class="row collapse" id="demo' + banderarevi+'" > ' +
-            '<div class="col-md-8" my-custom-scrollbar> ' + tablainterior  +
+            '<div class="row collapse" id="demo' + banderarevi + '" > ' +
+            '<div class="col-md-8" my-custom-scrollbar> ' + tablainterior +
             ' </div> ' +
             '</div>';
 
@@ -1358,17 +1358,17 @@ function desglosarresumen(currentTab, opcion) {
 
 
 
-    
+
 }
 
 function validarTodo(currentTab, opcion) {
-    console.log("opcion validar todo ",opcion)
+    console.log("opcion validar todo ", opcion)
     $('#backd').loading('start');
     $('div.loading-overlay-content').html('Validando configuración')
 
     setTimeout(function () {
 
-        validarCamposbasicos(currentTab,opcion);
+        validarCamposbasicos(currentTab, opcion);
         $('#backd').loading('stop');
 
     }, 4000);
@@ -1410,10 +1410,10 @@ function guardarPlanTrabajo() {
     $("#carousel-example-generic .untemporizador ").each(function () {
 
         idtem = $(this).attr("id").substring(14);
-       // console.log("#untemporizador", id);
+        // console.log("#untemporizador", id);
 
         if ($("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").length == 0) {
-           // console.log("agregar " + idtem)
+            // console.log("agregar " + idtem)
 
             $(".renglonCentroTrabajo .uncentrotrabajo").each(function () {
 
@@ -1476,21 +1476,21 @@ function guardarPlanTrabajo() {
     $("#carousel-example-generic .untemporizador ").each(function () {
 
         idtem = $(this).attr("id").substring(14);
-       // console.log("#untemporizador ale", id);
+        // console.log("#untemporizador ale", id);
 
 
         $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
 
             idcentrotra = $(this).attr("id").substring(27);
-           // console.log(".uncentrotrabajotemporizador ale", idcentrotra);
+            // console.log(".uncentrotrabajotemporizador ale", idcentrotra);
 
             foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
-           // console.log("foliotrabajo ale", foliotrabajo);
+            // console.log("foliotrabajo ale", foliotrabajo);
 
             if ($("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").length == 0) {
-               // console.log("#untemporizador alejandro", id);
-              // console.log(".uncentrotrabajotemporizador alejandro", idcentrotra);
-              //  console.log("foliotrabajo alejandro", foliotrabajo);
+                // console.log("#untemporizador alejandro", id);
+                // console.log(".uncentrotrabajotemporizador alejandro", idcentrotra);
+                //  console.log("foliotrabajo alejandro", foliotrabajo);
                 $(".renglonempleado .unempleado").each(function () {
 
                     consec_empleado = $(this).attr("id").substring(10);
@@ -1562,7 +1562,7 @@ function guardarPlanTrabajo() {
 
                 consec_empleado = $(this).attr("id").substring(34);
                 clvemp = $(this).children("td").children("label.labelformu").attr("clvemp")
-              //  console.log("clvemp", clvemp);
+                //  console.log("clvemp", clvemp);
 
                 $(".renglonactividades .unaactividad").each(function () {
 
@@ -1613,10 +1613,10 @@ function guardarPlanTrabajo() {
     $("#carousel-example-generic .untemporizador ").each(function () {
 
         idtem = $(this).attr("id").substring(14);
-       // console.log("#untemporizador", id);
+        // console.log("#untemporizador", id);
 
         if ($("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").length == 0) {
-           // console.log("agregar " + idtem)
+            // console.log("agregar " + idtem)
 
             $(".renglonCentroTrabajo .uncentrotrabajo").each(function () {
 
@@ -1671,22 +1671,22 @@ function guardarPlanTrabajo() {
     $("#carousel-example-generic .untemporizador ").each(function () {
 
         idtem = $(this).attr("id").substring(14);
-       // console.log("#untemporizador", id);
+        // console.log("#untemporizador", id);
 
 
         $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
 
             idcentrotra = $(this).attr("id").substring(27);
-           // console.log(".uncentrotrabajotemporizador", idcentrotra);
+            // console.log(".uncentrotrabajotemporizador", idcentrotra);
 
             foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
-           // console.log("foliotrabajo", foliotrabajo);
+            // console.log("foliotrabajo", foliotrabajo);
 
             $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").each(function () {
 
                 consec_empleado = $(this).attr("id").substring(34);
                 clvemp = $(this).children("td").children("label.labelformu").attr("clvemp")
-               // console.log("clvemp", clvemp);
+                // console.log("clvemp", clvemp);
 
                 arrayconsec_temporalidad.push(idtem);
                 arrayclv_emp.push(clvemp);
@@ -1731,15 +1731,15 @@ function guardarPlanTrabajo() {
         $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
 
             idcentrotra = $(this).attr("id").substring(27);
-           // console.log(".uncentrotrabajotemporizador ale", idcentrotra);
+            // console.log(".uncentrotrabajotemporizador ale", idcentrotra);
 
             foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
-           // console.log("foliotrabajo ale", foliotrabajo);
+            // console.log("foliotrabajo ale", foliotrabajo);
 
             if ($("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").length == 0) {
-               // console.log("#untemporizador alejandro", id);
-              //  console.log(".uncentrotrabajotemporizador alejandro", idcentrotra);
-               // console.log("foliotrabajo alejandro", foliotrabajo);
+                // console.log("#untemporizador alejandro", id);
+                //  console.log(".uncentrotrabajotemporizador alejandro", idcentrotra);
+                // console.log("foliotrabajo alejandro", foliotrabajo);
                 $(".renglonempleado .unempleado").each(function () {
 
                     consec_empleado = $(this).attr("id").substring(10);
@@ -1795,7 +1795,7 @@ function guardarPlanTrabajo() {
         //console.log("#untemporizador", id);
 
         if ($("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").length == 0) {
-           // console.log("agregar " + idtem)
+            // console.log("agregar " + idtem)
 
             $(".renglonCentroTrabajo .uncentrotrabajo").each(function () {
 
@@ -1840,15 +1840,15 @@ function guardarPlanTrabajo() {
     $("#carousel-example-generic .untemporizador ").each(function () {
 
         idtem = $(this).attr("id").substring(14);
-       // console.log("#untemporizador", id);
+        // console.log("#untemporizador", id);
 
         $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
 
             idcentrotra = $(this).attr("id").substring(27);
-           // console.log(".uncentrotrabajotemporizador", idcentrotra);
+            // console.log(".uncentrotrabajotemporizador", idcentrotra);
 
             foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
-           // console.log("foliotrabajo", foliotrabajo);
+            // console.log("foliotrabajo", foliotrabajo);
 
             arrayconsec_temporalidad.push(idtem);
             arrayfolio_centro_trabajo.push(foliotrabajo);
@@ -1963,13 +1963,13 @@ function guardarPlanTrabajo() {
     objeto.listaTemporalidad = listaTemporalidad;
 
     var myJSON = JSON.stringify(objeto);
-   // console.log("myJSON ", myJSON)
+    // console.log("myJSON ", myJSON)
     $.ajax({
         type: "POST",
         url: "/Home/GuardarPlanTrabajo", //si
         data: objeto,
         success: function (Plan) {
-           // console.log("Plan", Plan)
+            // console.log("Plan", Plan)
 
             swal({
 
@@ -2013,15 +2013,15 @@ function cambiarformatofechaDos(fech) {
 }
 
 function mostrarmensajeregres() {
-Swal.fire({
-    title: 'Se encontraron errores de captura, fue dirigido a la sección correspondiente',
-    showClass: {
-        popup: 'animated fadeInDown faster'
-    },
-    hideClass: {
-        popup: 'animated fadeOutUp faster'
-    }
-})
+    Swal.fire({
+        title: 'Se encontraron errores de captura, fue dirigido a la sección correspondiente',
+        showClass: {
+            popup: 'animated fadeInDown faster'
+        },
+        hideClass: {
+            popup: 'animated fadeOutUp faster'
+        }
+    })
 
 }
 
@@ -2038,11 +2038,11 @@ function mostrarmensajeregrescamp() {
 
 }
 
-function validaractividadesManual(currentTab,opcion){
+function validaractividadesManual(currentTab, opcion) {
 
     //ver si hay centro de trabajo manual
     var cantidad = $(".tableactividades .unaactividad").length
-   // console.log("cantidad de centro de trabajo", cantidad);
+    // console.log("cantidad de centro de trabajo", cantidad);
 
     if (cantidad == 0) {
         //recorrer temporalidades
@@ -2060,7 +2060,7 @@ function validaractividadesManual(currentTab,opcion){
         }
 
     } else {
-       // showTab(currentTab)
+        // showTab(currentTab)
         //desglosarresumen(currentTab, opcion)
         validarStaff(currentTab, opcion)
     }
@@ -2076,7 +2076,7 @@ function validarStaff(currentTab, opcion) {
         contadorpuesto = 0
         malo1 = 0
         malo2 = 0
-        malo3=0
+        malo3 = 0
         $("#carousel-example-generic .untemporizador ").each(function () {
 
             idtem = $(this).attr("id").substring(14);
@@ -2182,7 +2182,7 @@ function validarStaff(currentTab, opcion) {
             console.log("comparar " + cantidad + " y " + contadorpuesto)
             if (cantidad != contadorpuesto) {
                 console.log("malo")
-                malo3=1
+                malo3 = 1
             }
 
 
@@ -2192,107 +2192,107 @@ function validarStaff(currentTab, opcion) {
 
     }
 
-    console.log("malo 1, malo2, malo3 ", malo1 +" "+malo2+" "+malo3)
-   /* $("#carousel-example-generic .untemporizador ").each(function () {
-       
-
-        idtem = $(this).attr("id").substring(14);
-        if ($("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").length == 0) {
-
-            //
-            $(".renglonCentroTrabajo .uncentrotrabajo").each(function () {
-
-                idcentrotra = $(this).attr("id").substring(15);
-                foliotrabajo = $("#uncentrotrabajo" + idcentrotra + " td label.labelformu").attr("foliocentrotrabajo");
-                nombreCentroTrabajo = $("#uncentrotrabajo" + idcentrotra + " td label.labelformu").html();
-
-                $(".renglonempleado .unempleado").each(function () {
-
-                    consec_empleado = $(this).attr("id").substring(10);
-
-                    clvemp = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvemp");
-                    clvpue = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvpue");
-
-                    if (clvpue == puesto) {
-                        contadorpuesto++
-                    }
-
-
-                })
-
-            })
-
-        }
-
-
-        if (cantidad != contadorpuesto) {
-            console.log("malo")
-        }
-
-  
-
-        $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
-
-
-
-            idcentrotra = $(this).attr("id").substring(27);
-            foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
-            nombreCentroTrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").html()
-
-
-            if ($("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").length == 0) {
-
-                $(".renglonempleado .unempleado").each(function () {
-
-                    consec_empleado = $(this).attr("id").substring(10);
-
-                    clvemp = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvemp");
-                    clvpue = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvpue");
-
-                    if (clvpue == puesto) {
-                        contadorpuesto++
-                    }
-
-
-                })
-            }
-
-
-
-
-        })
-       
-        if (cantidad != contadorpuesto) {
-            console.log("malo")
-        }
-
-        $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
-
-            idcentrotra = $(this).attr("id").substring(27);
-
-            foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
-
-            nombreCentroTrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").html()
-
-            $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").each(function () {
-
-                consec_empleado = $(this).attr("id").substring(34);
-                clvemp = $(this).children("td").children("label.labelformu").attr("clvemp")
-
-                clvpue = $(this).children("td").children("label.labelformu").attr("clvpue")
-                if (clvpue == puesto) {
-                    contadorpuesto++
-                }
-
-
-            })
-
-        })
-        if (cantidad != contadorpuesto) {
-            console.log("malo")
-        }
-
-    })*/
+    console.log("malo 1, malo2, malo3 ", malo1 + " " + malo2 + " " + malo3)
+    /* $("#carousel-example-generic .untemporizador ").each(function () {
+        
+ 
+         idtem = $(this).attr("id").substring(14);
+         if ($("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").length == 0) {
+ 
+             //
+             $(".renglonCentroTrabajo .uncentrotrabajo").each(function () {
+ 
+                 idcentrotra = $(this).attr("id").substring(15);
+                 foliotrabajo = $("#uncentrotrabajo" + idcentrotra + " td label.labelformu").attr("foliocentrotrabajo");
+                 nombreCentroTrabajo = $("#uncentrotrabajo" + idcentrotra + " td label.labelformu").html();
+ 
+                 $(".renglonempleado .unempleado").each(function () {
+ 
+                     consec_empleado = $(this).attr("id").substring(10);
+ 
+                     clvemp = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvemp");
+                     clvpue = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvpue");
+ 
+                     if (clvpue == puesto) {
+                         contadorpuesto++
+                     }
+ 
+ 
+                 })
+ 
+             })
+ 
+         }
+ 
+ 
+         if (cantidad != contadorpuesto) {
+             console.log("malo")
+         }
+ 
+   
+ 
+         $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
+ 
+ 
+ 
+             idcentrotra = $(this).attr("id").substring(27);
+             foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
+             nombreCentroTrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").html()
+ 
+ 
+             if ($("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").length == 0) {
+ 
+                 $(".renglonempleado .unempleado").each(function () {
+ 
+                     consec_empleado = $(this).attr("id").substring(10);
+ 
+                     clvemp = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvemp");
+                     clvpue = $("#unempleado" + consec_empleado + " td label.labelformu").attr("clvpue");
+ 
+                     if (clvpue == puesto) {
+                         contadorpuesto++
+                     }
+ 
+ 
+                 })
+             }
+ 
+ 
+ 
+ 
+         })
+        
+         if (cantidad != contadorpuesto) {
+             console.log("malo")
+         }
+ 
+         $("#untemporizador" + idtem + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").each(function () {
+ 
+             idcentrotra = $(this).attr("id").substring(27);
+ 
+             foliotrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").attr("foliocentrotrabajo")
+ 
+             nombreCentroTrabajo = $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .panel-heading .panel-title a").html()
+ 
+             $("#untemporizador" + idtem + " #uncentrotrabajotemporizador" + idcentrotra + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado").each(function () {
+ 
+                 consec_empleado = $(this).attr("id").substring(34);
+                 clvemp = $(this).children("td").children("label.labelformu").attr("clvemp")
+ 
+                 clvpue = $(this).children("td").children("label.labelformu").attr("clvpue")
+                 if (clvpue == puesto) {
+                     contadorpuesto++
+                 }
+ 
+ 
+             })
+ 
+         })
+         if (cantidad != contadorpuesto) {
+             console.log("malo")
+         }
+ 
+     })*/
 
 
 
@@ -2301,7 +2301,7 @@ function validarStaff(currentTab, opcion) {
 }
 
 
-function validarEmpleadoManual(currentTab,opcion) {
+function validarEmpleadoManual(currentTab, opcion) {
 
     //ver si hay centro de trabajo manual
     var cantidad = 0
@@ -2344,10 +2344,10 @@ function validarEmpleadoManual(currentTab,opcion) {
 
 
         var cant = $(".renglonCentroTrabajo").length
-       // console.log("cant", cant);
+        // console.log("cant", cant);
 
         var cantinf = $(".renglonempleado .unempleado").length
-       // console.log("cantinf", cantinf);
+        // console.log("cantinf", cantinf);
 
         if (cant > 0 && cantinf == 0) {
             mostrarmensajeregres()
@@ -2375,11 +2375,11 @@ function validarEmpleadoManual(currentTab,opcion) {
     }
 
 
-    validaractividadesManual(currentTab,opcion)
+    validaractividadesManual(currentTab, opcion)
 
     //showTab(currentTab)
 }
-function validarCentroTrabajoManual(currentTab,opcion) {
+function validarCentroTrabajoManual(currentTab, opcion) {
 
     //ver si hay centro de trabajo manual
     var cantidad = $(".renglonCentroTrabajo .uncentrotrabajo").length
@@ -2391,11 +2391,11 @@ function validarCentroTrabajoManual(currentTab,opcion) {
         $("#carousel-example-generic .untemporizador ").each(function () {
 
             id = $(this).attr("id").substring(14);
-           // console.log("#untemporizador", id);
-            
-           // console.log("mari #carousel-example-generic #untemporizador" + id + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador")
+            // console.log("#untemporizador", id);
+
+            // console.log("mari #carousel-example-generic #untemporizador" + id + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador")
             if ($("#carousel-example-generic #untemporizador" + id + " .rengloncentrotrabajotempo .uncentrotrabajotemporizador").length == 0) {
-               // console.log("jojo")
+                // console.log("jojo")
                 bander = 1
             }
 
@@ -2416,11 +2416,11 @@ function validarCentroTrabajoManual(currentTab,opcion) {
     }
 
 
-    validarEmpleadoManual(currentTab,opcion)
+    validarEmpleadoManual(currentTab, opcion)
     //showTab(currentTab)
 }
 
-function validarTemporalidad(currentTab,opcion) {
+function validarTemporalidad(currentTab, opcion) {
 
     //validar basicos
     //$("#inputdescplantrabajo").effect( "Pulsate", {times:4}, 500 );
@@ -2433,7 +2433,7 @@ function validarTemporalidad(currentTab,opcion) {
             $(".alertalateral").html("")
             $(".alertalateral").hide('fast');
         }, 3000);
-       // $("#agregarTemp").effect("shake");
+        // $("#agregarTemp").effect("shake");
         return
     } else {
         //validar todas las descripciones de las temporalidades
@@ -2467,7 +2467,7 @@ function validarTemporalidad(currentTab,opcion) {
         $("#carousel-example-generic .untemporizador ").each(function () {
 
             id = $(this).attr("id").substring(14);
-           // console.log("#untemporizador", id);
+            // console.log("#untemporizador", id);
             bander = 0
             $("#carousel-example-generic #untemporizador" + id + " .checkbox-inline input").each(function () {
                 $(this).val()
@@ -2477,12 +2477,12 @@ function validarTemporalidad(currentTab,opcion) {
                     return
                 }
             })
-           // console.log("bander", bander);
+            // console.log("bander", bander);
             if (bander == 0) {
                 bandere = 1
                 return
             }
-           // console.log("bandere", bandere);
+            // console.log("bandere", bandere);
         })
 
         if (bandere == 1) {
@@ -2508,12 +2508,12 @@ function validarTemporalidad(currentTab,opcion) {
         id = $(this).attr("id").substring(14);
 
         fecha = $("#tempInputDiaFinalInicial" + id).val()
-       // console.log("fecha", fecha);
+        // console.log("fecha", fecha);
 
         fechaInicio = cambiarformatofecha(fecha.substring(0, 10));
-       // console.log("fechaInicio", fechaInicio);
+        // console.log("fechaInicio", fechaInicio);
         fechaFin = cambiarformatofecha(fecha.substring(20, 30));
-      //  console.log("fechaFin", fechaFin);
+        //  console.log("fechaFin", fechaFin);
         fechaInicio = moment(fechaInicio)
         fechaFin = moment(fechaFin)
         if (fechaInicio < fechaminima) {
@@ -2528,12 +2528,12 @@ function validarTemporalidad(currentTab,opcion) {
 
 
     })
-   //console.log("fechaminima", fechaminima);
+    //console.log("fechaminima", fechaminima);
     //console.log("fechamaxima", fechamaxima);
     $(".fechainicioseleccionadoresumen").html(fechaminima.format('DD/MM/YYYY'))
     $(".fechafinseleccionadoresumen").html(fechamaxima.format('DD/MM/YYYY'))
 
-    validarCentroTrabajoManual(currentTab,opcion)
+    validarCentroTrabajoManual(currentTab, opcion)
     //showTab(currentTab)
 }
 
@@ -2565,7 +2565,7 @@ function validarTabUno(currentTab, opcion) {
         $(".alertalateral").html("Selecciona una marca")
         $(".alertalateral").show('slow');
 
-            link(0)
+        link(0)
 
         setTimeout(function () {
             $(".alertalateral").html("")
@@ -2606,13 +2606,13 @@ function validarTabUno(currentTab, opcion) {
     }*/
     //validarTemporalidad(currentTab, opcion)
 
-    
+
 }
 
-function validarCamposbasicos(currentTab,opcion) {
+function validarCamposbasicos(currentTab, opcion) {
 
     var marca = $("#select2marca").val()
-   // console.log("marca", marca);
+    // console.log("marca", marca);
     var marcas = $("#select2marca").val().trim();
     if (marca == "" || marcas == "") {
         mostrarmensajeregres()
@@ -2657,7 +2657,7 @@ function validarCamposbasicos(currentTab,opcion) {
         }, 3000);
         return
     }
-    validarTemporalidad(currentTab,opcion)
+    validarTemporalidad(currentTab, opcion)
     //showTab(currentTab)
 }
 
@@ -2714,7 +2714,7 @@ $(".step").on("click", function () {
             $(".tableavisaryvrear tbody").html("")
         } else if (pagina == 6) {
             link(5)
-            validarTodo(5, "link")   
+            validarTodo(5, "link")
             // link(5)
         }
 
@@ -3016,7 +3016,7 @@ $("#agregarTemp").on('click', function () {
             }
             $(".eliminarcentrotrabajomodal").unbind();
             $(".eliminarcentrotrabajomodal").on("click", function () {
-               // console.log("eliminar jej")
+                // console.log("eliminar jej")
                 $(this).parent().parent().hide("slow", function () { $(this).remove(); })
 
 
@@ -3130,11 +3130,11 @@ $("#agregarTemp").on('click', function () {
 
             $(".eliminarcentrotrabajoTemporalidad").on('click', function (e) {
                 e.stopPropagation();
-                $(this).parent().parent().hide("slow", function () { $(this).remove(); })	
-               /* var padreacco = $(this).parent().parent().parent().attr("id").substring(9)
-                var padretem = $(this).parent().parent().parent().parent().parent().parent().parent().attr("id").substring(14)
-                $("#untemporizador" + padretem + " #accordion" + padreacco + " #uncentrotrabajotemporizador" + ideliminarcentrotrabajotemp).hide("slow", function () { $(this).remove(); })
-                */
+                $(this).parent().parent().hide("slow", function () { $(this).remove(); })
+                /* var padreacco = $(this).parent().parent().parent().attr("id").substring(9)
+                 var padretem = $(this).parent().parent().parent().parent().parent().parent().parent().attr("id").substring(14)
+                 $("#untemporizador" + padretem + " #accordion" + padreacco + " #uncentrotrabajotemporizador" + ideliminarcentrotrabajotemp).hide("slow", function () { $(this).remove(); })
+                 */
             })
 
             //////////////// uno inicio
@@ -3380,7 +3380,7 @@ $("#agregarTemp").on('click', function () {
                 $('#municipiofiltro').empty();
 
                 $('#generofiltro').append('<option value="">Todos</option> <option value = "1" > Masculino</option> <option value="3">Femenino</option>')
-               // $('#calificacionfiltro').append('<option value="">Todos</option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option>')
+                // $('#calificacionfiltro').append('<option value="">Todos</option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option>')
                 $('#puestofiltro').append('<option value="">Todos</option> <option value = "1" > Promotor</option> <option value="2">Supervisor</option>')
 
                 var filtrogenero = $("#generofiltro").val();
@@ -3396,15 +3396,15 @@ $("#agregarTemp").on('click', function () {
                         "url": "/Home/ObtenerEmpleadosdata", //si
                         "type": "POST",
                         "datatype": "json",
-                            "data": {
+                        "data": {
 
-                                "filtrogenero": function () { return $("#generofiltro").val() },
-                                "filtrocalificacion": function () { return $("#calificacionfiltro").val() },
-                                "filtropuesto": function () { return $("#puestofiltro").val() },
-                                "folioproyecto": function () { return $("#select2proyecto").val() },
-                                "filtroestado": function () { return $("#estadofiltro").val() },
-                                "filtromunicipio": function () { return $("#municipiofiltro").val() }
-                            }
+                            "filtrogenero": function () { return $("#generofiltro").val() },
+                            "filtrocalificacion": function () { return $("#calificacionfiltro").val() },
+                            "filtropuesto": function () { return $("#puestofiltro").val() },
+                            "folioproyecto": function () { return $("#select2proyecto").val() },
+                            "filtroestado": function () { return $("#estadofiltro").val() },
+                            "filtromunicipio": function () { return $("#municipiofiltro").val() }
+                        }
                     },
                     "columns": [
 
@@ -3415,7 +3415,7 @@ $("#agregarTemp").on('click', function () {
                         { "data": "puesto", 'searchable': false },
                         { "data": "estado", 'searchable': false },
                         { "data": "municipio", 'searchable': false },
-                        { "data": { clv_emp: "clv_emp", nombre: "nombre", puesto: "puesto", clv_puesto: "clv_puesto", cumplerequisitos: "cumplerequisitos", mensajeValidacion: "mensajeValidacion", calificacion_empleado: "calificacion_empleado"  } }
+                        { "data": { clv_emp: "clv_emp", nombre: "nombre", puesto: "puesto", clv_puesto: "clv_puesto", cumplerequisitos: "cumplerequisitos", mensajeValidacion: "mensajeValidacion", calificacion_empleado: "calificacion_empleado" } }
 
                     ],
                     "columnDefs": [
@@ -3435,7 +3435,7 @@ $("#agregarTemp").on('click', function () {
 
                                     return '<small class="mensajenovalidado">No cumple con requisitos</small> <br> <button type="button" class="btn btn-block  btn-sm btndetallenocumple" data-toggle="popover"  title="Detalle de validación" ' +
                                         'data-placement="left" data-content="' + data.mensajeValidacion + '" > Ver detalles </button >'
-                                   // return '<small class="mensajenovalidado">' + data.mensajeValidacion + '</small>'
+                                    // return '<small class="mensajenovalidado">' + data.mensajeValidacion + '</small>'
                                 }
 
                             },
@@ -3484,7 +3484,7 @@ $("#agregarTemp").on('click', function () {
                             $('[data-toggle="popover"]').popover()
                         })
 
-                    } 
+                    }
 
                 });
                 // llenar la tabla fin
@@ -3575,13 +3575,13 @@ $("#agregarTemp").on('click', function () {
                         keyboard: false
                     });*/
                 })
-                
 
-                    
+
+
                 $("#agregarempleadomodal").unbind();
 
                 $('#agregarempleadomodal').on('click', function () {
-                  
+
                     $('#modalagregarempleado').modal('hide');
                     tablaMisEmpleados.destroy();
 
@@ -3598,9 +3598,9 @@ $("#agregarTemp").on('click', function () {
                             clvpuesto = $(this).attr("clvpuesto")
                             califi = $(this).attr("calificacion_empleado")
                             if (verificarcantidadrequisito(clvpuesto, parentaccordion, padrecollapse) == 1) {
-                                    fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
-                                    fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
-                                    fecha_final = cambiarformatofecha(fecha.substring(20, 30));
+                                fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
+                                fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
+                                fecha_final = cambiarformatofecha(fecha.substring(20, 30));
                                 if ($("#untemporizador" + padredeagregaremple + " #uncentrotrabajotemporizador" + padreeuncentrotrabajotemporizador + " .renglonempleadocentrotrabajotempo").length > 0) {
 
                                     //, fecha, fecha_inicial, fecha_final
@@ -3610,17 +3610,17 @@ $("#agregarTemp").on('click', function () {
                                         //setTimeout(function () {
 
 
-                                            console.log(" no es primeray llega con ", clvemp)
-                                            banderaEmpleadoCentroTrabajoTemp++
+                                        console.log(" no es primeray llega con ", clvemp)
+                                        banderaEmpleadoCentroTrabajoTemp++
 
-                                            var empleadocentrotrabajotem = '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
-                                                '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                            '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                '<td class="colorcalificacion' + califi+'"><label class="labelformu" ></label></td>' +
-                                                '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
-                                                '</tr>'
+                                        var empleadocentrotrabajotem = '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
+                                            '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
+                                            '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                            '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
+                                            '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
+                                            '</tr>'
 
-                                            $("#untemporizador" + padredeagregaremple + " .rengloncentrotrabajotempo #accordion" + parentaccordion + " #collapse" + padrecollapse + " .table tbody").append(empleadocentrotrabajotem).hide().show('fast');
+                                        $("#untemporizador" + padredeagregaremple + " .rengloncentrotrabajotempo #accordion" + parentaccordion + " #collapse" + padrecollapse + " .table tbody").append(empleadocentrotrabajotem).hide().show('fast');
 
 
                                         //}, 3000);
@@ -3651,7 +3651,7 @@ $("#agregarTemp").on('click', function () {
                                             '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                             '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
                                             '<td><label class="labelformu" > ' + puestoemp + '</label></td>' +
-                                            '<td class="colorcalificacion' + califi +'"><label class="labelformu" > </label></td>' +
+                                            '<td class="colorcalificacion' + califi + '"><label class="labelformu" > </label></td>' +
                                             '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                             '</tr>' +
                                             '</tbody>' +
@@ -3796,7 +3796,7 @@ $("#agregarTemp").on('click', function () {
                         var arrayfechainicial = new Array();
                         var arrayfechafinal = new Array();
 
-                        arrayclvempleado.length=0
+                        arrayclvempleado.length = 0
                         arrayidtem.length = 0
                         arrayfechainicial.length = 0
                         arrayfechafinal.length = 0
@@ -3858,7 +3858,7 @@ $("#agregarTemp").on('click', function () {
                                         arrayfechainicial.push(fecha_inicial);
                                         arrayfechafinal.push(fecha_final);
 
-                                        
+
 
 
                                     })
@@ -3889,7 +3889,7 @@ $("#agregarTemp").on('click', function () {
                                     arrayfechainicial.push(fecha_inicial);
                                     arrayfechafinal.push(fecha_final);
 
-                                    
+
 
 
                                 })
@@ -3910,8 +3910,8 @@ $("#agregarTemp").on('click', function () {
 
                         //fecha, fecha_inicial, fecha_final
                         console.log("clv a monitoeas  ", folio)
-                       // console.log("fecha ini padre  ", fecha_inicial)
-                       // console.log("fecha fin padre  ", fecha_final)
+                        // console.log("fecha ini padre  ", fecha_inicial)
+                        // console.log("fecha fin padre  ", fecha_final)
                         console.log("listaTodosEmpleados ", listaTodosEmpleados)
 
 
@@ -4018,7 +4018,7 @@ $("#agregarTemp").on('click', function () {
                     console.log("id de grupo empleado", idgrupo)
                     $('#modalagregarempleadogrupo').modal('hide');
 
-                    var folio_proyecto  = $("#select2proyecto").val()
+                    var folio_proyecto = $("#select2proyecto").val()
                     var datosss = {
                         "clv_agrupador_empleado": idgrupo,
                         "folio_proyecto": folio_proyecto
@@ -4046,13 +4046,13 @@ $("#agregarTemp").on('click', function () {
                                     if (cumplereq == 1) {
                                         if (verificarcantidadrequisito(clvpuesto, parentaccordion, padrecollapse) == 1) {
                                             console.log("se agregará")
-                                                fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
-                                                fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
-                                                fecha_final = cambiarformatofecha(fecha.substring(20, 30));
+                                            fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
+                                            fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
+                                            fecha_final = cambiarformatofecha(fecha.substring(20, 30));
                                             if ($("#untemporizador" + padredeagregaremple + " #uncentrotrabajotemporizador" + padreeuncentrotrabajotemporizador + " .renglonempleadocentrotrabajotempo").length > 0) {
                                                 console.log("mas de uno")
 
-                                                 //, fecha, fecha_inicial, fecha_final
+                                                //, fecha, fecha_inicial, fecha_final
                                                 if (verificarexisteempleadoTem(clvemp, padredeagregaremple, parentaccordion, padrecollapse, fecha, fecha_inicial, fecha_final) == 0) {
 
                                                     //console.log(" no es primera")
@@ -4060,8 +4060,8 @@ $("#agregarTemp").on('click', function () {
 
                                                     var empleadocentrotrabajotem = '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                                         '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                        '<td class="colorcalificacion' + califi +'"><label class="labelformu" ></label></td>' +
+                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                                        '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
                                                         '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                                         '</tr>'
 
@@ -4090,8 +4090,8 @@ $("#agregarTemp").on('click', function () {
                                                         '<tbody>' +
                                                         '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                                         '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                        '<td class="colorcalificacion' + califi +'"><label class="labelformu" ></label></td>' +
+                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                                        '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
                                                         '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                                         '</tr>' +
                                                         '</tbody>' +
@@ -4138,7 +4138,7 @@ $("#agregarTemp").on('click', function () {
                                                     popup: 'animated fadeOutUp faster'
                                                 }
                                             })
-                                        } 
+                                        }
                                         banderanoapto++
                                     }
 
@@ -4191,7 +4191,7 @@ $("#agregarTemp").on('click', function () {
                         limite = listaRequisitosCampania[vende].cantidad
                         console.log("limite ", limite)
                         //return 1;
-                        
+
                         //console.log("#uncentrotrabajotemporizador" + idcentrotra + " .unempleadocentrotrabajotemporizado td label")
                         contadorpuesto = 0;
                         $("#untemporizador" + padre + " .rengloncentrotrabajotempo #accordion" + parentaccordion + " #collapse" + padrecollapse + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado td label").each(function () {
@@ -4700,7 +4700,7 @@ $("#agregarTemp").on('click', function () {
 
                             $(".eliminarcentrotrabajoTemporalidad").on('click', function (e) {
                                 e.stopPropagation();
-                                $(this).parent().parent().hide("slow", function () { $(this).remove(); })	
+                                $(this).parent().parent().hide("slow", function () { $(this).remove(); })
                                 /*var padreacco = $(this).parent().parent().parent().attr("id").substring(9)
                                 var padretem = $(this).parent().parent().parent().parent().parent().parent().parent().attr("id").substring(14)
                                 $("#untemporizador" + padretem + " #accordion" + padreacco + " #uncentrotrabajotemporizador" + ideliminarcentrotrabajotemp).hide("slow", function () { $(this).remove(); })
@@ -4905,7 +4905,7 @@ $("#agregarTemp").on('click', function () {
                                 });
                                 //agregarEmpleadoCentroTrabajoTem3
                                 var idcentrotra = $(this).attr("id").substring(31);
-                               
+
 
                                 clvemp = ''
                                 nombreempleado = ''
@@ -4937,7 +4937,7 @@ $("#agregarTemp").on('click', function () {
                                 $('#municipiofiltro').empty();
 
                                 $('#generofiltro').append('<option value="">Todos</option> <option value = "1" > Masculino</option> <option value="3">Femenino</option>')
-                               // $('#calificacionfiltro').append('<option value="">Todos</option> <option value="1">Casado</option> <option value="2">Concubinato</option> <option value="3">Separado</option> <option value="4">Soltero</option>')
+                                // $('#calificacionfiltro').append('<option value="">Todos</option> <option value="1">Casado</option> <option value="2">Concubinato</option> <option value="3">Separado</option> <option value="4">Soltero</option>')
                                 $('#puestofiltro').append('<option value="">Todos</option> <option value = "1" > Promotor</option> <option value="2">Supervisor</option>')
 
                                 var filtrogenero = $("#generofiltro").val();
@@ -4971,7 +4971,7 @@ $("#agregarTemp").on('click', function () {
                                         { "data": "puesto", 'searchable': false },
                                         { "data": "estado", 'searchable': false },
                                         { "data": "municipio", 'searchable': false },
-                                        { "data": { clv_emp: "clv_emp", nombre: "nombre", puesto: "puesto", clv_puesto: "clv_puesto", cumplerequisitos: "cumplerequisitos", mensajeValidacion: "mensajeValidacion", calificacion_empleado: "calificacion_empleado"   } }
+                                        { "data": { clv_emp: "clv_emp", nombre: "nombre", puesto: "puesto", clv_puesto: "clv_puesto", cumplerequisitos: "cumplerequisitos", mensajeValidacion: "mensajeValidacion", calificacion_empleado: "calificacion_empleado" } }
 
                                     ],
                                     "columnDefs": [
@@ -4993,10 +4993,10 @@ $("#agregarTemp").on('click', function () {
                                                 } else if (data.cumplerequisitos == 0) {
                                                     return '<small class="mensajenovalidado">No cumple con requisitos</small> <br> <button type="button" class="btn btn-block  btn-sm btndetallenocumple" data-toggle="popover"  title="Detalle de validación" ' +
                                                         'data-placement="left" data-content="' + data.mensajeValidacion + '" > Ver detalles </button >'
-                                                            // return '<small class="mensajenovalidado">' + data.mensajeValidacion + '</small>'
+                                                    // return '<small class="mensajenovalidado">' + data.mensajeValidacion + '</small>'
                                                 }
 
-                                                
+
                                                 //return " <div class='btn-group grupoB'>" + botones4 + botones1 + botones2 + botones3 + botones5 + botones6 + " </div>";
                                             },
                                             "targets": 7
@@ -5043,7 +5043,7 @@ $("#agregarTemp").on('click', function () {
                                             $('[data-toggle="popover"]').popover()
                                         })
 
-                                    } 
+                                    }
 
                                 });
                                 // llenar la tabla fin
@@ -5153,9 +5153,9 @@ $("#agregarTemp").on('click', function () {
 
                                             if (verificarcantidadrequisito(clvpuesto, parentaccordion, padrecollapse) == 1) {
                                                 console.log("adelante")
-                                                    fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
-                                                    fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
-                                                    fecha_final = cambiarformatofecha(fecha.substring(20, 30));
+                                                fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
+                                                fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
+                                                fecha_final = cambiarformatofecha(fecha.substring(20, 30));
                                                 if ($("#untemporizador" + padredeagregaremple + " #uncentrotrabajotemporizador" + padreeuncentrotrabajotemporizador + " .renglonempleadocentrotrabajotempo").length > 0) {
 
                                                     //, fecha, fecha_inicial, fecha_final
@@ -5166,14 +5166,14 @@ $("#agregarTemp").on('click', function () {
 
                                                         var empleadocentrotrabajotem = '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                                             '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                                            '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                            '<td class="colorcalificacion' + califi +'"><label class="labelformu" ></label></td>' +
+                                                            '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                                            '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
                                                             '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                                             '</tr>'
 
                                                         $("#untemporizador" + padredeagregaremple + " .rengloncentrotrabajotempo #accordion" + parentaccordion + " #collapse" + padrecollapse + " .table tbody").append(empleadocentrotrabajotem).hide().show('fast');
 
-                                                    }else{
+                                                    } else {
                                                         Swal.fire({
                                                             title: 'El empleado ya existe en otro horario, el cual coincide con el actual',
                                                             showClass: {
@@ -5196,8 +5196,8 @@ $("#agregarTemp").on('click', function () {
                                                             '<tbody>' +
                                                             '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                                             '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                                            '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                            '<td class="colorcalificacion' + califi +'"><label class="labelformu" ></label></td>' + 
+                                                            '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                                            '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
                                                             '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                                             '</tr>' +
                                                             '</tbody>' +
@@ -5270,7 +5270,7 @@ $("#agregarTemp").on('click', function () {
                                     //console.log("bande ", vende)
                                     limite = listaRequisitosCampania[vende].cantidad
                                     //console.log("limite ", limite)
-                                    
+
                                     //console.log("#uncentrotrabajotemporizador" + idcentrotra + " .unempleadocentrotrabajotemporizado td label")
                                     contadorpuesto = 0;
                                     $("#untemporizador" + padre + " .rengloncentrotrabajotempo #accordion" + parentaccordion + " #collapse" + padrecollapse + " .renglonempleadocentrotrabajotempo .unempleadocentrotrabajotemporizado td label").each(function () {
@@ -5279,7 +5279,7 @@ $("#agregarTemp").on('click', function () {
                                         if ($(this).attr("clvpue") == folio) {
                                             contadorpuesto++
                                         }
-                                    }) 
+                                    })
 
                                     if (contadorpuesto < limite) {
                                         return 1;
@@ -5287,7 +5287,7 @@ $("#agregarTemp").on('click', function () {
                                         return 0;
                                     }
 
-                                   
+
 
                                 }
 
@@ -5577,9 +5577,9 @@ $("#agregarTemp").on('click', function () {
 
                                                     if (cumplereq == 1) {
                                                         if (verificarcantidadrequisito(clvpuesto, parentaccordion, padrecollapse) == 1) {
-                                                                fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
-                                                                fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
-                                                                fecha_final = cambiarformatofecha(fecha.substring(20, 30));
+                                                            fecha = $("#tempInputDiaFinalInicial" + padredeagregaremple).val()
+                                                            fecha_inicial = cambiarformatofecha(fecha.substring(0, 10));
+                                                            fecha_final = cambiarformatofecha(fecha.substring(20, 30));
                                                             if ($("#untemporizador" + padredeagregaremple + " #uncentrotrabajotemporizador" + padreeuncentrotrabajotemporizador + " .renglonempleadocentrotrabajotempo").length > 0) {
 
                                                                 //, fecha, fecha_inicial, fecha_final
@@ -5590,8 +5590,8 @@ $("#agregarTemp").on('click', function () {
 
                                                                     var empleadocentrotrabajotem = '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                                                         '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                                        '<td class="colorcalificacion' + califi +'"><label class="labelformu" ></label></td>' +
+                                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                                                        '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
                                                                         '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                                                         '</tr>'
 
@@ -5620,8 +5620,8 @@ $("#agregarTemp").on('click', function () {
                                                                         '<tbody>' +
                                                                         '<tr class="unempleadocentrotrabajotemporizado" id="unempleadocentrotrabajotemporizado' + banderaEmpleadoCentroTrabajoTemp + '">' +
                                                                         '<td><label class="labelformu labelemp" clvemp="' + clvemp + '" clvpue="' + clvpuesto + '">' + nombreempleado + '</label></td>' +
-                                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' + 
-                                                                        '<td class="colorcalificacion' + califi +'"><label class="labelformu" ></label></td>' +
+                                                                        '<td><label class="labelformu" >' + puestoemp + '</label></td>' +
+                                                                        '<td class="colorcalificacion' + califi + '"><label class="labelformu" ></label></td>' +
                                                                         '<td><button class="btn btn-sm btn-danger eliminarempleadocentrotrabajoTem" id="eliminarempleadocentrotrabajoTem' + banderaEmpleadoCentroTrabajoTemp + '"><i class="fa fa-times" aria-hidden="true"></i></button></td>' +
                                                                         '</tr>' +
                                                                         '</tbody>' +
@@ -6047,7 +6047,7 @@ $("#agregarTemp").on('click', function () {
                             }
 
                         }
-                        
+
                     }
 
                 }
@@ -6163,9 +6163,9 @@ $("#agregarTemp").on('click', function () {
                         for (i = 0; i < Agrupador.length; i++) {
                             nombreCentroT = Agrupador[i].descripcion
 
-                            var centrotrabajo = '<tr>'+
-                                ' <td> <label>' + nombreCentroT+'</label></td>'+
-                                   '</tr>'
+                            var centrotrabajo = '<tr>' +
+                                ' <td> <label>' + nombreCentroT + '</label></td>' +
+                                '</tr>'
 
                             $(".tablemodaldetallegrupocentrotrabajo tbody").append(centrotrabajo)//.hide().show('fast');
 
@@ -6857,7 +6857,7 @@ $("#agregaempleado").on('click', function () {
     $('#municipiofiltro').empty();
 
     $('#generofiltro').append('<option value="">Todos</option> <option value = "1" > Masculino</option> <option value="3">Femenino</option>')
-   // $('#calificacionfiltro').append('<option value="">Todos</option> <option value="1">Casado</option> <option value="2">Concubinato</option> <option value="3">Separado</option> <option value="4">Soltero</option>')
+    // $('#calificacionfiltro').append('<option value="">Todos</option> <option value="1">Casado</option> <option value="2">Concubinato</option> <option value="3">Separado</option> <option value="4">Soltero</option>')
     $('#puestofiltro').append('<option value="">Todos</option> <option value = "1" > Promotor</option> <option value="2">Supervisor</option>')
 
     var filtrogenero = $("#generofiltro").val();
@@ -6892,7 +6892,7 @@ $("#agregaempleado").on('click', function () {
             { "data": "puesto", 'searchable': false },
             { "data": "estado", 'searchable': false },
             { "data": "municipio", 'searchable': false },
-            { "data": { clv_emp: "clv_emp", nombre: "nombre", puesto: "puesto", clv_puesto: "clv_puesto", cumplerequisitos: "cumplerequisitos", mensajeValidacion: "mensajeValidacion", calificacion_empleado:"calificacion_empleado"   } }
+            { "data": { clv_emp: "clv_emp", nombre: "nombre", puesto: "puesto", clv_puesto: "clv_puesto", cumplerequisitos: "cumplerequisitos", mensajeValidacion: "mensajeValidacion", calificacion_empleado: "calificacion_empleado" } }
 
         ],
         "columnDefs": [
@@ -6911,7 +6911,7 @@ $("#agregaempleado").on('click', function () {
                     } else if (data.cumplerequisitos == 0) {
                         return '<small class="mensajenovalidado">No cumple con requisitos</small> <br> <button type="button" class="btn btn-block btn-sm btndetallenocumple" data-toggle="popover"  title="Detalle de validación" ' +
                             'data-placement="left" data-content="' + data.mensajeValidacion + '" > Ver detalles </button >'
-                                   // return '<small class="mensajenovalidado">' + data.mensajeValidacion + '</small>'
+                        // return '<small class="mensajenovalidado">' + data.mensajeValidacion + '</small>'
                     }
                     //return " <div class='btn-group grupoB'>" + botones4 + botones1 + botones2 + botones3 + botones5 + botones6 + " </div>";
 
@@ -6960,7 +6960,7 @@ $("#agregaempleado").on('click', function () {
                 $('[data-toggle="popover"]').popover()
             })
 
-        } 
+        }
 
     });
     // llenar la tabla fin
@@ -7716,7 +7716,7 @@ $("#agregaactividad").on('click', function () {
         clv_actividad = data.id
         console.log("clv_actividad ", clv_actividad)
         descripcion = data.text
-        console.log("descripcion ",descripcion)
+        console.log("descripcion ", descripcion)
         var empleado = '<tr class="unaactividad" id="unaactividad' + banderactividad + '">' +
             '<td><label class="labelformu" clv_actividad="' + clv_actividad + '">' + descripcion + '</label></td>' +
             '<td><button type="button" class="btn btn-verdescripcionmision btn-sm" data-toggle="popover"  title="Descripción de la Misión" ' +
@@ -7871,7 +7871,7 @@ $("#agregaactividad").on('click', function () {
 
             console.log("cantidad", $(".tableactividades .unaactividad").length)
             if ($(".tableactividades .unaactividad").length == 1) {
-               
+
                 $(this).parent().parent().parent().parent().parent().parent().parent().hide("slow", function () { $(this).remove(); })
             } else {
                 //$("#uncentrotrabajo"+id).hide("slow", function(){ $(this).remove(); })

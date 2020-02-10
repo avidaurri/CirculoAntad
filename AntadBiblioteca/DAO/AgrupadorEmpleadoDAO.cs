@@ -24,9 +24,15 @@ namespace AntadBiblioteca.DAO
             string folioPro = agru.folio_proyecto;
             //agrupador dominio
 
-            string sqldominio = "select *  from agrupador_empleado_cara where folio_dominio=@folio_dominio";
-            string sqlproyecto = "select *  from agrupador_empleado_cara where folio_proyecto=@folio_proyecto";
-            string sqlcli = "select *  from agrupador_empleado_cara where clv_cli=(select clv_cli from proyecto_cara where folio_proyecto=@folio_proyecto)";
+            string sqldominio = "select acc.clv_agrupador_empleado, acc.clv_cli, acc.descripcion, d.nombre as tipo " +
+                " from agrupador_empleado_cara  acc left join dominio d on d.folio_dominio = acc.folio_dominio " +
+                " where acc.folio_dominio = 200523";
+            string sqlproyecto = "select acc.clv_agrupador_empleado, acc.clv_cli, acc.descripcion, d.descripcion as tipo " +
+                " from agrupador_empleado_cara  acc left join proyecto_cara d on d.folio_proyecto = acc.folio_proyecto " +
+                " where acc.folio_proyecto = @folio_proyecto";
+            string sqlcli = "select acc.clv_agrupador_empleado, acc.clv_cli, acc.descripcion, d.nombre_comercial as tipo " +
+                " from agrupador_empleado_cara  acc left join cliente d on d.clv_cli = acc.clv_cli " +
+                " where acc.clv_cli = (select clv_cli from proyecto_cara where folio_proyecto = @folio_proyecto)";
 
             List<Parametro> parametros = new List<Parametro>();
 
@@ -35,11 +41,19 @@ namespace AntadBiblioteca.DAO
             paramFolioDominio.Valor = agru.folio_dominio;
             parametros.Add(paramFolioDominio);
 
+            if (folioPro != "")
+            {
 
-            Parametro paramFolioProyecto = new Parametro();
-            paramFolioProyecto.Nombre = "@folio_proyecto";
-            paramFolioProyecto.Valor = agru.folio_proyecto;
-            parametros.Add(paramFolioProyecto);
+                Parametro paramFolioProyecto = new Parametro();
+                paramFolioProyecto.Nombre = "@folio_proyecto";
+                paramFolioProyecto.Valor = agru.folio_proyecto;
+                parametros.Add(paramFolioProyecto);
+
+
+            }
+
+
+
 
             List<AgrupadorEmpleado> agrupadores = new List<AgrupadorEmpleado>();
 
@@ -53,7 +67,7 @@ namespace AntadBiblioteca.DAO
                     agrupador.clv_agrupador_empleado = Convert.ToInt32(reader["clv_agrupador_empleado"].ToString());
                     agrupador.clv_cli = reader["clv_cli"].ToString();
                     agrupador.descripcion = reader["descripcion"].ToString();
-                    agrupador.tipo = "Marca";
+                    agrupador.tipo = reader["tipo"].ToString();
                     agrupadores.Add(agrupador);
                 }
 
@@ -70,7 +84,7 @@ namespace AntadBiblioteca.DAO
                     agrupador.clv_agrupador_empleado = Convert.ToInt32(readerdominio["clv_agrupador_empleado"].ToString());
                     agrupador.clv_cli = readerdominio["clv_cli"].ToString();
                     agrupador.descripcion = readerdominio["descripcion"].ToString();
-                    agrupador.tipo = "Marca";
+                    agrupador.tipo = readerdominio["tipo"].ToString();
                     agrupadores.Add(agrupador);
                 }
 
@@ -83,7 +97,7 @@ namespace AntadBiblioteca.DAO
                     agrupador.clv_agrupador_empleado = Convert.ToInt32(readerproyecto["clv_agrupador_empleado"].ToString());
                     agrupador.clv_cli = readerproyecto["clv_cli"].ToString();
                     agrupador.descripcion = readerproyecto["descripcion"].ToString();
-                    agrupador.tipo = "Campaña";
+                    agrupador.tipo = readerproyecto["tipo"].ToString();
                     agrupadores.Add(agrupador);
                 }
 
@@ -96,7 +110,7 @@ namespace AntadBiblioteca.DAO
                     agrupador.clv_agrupador_empleado = Convert.ToInt32(readerCli["clv_agrupador_empleado"].ToString());
                     agrupador.clv_cli = readerCli["clv_cli"].ToString();
                     agrupador.descripcion = readerCli["descripcion"].ToString();
-                    agrupador.tipo = "Cliente";
+                    agrupador.tipo = readerCli["tipo"].ToString();
                     agrupadores.Add(agrupador);
                 }
 

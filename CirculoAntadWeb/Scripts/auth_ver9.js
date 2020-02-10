@@ -77,7 +77,7 @@ $(document).ready(function () {
                                         $("#loginentrar").val('') 
                                         $("#inputpassword").val('') 
                                         setTimeout(function () {
-                                            window.location.href = "/Home/MisPlanes";
+                                            window.location.href = "/Home/Tablero";
                                         }, 1000);
                                         
                                     }

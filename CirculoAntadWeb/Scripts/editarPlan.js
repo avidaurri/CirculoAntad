@@ -1,0 +1,1 @@
+﻿console.log("traer esta pan : ", $("#folioplanparaeditar").val())

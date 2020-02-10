@@ -4,150 +4,162 @@
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
 
-<div class="container-fluid " id="marco">
-    <h3 class="titulomarco">Mis Planes</h3>
+<div class="container " id="marcoo">
 
-    <div class="row">
-        <div class="col-12">
-            <table id="tablaplanes" class="table table-bordered table-striped">
+    <div class="row " style="margin-bottom:20px;">
+
+        <div class="col-md-5">
+            <!-- <a href="NuevoPlan" type="submit" class="btn btn-block btn-sm" style="background: purple; color:white;">
+            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> <span>Abrir Proyecto</span>
+                 </a> -->
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-4">
+        </div>
+        <!-- <div class="col-md-3">
+        </div>-->
+    </div>
+    <div class="row contenettamble">
+        <div class="col-md-5">
+            <h3 class="titulomarco" style="color:dimgray;">Mis planes de trabajo</h3>
+            <!-- <a href="NuevoPlan" type="submit" class="btn btn-block btn-sm" style="background: purple; color:white;">
+            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> <span>Abrir Proyecto</span>
+                 </a> -->
+
+        </div>
+        <div class="col-md-3" style="padding-top:30px;">
+            <button class="btn btn-block btn-success" data-toggle="modal" data-target="#myModalpregunta"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Nuevo Plan de trabajo</span></button>
+        </div>
+        <div class="col-md-12 contenettamble">
+
+            <table class="table tablamisplanes" id="tbprojectmanager" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Folio de proyecto</th>
-                        <th>Folio de trabajo</th>
-                        <th>Descripción</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Fin</th>
-                        <th>Hora Inicio</th>
-                        <th>Hora Fin</th>
-                        <th>Acciones</th>
+                        <!--<th class="tipoencabezado">Proyecto</th>
+                        <th class="tipoencabezado" style="width:100px;">Folio de trabajo</th>
+                        <th class="tipoencabezado">Nombre del plan</th>
+                        <th class="tipoencabezado">Fecha Inicio</th>
+                        <th class="tipoencabezado">Fecha Fin</th>
+                        <th class="tipoencabezado">Dominio</th>
+                        <th class="tipoencabezado">Fecha de Captura</th>
+                        <th class="tipoencabezado" style="width:100px;">Folio de dominio</th>
+                        <th class="tipoencabezado" style="width:100px;">acciones</th> -->
+
+                        <th class="tipoencabezado" style="width:100px;">Folio</th>
+                        <th class="tipoencabezado">Proyecto</th>
+                        <th class="tipoencabezado">Descripción</th>
+                        <th class="tipoencabezado">Fecha Inicio</th>
+                        <th class="tipoencabezado">Fecha Fin</th>
+                        <th class="tipoencabezado">Agencia</th>
+                        <th class="tipoencabezado">Estado</th>
+                        <th class="tipoencabezado" style="width:100px;">acciones</th>
+
+
                     </tr>
                 </thead>
-                <tbody>
+                <!-- <tbody>
                     <tr>
-                        <td>Trident</td>
-                        <td>
-                            Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
                     </tr>
                     <tr>
-                        <td>Trident</td>
-                        <td>
-                            Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td>5</td>
-                        <td>C</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
                     </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>
-                            Internet
-                            Explorer 5.5
-                        </td>
-                        <td>Win 95+</td>
-                        <td>5.5</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>
-                            Internet
-                            Explorer 6
-                        </td>
-                        <td>Win 98+</td>
-                        <td>6</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td>7</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td>6</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 1.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>1.7</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 1.5</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>1.8</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Gecko</td>
-                        <td>Firefox 2.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>1.8</td>
-                        <td>A</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                    </tr>
-
-
-                </tbody>
-
+                </tbody>-->
             </table>
+
         </div>
     </div>
 
-    <div class="row ">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
-
-            <a href="NuevoPlan" type="submit" class="btn btn-block" style="background: purple; color:white;">
-                <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> <span>Crear plan</span>
-
-            </a>
-
-        </div>
-        <div class="col-md-4">
-        </div>
-    </div>
 
 
 </div>
+<div id="myModalpregunta" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">¿Qué tipo de plan de trabajo desea?</h4>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-success btn-block" id="irespecifico">Plan de trabajo especifico</button>
+                <br />
+                <button class="btn btn-success btn-block" id="irgeneral">Plan de trabajo General</button>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/misPlanes.js"></script>
+
+@section scripts{
+
+    <script>
+
+
+
+
+        setTimeout(function () {
+            $("#tbprojectmanager .editarPlanTrabajo").on("click", function () {
+                //$(".tablamisplanes tbody tr label .chkemple").each(function () {
+                plan = $(this).attr("foliotrabajo")
+                console.log("folioplannn ", plan)
+
+                var baseUrl = '@Url.Action("EditarPlan","Home")';
+                var url = baseUrl + "/" + plan;
+                console.log("url ", url)
+               // window.location = url
+                   window.location = "EditarPlan?plan="+plan;
+              //  window.location.replace(url)
+
+
+
+            /*        var datosssa = {
+                        "folio_trabajo": plan
+                    };
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/EditarPlan", //si
+                data: datosssa,
+                success: function (Agrupador) {
+
+
+                }
+
+            })*/
+
+
+
+
+            })
+        }, 5000);
+
+
+    </script>
+}
+
+
 

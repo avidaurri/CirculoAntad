@@ -26,7 +26,7 @@
     --color_fondo_pantalla_modal: rgb(0, 120, 240); /* */
     --color_fondo_selectores: rgb(255, 255, 255);
     --color_letra_selectores: rgb(105,105,105);
-    --color_letra_etiquetas: rgb(255, 255, 255);
+    --color_letra_etiquetas: dimgrey;
     --color_fondo_modal: rgba(52, 52, 52,.6); /* */
     --color_letra_modal_producto: rgb(187, 210, 253);
     --color_fondo_botones: linear-gradient(to right, rgba(255,93,177,1) 0%, rgba(96,3,237,1) 100%);
@@ -51,8 +51,14 @@
 }
 
 #marco .titulomarco {
-    color: white;
+    color: dimgrey !important;
     text-align: center;
+}
+
+#marco {
+    background: white;
+    padding:20px;
+    border-radius:5px;
 }
 
 .imagelat {
@@ -95,8 +101,9 @@
 --color_fondo_menu_hover*/
 
 .infousuariotop {
-    cursor: default;
+    cursor: auto;
 }
+
 /*fondo del menu notificaciones (campanita)*/
 li.notifications-menu {
     margin-right: 20px;
@@ -225,10 +232,14 @@ a.sidebar-toggle {
 .skin-simplet .user-panel > .info p {
     color: white;
 }
-/* color_letra_panel_superior*/
-.skin-simplet .user-panel > .info,
-.skin-simplet .user-panel > .info > a {
+
+.skin-simplet .user-panel > .info {
+    color: white;
 }
+    /* color_letra_panel_superior*/
+    .skin-simplet .user-panel > .info,
+    .skin-simplet .user-panel > .info > a {
+    }
 /* color_fondo_menu_usuario*/
 .skin-simplet .user-panel {
     /* background-color: var(--color_fondo_menu_usuario);*/
@@ -890,6 +901,7 @@ FORMATO A DATATALE
 
 div.dataTables_wrapper div.dataTables_info {
     color: var(--color_letra_etiquetas);
+    font-size:10px;
 }
 
 
@@ -902,7 +914,7 @@ cinputs y selects de atatables
 
 .dataTables_length select, .dataTables_filter input {
     background: var(--color_fondo_selectores);
-    border: none;
+    border: 1px solid rgb(23,162,184);
     border-radius: 4px;
     color: var(--color_letra_selectores);
 }
@@ -2048,8 +2060,9 @@ box-shadow: 1px 1px 10px 8px rgba(0,0,0,0.3);*/
     border: none;
     font-size: 1em;
     display: inline-block;
-    /*opacity: .5;*/
-    color: steelblue;
+    /*opacity: .5;
+  color:steelblue;*/
+    color: dimgrey;
 }
 
 .subcabecera {
@@ -2219,7 +2232,12 @@ li > .step.active {
     top: 15px;
     right: 0;
     padding: 3px !important;
+    z-index: 1000;
 }
+
+/*.eliminarTem {
+       padding:4px !important;
+}*/
 
 .carousel-control {
     padding: 0 !important;
@@ -2227,26 +2245,40 @@ li > .step.active {
 
 
 .irfre .fa-angle-right, .iratras .fa-angle-left {
-    font-size: 1.5em;
+    font-size: 2.5em;
+    margin-left: 7px;
+    margin-right: 7px;
+    color: white;
 }
 
 .irfre {
+    /*background: transparent;*/
     border: none;
     position: absolute;
     top: 5px;
     right: 10px;
     margin-top: -45px;
     display: none;
+    padding: 0;
 }
 
 .iratras {
+    /*background: transparent;*/
     border: none;
     position: absolute;
     top: 5px;
     right: 50px;
     margin-top: -45px;
     display: none;
+    padding: 0;
 }
+/*
+.irfre:hover{
+    background: transparent;
+} 
+.iratras:hover{
+    background: transparent;
+}*/
 
 #carousel-example-generic {
     position: inherit;
@@ -2280,19 +2312,35 @@ a.left, a.right {
             background: blueviolet;
         }
 
-.btn-outline-primary {
+/*.btn-outline-primary{
     background: transparent;
     border-radius: 5px;
     border: 1px solid #0275d8;
-    color: #0275d8;
+    color:#0275d8;
+    transition: .6s all;
+    padding: 2px 5px 2px 5px ;
+}
+
+.btn-outline-primary:hover{
+       background: #0275d8;
+    border-radius: 5px;
+    border: 1px solid #0275d8;
+    color:white;
+    transition: .6s all; 
+}*/
+.btn-outline-primary {
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid dimgrey;
+    color: dimgrey;
     transition: .6s all;
     padding: 2px 5px 2px 5px;
 }
 
     .btn-outline-primary:hover {
-        background: #0275d8;
+        background: dimgrey;
         border-radius: 5px;
-        border: 1px solid #0275d8;
+        border: 1px solid dimgrey;
         color: white;
         transition: .6s all;
     }
@@ -2330,19 +2378,35 @@ a.left, a.right {
     right:15px;*/
 }
 
-.btn-outline-warning {
+/*.btn-outline-warning{
     background: transparent;
     border-radius: 5px;
     border: 1px solid #f0ad4e;
-    color: #f0ad4e;
+    color:#f0ad4e;
+    transition: .6s all;
+     padding: 2px 5px 2px 5px ;
+}
+
+.btn-outline-warning:hover{
+       background: #f0ad4e;
+    border-radius: 5px;
+    border: 1px solid #f0ad4e;
+    color:white;
+    transition: .6s all; 
+}*/
+.btn-outline-warning {
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
     transition: .6s all;
     padding: 2px 5px 2px 5px;
 }
 
     .btn-outline-warning:hover {
-        background: #f0ad4e;
+        background: dodgerblue;
         border-radius: 5px;
-        border: 1px solid #f0ad4e;
+        border: 1px solid dodgerblue;
         color: white;
         transition: .6s all;
     }
@@ -2366,7 +2430,7 @@ a.left, a.right {
 }
 
 .eliminarempleadocentrotrabajoTem {
-    padding: 0;
+    padding: 5px;
     background: linear-gradient(90deg, rgba(195,34,107,1) 0%, rgba(253,45,45,1) 100%) !important;
 }
 
@@ -2397,12 +2461,14 @@ a.left, a.right {
 }
 
 .gegege {
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     padding-bottom: 20px;
 }
 
 .tabcentrotrabajo {
 }
+
+
 
 
 .renglonCentroTrabajo h5.tituloren {
@@ -2431,7 +2497,7 @@ a.left, a.right {
 
 .btn-danger {
     background: linear-gradient(90deg, rgba(195,34,107,1) 0%, rgba(253,45,45,1) 100%) !important;
-    padding: 0 3px 0 3px !important;
+    /* padding: 0 3px 0 3px !important;*/
 }
 
 .eliminarcentrotrabajo {
@@ -2440,14 +2506,13 @@ a.left, a.right {
 
 
 .tableresumen tbody tr td {
-    border-bottom: 1px solid powderblue;
+    border-bottom: 1px dotted silver;
     padding-top: 0;
     padding-bottom: 0;
 }
 
-.eliminarTem {
-    padding: 4px !important;
-}
+
+
 
 .tableespeci tbody tr td {
     border-bottom: 1px solid thistle;
@@ -2475,4 +2540,327 @@ a.left, a.right {
 
 .modalwebantad .modal-title {
     color: dimgray;
+}
+
+
+.tableagrupacioncentrotrabajotem thead {
+    background: linear-gradient(90deg, rgba(173,168,168,1) 0%, rgba(79,79,79,1) 100%);
+}
+
+    .tableagrupacioncentrotrabajotem thead tr {
+        border-radius: 5px !important;
+    }
+
+.tableagrupacioncentrotrabajotem tr td {
+    border-bottom: 1px solid lavender;
+    padding: 2px !important;
+}
+
+.tableagrupacioncentrotrabajotem tr {
+    padding: 2px;
+}
+
+    .tableagrupacioncentrotrabajotem tr td label {
+        color: dimgray;
+    }
+
+.tableagrupacioncentrotrabajotem thead tr th label {
+    text-align: center;
+}
+
+.tableagrupacioncentrotrabajotem tbody tr th {
+    text-align: center;
+}
+
+.mensajevalidacionsmall {
+    color: lightcoral;
+}
+
+.alertalateral {
+    display: none;
+    border: 1px solid lightcoral;
+    color: lightcoral;
+    text-align: center;
+    font-size: 12px;
+}
+
+.contenaviso {
+    min-height: 70px;
+}
+
+/*
+ul.sidebar-menu{
+    position: inherit;
+}
+li.salirmenu{
+    position: absolute;
+    top: 10;
+}*/
+
+.titulorent {
+    color: gray;
+}
+
+.titulorenta {
+    text-align: center;
+    color: gray;
+}
+
+.botonagregar {
+    background: gray;
+    border: gray;
+    transition: .6s all;
+}
+
+    .botonagregar:hover {
+        background: dimgray;
+        border: gray;
+        transition: .6s all;
+    }
+
+.btn-verdescripcionmision {
+    background: transparent;
+    border: 1px solid dimgrey;
+}
+
+.tableavisaryvrear thead tr th label {
+    color: white !important;
+}
+
+.tableavisaryvrear thead tr th {
+    padding: 3px 0 0 3px !important;
+}
+
+.tableavisaryvrear tbody tr td label {
+    font-size: 8px;
+}
+
+.tableavisaryvrear tbody tr td {
+    padding: 3px 0 0 3px !important;
+}
+
+.tableavisaryvrear {
+    height: inherit;
+    overflow-y: scroll;
+}
+
+.tableespecifi thead tr th label {
+    color: white !important;
+}
+
+.tableespecifi thead tr th {
+    padding: 3px 0 0 3px !important;
+}
+
+.tableespecifi tbody tr td label {
+    font-size: 8px;
+}
+
+.tableespecifi tbody tr td {
+    padding: 3px 0 0 3px !important;
+}
+
+.tableespecifi {
+    height: inherit;
+    overflow-y: scroll;
+}
+
+
+
+
+.my-custom-scrollbar {
+    position: relative;
+    /*height: 200px;*/
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.tablamisplanes{
+    background:white;
+}
+
+
+
+#tbprojectmanager thead tr th {
+    padding: 3px 0 0 3px !important;
+    font-size: 10px !important;
+   /* background: black !important;*/
+    color: white !important;
+}
+
+#tbprojectmanager tbody tr td {
+    font-size: 10px;
+   /* border-bottom: 1px dotted gray;*/
+}
+
+.tipoencabezado{
+    font-size11px;
+}
+/*
+#tbprojectmanager thead tr {
+    background: black !important;
+}*/
+
+
+.contenettamble{
+    padding:15px;
+    background:white;
+    border-radius:6px;
+}
+
+.btn-excelemp, .btn-excelcen {
+    padding: 2px 5px 2px 5px;
+}
+
+
+/*misempletable*/
+
+/*
+#misempletable thead tr th {
+    padding: 3px 0 0 3px !important;
+    font-size: 10px !important;
+    color: white !important;
+}*/
+/*
+#misempletable tbody tr td {
+    font-size: 8px;
+    border-bottom: 1px dotted gray;
+}*/
+
+.labeldatata{
+    color:dimgray;
+    font-weight:100;
+}
+
+
+
+.verdetal {
+    color: royalblue;
+    text-decoration: none;
+    text-decoration: underline;
+    transition: .6s all;
+}
+
+    .verdetal:hover {
+        color: royalblue;
+        text-decoration: underline;
+        transition: .6s all;
+    }
+
+.tableavisaryvrearuno tr {
+    margin-top: 5px !important;
+    /*background: red !important;*/
+    border: 1px solid grey !important;
+}
+
+.tableavisaryvrearuno tr th {
+
+    font-size:10px !important;
+}
+
+
+
+.tableresumenempleado tbody tr td {
+    border-bottom: 1px dotted silver;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.labelresumenempleado {
+    font-size: 10px;
+    color: gray;
+}
+
+
+.marcaseleccionadaresumenempleado {
+    font-size: 10px;
+    color: gray;
+}
+
+.tableresumenempleado thead {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+    .tableresumenempleado thead tr {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+        .tableresumenempleado thead tr th {
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+            .tableresumenempleado thead tr th label {
+                color: black;
+                font-size: 11px;
+            }
+
+
+.mensajenovalidado{
+    font-size:10px;
+    color:darkred;
+}
+
+.btndetallenocumple{
+    padding:2px;
+    border:1px solid grey;
+}
+
+
+
+
+.tableresumenempleadorequisitos tbody tr td {
+    border-bottom: 1px dotted silver;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+
+.tableresumenempleadorequisitos thead {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+    .tableresumenempleadorequisitos thead tr {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+        .tableresumenempleadorequisitos thead tr th {
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+            .tableresumenempleadorequisitos thead tr th label {
+                color: black;
+                font-size: 11px;
+            }
+
+/*
+.colorcalificacion{
+    background:blue;
+}*/
+
+.colorcalificacionrojo {
+    background: red;
+}
+.colorcalificacionamarillo {
+    background: yellow;
+}
+.colorcalificacionverde {
+    background: green;
+}
+/*
+#modaldetallegrupocentrotrabajo{
+    z-index:80000;
+}*/
+
+#modaldetallegrupoempleado, #modaldetallegrupocentrotrabajo {
+    z-index: 800000;
 }

@@ -4,10 +4,7 @@ using System.Text;
 
 namespace ModelsLibraryAntad.Models
 {
-    public class Actividad
+    class PlanTrabajoEditar
     {
-        public int clv_actividad { get; set; }
-        public string descripcion { get; set; }
-
     }
 }

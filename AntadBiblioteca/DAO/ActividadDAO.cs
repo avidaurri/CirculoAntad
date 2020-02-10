@@ -18,7 +18,7 @@ namespace AntadBiblioteca.DAO
             conexion = new ConexionDB(cadena);
         }
 
-        public List<Actividad> ConsultarActividades(UserSessionWeb login)
+        public List<ActividadWeb> ConsultarActividades(UserSessionWeb login)
         {
             string sql = "SELECT * FROM actividad_plan_cara";
 
@@ -32,11 +32,11 @@ namespace AntadBiblioteca.DAO
 
             SqlDataReader reader = conexion.Consultar(sql, parametros);
 
-            List<Actividad> actividades = new List<Actividad>();
+            List<ActividadWeb> actividades = new List<ActividadWeb>();
 
             while (reader.Read())
             {
-                Actividad actividad = new Actividad();
+                ActividadWeb actividad = new ActividadWeb();
                 actividad.clv_actividad = Convert.ToInt32(reader["clv_actividad"].ToString());
                 actividad.descripcion = reader["descripcion"].ToString();
                 actividades.Add(actividad);
@@ -44,5 +44,36 @@ namespace AntadBiblioteca.DAO
             conexion.Cerrar();
             return actividades;
         }
+
+        
+
+        public List<ActividadWeb> ObtenerActividadproyecto(ActividadWeb actividad)
+        {
+            string sql = "select * from proyecto_mecanica where folio_proyecto=@folio_proyecto";
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro paramAFol= new Parametro();
+            paramAFol.Nombre = "@folio_proyecto";
+            paramAFol.Valor = actividad.folio_proyecto.ToString();
+            parametros.Add(paramAFol);
+
+
+            SqlDataReader reader = conexion.Consultar(sql, parametros);
+
+            List<ActividadWeb> actividades = new List<ActividadWeb>();
+
+            while (reader.Read())
+            {
+                ActividadWeb actividaddd = new ActividadWeb();
+                actividaddd.clv_actividad = Convert.ToInt32(reader["clv_actividad"].ToString());
+                actividaddd.descripcion = reader["descripcion"].ToString();
+                actividades.Add(actividaddd);
+            }
+            conexion.Cerrar();
+            return actividades;
+        }
+
+
     }
 }

@@ -2276,10 +2276,13 @@ th {
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
-.table > thead > tr > th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
-}
+    .table > thead > tr > th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+        background: #1F1C1C;
+        color: lightgrey;
+        font-size: 11px;
+    }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
 .table > thead:first-child > tr:first-child > th,

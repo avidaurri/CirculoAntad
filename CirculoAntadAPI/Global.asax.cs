@@ -24,6 +24,7 @@ namespace CirculoAntadAPI
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             //Agregamos el formateador para JSON
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("json", "true", "application/json"));
+        
         }
     }
 }

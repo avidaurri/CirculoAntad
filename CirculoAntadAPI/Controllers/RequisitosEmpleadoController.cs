@@ -10,34 +10,34 @@ using System.Web.Http;
 
 namespace CirculoAntadAPI.Controllers
 {
-    public class ActividadController : ApiController
+    public class RequisitosEmpleadoController : ApiController
     {
         public string cadenaConexion = ConfigurationManager.ConnectionStrings["ConexionAntadNew"].ConnectionString;
-        // GET: api/Actividad
+        // GET: api/RequisitosEmpleado
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Actividad/5
+        // GET: api/RequisitosEmpleado/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Actividad
-        public List<ActividadWeb> Post([FromBody]UserSessionWeb login)
+        // POST: api/RequisitosEmpleado
+        public List<RequisitoEmpleado> Post([FromBody]ActividadWeb actividad)
         {
-            ActividadService servicio = new ActividadService(cadenaConexion);
-            return servicio.ConsultarActividades(login);
+            RequisitoEmpleadoService servicio = new RequisitoEmpleadoService(cadenaConexion);
+            return servicio.ObtenerRequisitosEmpleado(actividad);
         }
 
-        // PUT: api/Actividad/5
+        // PUT: api/RequisitosEmpleado/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Actividad/5
+        // DELETE: api/RequisitosEmpleado/5
         public void Delete(int id)
         {
         }

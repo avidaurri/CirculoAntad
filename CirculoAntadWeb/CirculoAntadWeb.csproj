@@ -1934,6 +1934,7 @@
     <Content Include="Contenido\bower_components\datatables.net\Readme.md" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\editarPlan.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -1943,8 +1944,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\misPlanes.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\nuevoPlan.js" />
+    <Content Include="Scripts\nuevoPlanG.js" />
+    <Content Include="Scripts\nuevoPlanTabla.js" />
     <Content Include="Scripts\plantilla.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1965,6 +1969,9 @@
     <Content Include="Views\Home\MisTickets.cshtml" />
     <Content Include="Views\Home\MisPlanes.cshtml" />
     <Content Include="Views\Home\NuevoPlan.cshtml" />
+    <Content Include="Views\Home\Tablero.cshtml" />
+    <Content Include="Views\Home\NuevoPlanG.cshtml" />
+    <Content Include="Views\Home\EditarPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

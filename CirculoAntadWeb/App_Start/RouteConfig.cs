@@ -18,6 +18,20 @@ namespace CirculoAntadWeb
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "EditarPlan",
+                url: "{controller}/{action}/{plan}",
+                defaults: new { controller = "Home", action = "EditarPlan", plan = "hola" }
+            );
+
+
+            /*routes.MapRoute(
+                name: "EditarPlan",
+                url: "EditarPlan/{*plan}",
+                defaults: new { controller = "Home", action = "EditarPlan"}
+            );*/
+
         }
     }
 }

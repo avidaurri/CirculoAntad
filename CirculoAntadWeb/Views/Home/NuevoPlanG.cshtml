@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "NuevoPlan";
+    ViewBag.Title = "NuevoPlanG";
     Layout = "~/Views/Shared/_MasterPage.cshtml";
 }
 
@@ -11,7 +11,7 @@
     <div class="row mx-4 pt-5 ">
         <!--conten -->
         <div id="regForm" class="col-md-9 col-sm-9">
-            <h4>Configuración del plan de trabajo especifico</h4>
+            <h4>Configuración del plan de trabajo general</h4>
             <div style="text-align:center;margin-top:40px;">
                 <ul class="nav nav-tabs">
                     <!-- onclick="link(0); href="#DatosBasicos""  -->
@@ -99,7 +99,7 @@
             <div class="tab tabtemporalidades" nombreTab="Temporalidades">
                 <!-- =========== TEMPORALIDADES ====== -->
 
-                <button class="btn btn-info btn-sm agregaicon botonagregar" id="agregarTemp">Agregar Temporalidad</button>
+
 
                 <div class="container contNewPl">
                     <div class="row renglontem">
@@ -108,6 +108,88 @@
                         </div>
                         <div class="col-md-7 elcarou">
                             <div class="box-body">
+                                <div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+
+                                    <ol class="carousel-indicators">
+
+
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+
+                                    </ol>
+                                    <div class="carousel-inner">
+
+                                        <div class="item untemporizador active" id="untemporizador1">
+
+
+                                            <div class="container-fluid contenedorprincipla">
+
+                                                <div class="row">
+
+                                                    <div class="col-md-5">
+
+                                                        <div class="form-group">
+
+                                                            <label for="tempInputDesc1">Nombre:</label>
+                                                            <input type="text" class="form-control tempInputDescc" id="tempInputDesc1">
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-7">
+
+                                                        <div class="form-group">
+
+                                                            <label>Día inicial y final:</label>
+                                                            <div class="input-group">
+
+                                                                <div class="input-group-addon">
+
+                                                                    <i class="fa fa-clock-o"></i>
+
+                                                                </div>
+                                                                <input type="text" class="form-control pull-right reservationtime" id="tempInputDiaFinalInicial1">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-12">
+
+                                                        <label>Días :</label>
+                                                        <label class="checkbox-inline chklunes1 "><input type="checkbox" value="1">Lunes</label>
+                                                        <label class="checkbox-inline chkmartes1"><input type="checkbox" value="1">Martes</label>
+                                                        <label class="checkbox-inline chkmiercoles1"><input type="checkbox" value="1">Miercoles</label>
+                                                        <label class="checkbox-inline chkjueves1"><input type="checkbox" value="1">Jueves</label>
+                                                        <label class="checkbox-inline chkviernes1"><input type="checkbox" value="1">Viernes</label>
+                                                        <label class="checkbox-inline chksabado1"><input type="checkbox" value="1">Sabado</label>
+                                                        <label class="checkbox-inline chkdomingo1"><input type="checkbox" value="1">Domingo</label>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+
+                                        <span class="fa fa-angle-left"></span>
+
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+
+                                        <span class="fa fa-angle-right"></span>
+
+                                    </a>
+                                    <button class="btn btn-info iratras btn-sm"> <i class="fa fa-angle-left"></i></button>
+                                    <button class="btn btn-info irfre btn-sm"> <i class="fa fa-angle-right"></i></button>
+
+                                </div>
+
                                 <!--<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -418,10 +500,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td ><label class="labelresumenempleado">Marca :</label></td>
-                        <td><small class="labelg labelresumenempleado"></small></td>
-                    </tr>-->
+                    <!--<tr>
+                <td><label class="labelresumenempleado">Marca :</label></td>
+                <td><small class="labelg labelresumenempleado"></small></td>
+            </tr>-->
 
                 </tbody>
             </table>
@@ -436,9 +518,9 @@
                 </thead>
                 <tbody>
                     <!-- <tr>
-                        <td ><label class="labelresumenempleado">Marca :</label></td>
-                        <td><small class="labelg labelresumenempleado"></small></td>
-                    </tr>-->
+                <td ><label class="labelresumenempleado">Marca :</label></td>
+                <td><small class="labelg labelresumenempleado"></small></td>
+            </tr>-->
 
                 </tbody>
             </table>
@@ -452,10 +534,10 @@
                 <div class="alert  alertalateral" role="alert">  </div>
             </div>
             <!-- <button type="button" class="btn btn-primary" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Now hover out.">
-                Hover over me
-            </button>-->
+        Hover over me
+    </button>-->
             <!--<button class="btn btn-success mandarDatos">fgfgf</button>
-            <button class="btn btn-success " id="mostrarmodalcentrostrabajo">centros</button>-->
+    <button class="btn btn-success " id="mostrarmodalcentrostrabajo">centros</button>-->
         </div>
     </div>
     <div class="row gegege">
@@ -505,7 +587,7 @@
         reserved.
 </footer>-->
 <!-- The modal -->
-<div class="modal fade modalwebantad" id="modalagregarcentrotrabajo"  role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -555,7 +637,7 @@
 </div>
 
 
-<div class="modal fade modalwebantad" id="modalagregarcentrotrabajogrupo"  role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajogrupo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -612,91 +694,8 @@
 </div>
 
 
-
-<div class="modal fade modalwebantad" id="modaldetallegrupocentrotrabajo" role="dialog" >
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalLabel">Detalle del Grupo : <small class="nombrecentrotra"></small> </h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table tablemodaldetallegrupocentrotrabajo">
-                                <thead>
-                                    <tr>
-                                        <th><label>Descripción</label> </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!--<tr>
-                                        <td><label>Ruta Frecuente</label></td>
-                                    </tr>-->
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group btn-group-justified">
-                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                    <!--<a href="#" class="btn btn-info " id="agregarcentrosdetrabajomodal">Agregar</a>-->
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade modalwebantad" id="modaldetallegrupoempleado" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalLabel">Detalle del Grupo : <small class="nombreempleadogru"></small> </h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table tablemodaldetallegrupoempleado">
-                                <thead>
-                                    <tr>
-                                        <th class="tipoencabezado" style="width:75px;">No de empleado</th>
-                                        <th class="tipoencabezado">Nombre</th>
-                                        <th class="tipoencabezado">Genero</th>
-                                        <th class="tipoencabezado" style="width:45px;">Calificación</th>
-                                        <th class="tipoencabezado">Puesto</th>
-                                        <th class="tipoencabezado">Estado</th>
-                                        <th class="tipoencabezado">Municipio</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group btn-group-justified">
-                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div> 
-
-
 <!-- The modal -->
-<div class="modal fade modalwebantad" id="modalagregarcentrotrabajosolo" role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajosolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -743,7 +742,7 @@
     </div>
 </div>
 
-<div class="modal fade modalwebantad" id="modalagregarcentrotrabajogruposolo" role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarcentrotrabajogruposolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -839,7 +838,7 @@
     </div>
 </div>-->
 
-<div class="modal fade modalwebantad" id="modalagregarempleado" role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarempleado" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -911,7 +910,7 @@
                                         <th class="tipoencabezado" style="width:75px;">No de empleado</th>
                                         <th class="tipoencabezado">Nombre</th>
                                         <th class="tipoencabezado">Genero</th>
-                                        <th class="tipoencabezado" style="width:45px;">Calificación</th>
+                                        <th class="tipoencabezado" style="width:40px;">Calificación</th>
                                         <th class="tipoencabezado">Puesto</th>
                                         <th class="tipoencabezado">Estado</th>
                                         <th class="tipoencabezado">Municipio</th>
@@ -936,7 +935,7 @@
 </div>
 
 
-<div class="modal fade modalwebantad" id="modalagregarempleadogrupo"  role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarempleadogrupo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -988,7 +987,7 @@
     </div>
 </div>
 
-<div class="modal fade modalwebantad" id="modalagregarempleadosolo" role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarempleadosolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1031,7 +1030,7 @@
     </div>
 </div>
 
-<div class="modal fade modalwebantad" id="modalagregarempleadogruposolo"  role="dialog" >
+<div class="modal fade modalwebantad" id="modalagregarempleadogruposolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1086,9 +1085,87 @@
         </div>
     </div>
 </div>
+<div class="modal fade modalwebantad" id="modaldetallegrupocentrotrabajo" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Detalle del Grupo : <small class="nombrecentrotra"></small> </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table tablemodaldetallegrupocentrotrabajo">
+                                <thead>
+                                    <tr>
+                                        <th><label>Descripción</label> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--<tr>
+                                        <td><label>Ruta Frecuente</label></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
 
 
-<div class="modal fade modalwebantad" id="modalagregaractividadsolo"  role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
+                    <!--<a href="#" class="btn btn-info " id="agregarcentrosdetrabajomodal">Agregar</a>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalwebantad" id="modaldetallegrupoempleado" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Detalle del Grupo : <small class="nombreempleadogru"></small> </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table tablemodaldetallegrupoempleado">
+                                <thead>
+                                    <tr>
+                                        <th class="tipoencabezado" style="width:75px;">No de empleado</th>
+                                        <th class="tipoencabezado">Nombre</th>
+                                        <th class="tipoencabezado">Genero</th>
+                                        <th class="tipoencabezado" style="width:45px;">Calificación</th>
+                                        <th class="tipoencabezado">Puesto</th>
+                                        <th class="tipoencabezado">Estado</th>
+                                        <th class="tipoencabezado">Municipio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-danger" data-dismiss="modal">Cerrar</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalwebantad" id="modalagregaractividadsolo" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -1132,5 +1209,7 @@
 </div>
 
 <script src="~/Scripts/plantilla.js"></script>
-<script src="~/Scripts/nuevoPlan.js"></script>
+<script src="~/Scripts/nuevoPlanG.js"></script>
 <script src="~/Scripts/nuevoPlanTabla.js"></script>
+
+

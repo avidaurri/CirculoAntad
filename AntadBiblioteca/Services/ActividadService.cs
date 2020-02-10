@@ -16,9 +16,16 @@ namespace AntadBiblioteca.Services
             ActividadDAO = new ActividadDAO(cadena);
         }
 
-        public List<Actividad> ConsultarActividades(UserSessionWeb login)
+        public List<ActividadWeb> ConsultarActividades(UserSessionWeb login)
         {
             return ActividadDAO.ConsultarActividades(login);
         }
+
+        public List<ActividadWeb> ObtenerActividadproyecto(ActividadWeb actividad)
+        {
+            return ActividadDAO.ObtenerActividadproyecto(actividad);
+        }
+
+        
     }
 }

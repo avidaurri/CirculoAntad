@@ -1,5 +1,10 @@
 
 
+
+
+$(function () {
+    $('[data-toggle="popover"]').popover()
+})
 $(function () {
     $('#example1').DataTable()
     $('#tablaplanes').DataTable({
@@ -49,6 +54,8 @@ $('#select2centrotrabajo').select2()
 
 $('#select2centrotrabajosolo').select2()
 $('#select2empleadosolo').select2()
+$('#select2actividad').select2()
+
 
 
 $('.datepicker').datepicker({

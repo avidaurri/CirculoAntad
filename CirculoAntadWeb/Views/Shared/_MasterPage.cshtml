@@ -1,4 +1,5 @@
 ﻿
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link rel="shortcut icon" href="~/Contenido/images/logologinantad.png" />
-    <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Contenido/bower_components/bootstrap/dist/css/bootstrap.css">
 
     <link rel="stylesheet" href="../../Contenido/bower_components/font-awesome/css/font-awesome.min.css">
 
@@ -32,6 +33,8 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    @RenderSection("Scripts", required: false)
+
     <script src="~/Contenido/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <!-- <script src="../../Contenido/bower_components/jquery/dist/jquery.min.js"></script> -->
     <!-- Bootstrap 3.3.7 -->
@@ -63,7 +66,7 @@
 
 
 
-<body class="hold-transition fixed skin-simplet sidebar-collapse sidebar-expanded-on-hover  " />
+<body class="hold-transition fixed skin-simplet sidebar-collapse sidebar-expanded-on-hover  ">
 <div id="backd"></div>
 <input type="hidden" id="tipoUsuhidden" name="name" value="@ViewData["tipoUsuario"]" />
 <input type="hidden" id="administradorhidden" name="name" value="@ViewData["administradorUsuario"]" />
@@ -91,7 +94,7 @@
 
 
                     <li class="dropdown user user-menu">
-                        <a href="#" class="infousuariotop">
+                        <a class="infousuariotop">
                             @ViewData["usuario"]
                             <img src="http://compilacionweb.online/antadweb/marca.png" class="user-image" alt="User Image">
 
@@ -109,7 +112,7 @@
                     </li>
 
 
-                    <li class="dropdown user user-menu">
+                    <!-- <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-ellipsis-v menuDerecho" aria-hidden="true"></i>
                         </a>
@@ -117,11 +120,11 @@
                         <ul class="dropdown-menu" style="background: grey;">
 
                             <li>
-                                <a href="@Url.Action("CerrarSesion","Login")"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Salir</span></a>
+                                <a href="Url.Action("CerrarSesion","Login")"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Salir</span></a>
                             </li>
 
                         </ul>
-                    </li>
+                    </li>-->
 
 
 
@@ -157,7 +160,7 @@
 
                 <div class="pull-left info">
                     <p id="nombreUsuarioMasterPage">@ViewData["usuario"]</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> @ViewData["agencia"]</a>
+                    <i class="fa fa-circle text-success"></i> @ViewData["agencia"]
 
                 </div>
 
@@ -166,8 +169,14 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree" style="height:800px; overflow:scroll;">
-                <li><a href="MisPlanes"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Mis Planes</span></a></li>
-                <!-- <li><a href="NuevoPlan"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> <span>Nuevo plan</span></a></li> -->
+                <li><a href="MisPlanes"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Mis Planes de trabajo</span></a></li>
+                <!-- <li><a href="NuevoPlan"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Abrir Proyecto</span></a></li>-->
+
+                <!-- <li><a data-toggle="modal" data-target="#myModalpregunta"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Nuevo Plan de trabajo</span></a></li>-->
+
+                <li>
+                    <a href="@Url.Action("CerrarSesion","Login")"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Salir</span></a>
+                </li>
             </ul>
 
         </section>
@@ -207,440 +216,42 @@
 
 
 
-<div class="modal fade modalSimplet" id="NuevoTicketModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-                <h4 id="TituloModal">Nueva solicitud de soporte</h4>
-            </div>
-
-            <div class="modal-body">
-                <form id="CuerpoModal">
-                    <fieldset id="ItemModal">
-                        <div class="form-group ">
-
-                            <select class="form-control " id="DropListCliente">
-                                <option value="" class="opcionDeSelect">-- Selecciona el dominio --</option>
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="DropListCategoria">
-                                <option value="" class="opcionDeSelect">-- Seleccione la categoria--</option>
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" name="lele" id="DropListSubcategoria">
-                                <option value="" class="opcionDeSelect">-- Selecciona la subcategoria --</option>
-
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="DescripcionTicket">Detalle del problema</label>
-                            <textarea class="form-control" rows="3" id="DescripcionTicket" placeholder="Proporcione información sobre su problema, así como cualquier mensaje de error"></textarea>
-                            <small class="smalldescripcion"></small>
-                        </div>
-
-                        <div>
-                            <a href="#" class="btn btn-block btn-modal" id="BtnGuardarTicket" tooltip='Guardar Ticket' flow='down'>Crear solicitud de soporte</a>
-                        </div>
-                    </fieldset>
-                </form>
 
 
-            </div>
-
-        </div>
 
 
-    </div>
-</div>
 
-<div id="modalEdicionTicket" class="modal fade modalSimplet" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-                <h5 class="modal-title"> <b>Edición del detalle de la solicitud de soporte numero <span class="ticketedicion"></span> </b> </h5>
-                <h6>Fecha de apertura <span class="ticketfecha"></span> </h6>
-            </div>
 
-            <div class="modal-body">
-                <form id="formeditarticketcara">
-                    <fieldset>
 
-                        <div class="form-group">
-                            <input type="hidden" class="form-control" id="folioTicketEdicion" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="DropListClienteEditar">Selecciona el dominio</label>
-                            <select class="form-control" id="DropListClienteEditar">
-                                <option value="" class="opcionDeSelect">-- Seleccione un dominio --</option>
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="DropListCategoriaEditar">Selecciona la categoría</label>
-                            <select class="form-control" id="DropListCategoriaEditar">
-                                <option value="" class="opcionDeSelect">-- Seleccione la categoria--</option>
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="DropListSubcategoriaEditar">Selecciona la subcategoría</label>
-                            <select class="form-control" name="lele" id="DropListSubcategoriaEditar">
-                                <option value="" class="opcionDeSelect">-- Selecciona la subcategoria --</option>
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="DescripcionTicketEditar">Detalle del problema</label>
-                            <textarea class="form-control" rows="3" id="DescripcionTicketEditar" placeholder="Descripcion del ticket"></textarea>
-                            <small class="smalldescripcion"></small>
-                        </div>
-                        <div>
-                            <a href="#" class="btn btn-block btn-modal" id="BtnEditarTicket" data-toggle='tooltip' data-placement='top' title='Editar Ticket'>Editar solicitud de soporte</a>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
 
-        </div>
 
-    </div>
-</div>
 
-<div id="modalDetalleTicket" class="modal fade modalSimplet" role="dialog">
 
-    <div class="modal-dialog modal-lg">
+
+
+
+<!--<div id="myModalpregunta" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
 
         <div class="modal-content">
-
-            <input type="hidden" id="clvClienteDetalle" value="" />
-            <input type="hidden" id="fechaActual" value="" />
-            <input type="hidden" id="CuerpoDetalle" value="">
-            <input type="hidden" id="usuarioAContestar" value="@ViewData["nombreUsuario"]" />
-            <input type="hidden" id="tipoUsuhidden" value="@ViewData["tipoUsuario"]" />
-            <input type="hidden" id="clvCliente" value="" />
-            <input type="hidden" id="clvUsuarioCreador" value="" />
-
-            <div class="modal-header encabezado-ticket">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-
-                <h5 class="modal-title">  FOLIO <span class="folioTicket"> </span>  FECHA <span class="fechaAperturaEncabezado"> </span> </h5>
-                <input type="text" id="divId">
-                <div class="col-lg-5">
-
-                    <h6>
-                        DOMINIO<span class="clienteEncabezado">1N </span>
-                        <button class="botonInformacionEncabezado" id="infoDominio"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
-                        <!--  <button class="botonInformacionEncabezado" id="infoDominio" data-toggle="modal" data-target="#modalInfoDominio"><i class="fa fa-info-circle" aria-hidden="true"></i></button> -->
-                    </h6>
-
-                    <h6>LEVANTADO POR <span class="usuarioAperturaEncabezado"> </span> </h6>
-                    <h6>EMAIL <span class="emailClienteEncabezado">@ViewData["EmailUsuario"]  </span> </h6>
-                    <h6>
-                        TELEFONO <span class="telefonoClienteEncabezado"> @ViewData["TelefonoUsuario"] </span>
-
-                    </h6>
-
-                    <h6 class="estrellasCalificacion"></h6>
-
-                </div>
-
-                <div class="col-lg-1">
-                    <button id="botonActualizarDetalle" tooltip='Recargar conversación' flow='down'> <input type="text" class="dial"></button>
-                    <!--<button href='#' class='btn btn-dangers' data-toggle='tooltip' data-placement='top' title='Cerrar Ticket' onclick='CalificaTicket( " + data.FolioTicket + "," + data.ClvCliente + "," + data.ClvUsuario + ")' > <i class='fa fa-check'></i></button> -->
-                </div>
-
-                <div class="col-lg-6">
-
-                    <h6>DESCRIPCION DEL TICKET  </h6>
-                    <p class="descripcionTicketEncabezado"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi dolore cumque, magnam hic, animi aperiam sequi reiciendis esse mollitia nostrum facilis asper!</p>
-
-                    <h6>
-                        CONSULTOR A CARGO <span class="consultorACargoEncabezado"> Alejandro Vidaurri Moreno</span>
-
-
-                        <button class="botonInformacionEncabezado" id="infoTiempoTicket">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        </button>
-
-                        <button href='#' class='btn btn-dangers cerrarElTicket' tooltip='Cerrar Ticket' flow='down'>
-                            <i class='fa fa-check'></i> Cerrar
-                        </button>
-
-
-                    </h6>
-                    <h6 id="comentarioCalificacionDetalle">
-                        COMENTARIO DE CALIFICACION <span>
-
-                        </span>
-                    </h6>
-                </div>
-
-            </div>
-
-            <div class="modal-body">
-
-                <div class="historial_mensajes ">
-
-
-
-
-                </div>
-
-                <h3 class="mensajeTicketDetalle"></h3>
-                <button href='#' class='btn btn-successs btn-block atenderElTicket' tooltip='Atender Ticket' flow='down'> <i class='fa fa-thumbs-o-up' aria-hidden='true'></i> Atender Ticket</button>
-                <div class="tipo_msg">
-
-                    <div class="mensaje_entrada form-group">
-
-                        <textarea class="write_msg" rows="2" id="mensajeEnviar" placeholder="Escribe tu mensaje"></textarea>
-
-                        <!--<input type="text" class="write_msg" placeholder="Escribe tu mensaje" id="mensajeEnviar" />-->
-
-                        <button class="img_send_btn" type="button" id="mandarFoto"><i class="fa fa-picture-o" aria-hidden="true"></i></button>
-
-                        <button class="msg_send_btn" type="button" id="enviar"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                        <span id="archivoCargado" style="color:white;"></span>
-                    </div>
-                    <form action="javascripts:;" method="post" id="formAdjuntar">
-                        <input type="file" id="fileUpload" name="fileUpload" />
-                        <input type="button" id="btn-send-ajax" value="enviar" />
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-</div>
-
-<div id="modalInfoDominio" class="modal fade modalSimplet" role="dialog">
-
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">DOMINIO <span></span></h5>
-            </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-<div id="modalInfoTiempoTicket" class="modal fade modalSimplet" role="dialog">
-
-    <div class="modal-dialog modal-lg">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">TIEMPOS DEL TICKET <span></span> </h5>
+                <h4 class="modal-title">¿Qué tipo de plan de trabajo desea?</h4>
             </div>
             <div class="modal-body">
-
-
-
-                <div class="main">
-
-                    <ul class="cbp_tmtimeline">
-                        <!-- <li>
-                            <time class="cbp_tmtime"><span>4/10/13</span> <span>18:30</span></time>
-
-                            <div class="cbp_tmlabel">
-                                <h3>Alejandro</h3>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <time class="cbp_tmtime" datetime="2013-04-15 13:15"><span>4/15/13</span> <span>13:15</span></time>
-
-                            <div class="cbp_tmlabel">
-                                <h3>Watercress ricebean</h3>
-
-                            </div>
-                        </li> -->
-
-
-                    </ul>
-                </div>
-
+                <button class="btn btn-success btn-block" id="irespecifico">Plan de trabajo especifico</button>
+                <br />
+                <button class="btn btn-success btn-block" id="irgeneral">Plan de trabajo General</button>
             </div>
-
+            <div class="modal-footer">
+ 
+            </div>
         </div>
 
     </div>
-
-</div>
-
-
-
-
-<div id="modalCalificarTicket" class="modal fade modalSimplet" role="dialog">
-
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">Antes de cerrar el ticket, ayúdanos y califica nuestro servicio </h5>
-            </div>
-            <div class="modal-body">
-
-
-
-
-
-                <input type="hidden" value="" id="folio_ticketCalificacion">
-                <input type="hidden" value="" id="clienteCalificacion">
-                <input type="hidden" value="" id="ClvUsuarioCalificacion">
-
-
-
-                <div class="form-group text-center etiquetasEstrellas">
-
-                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="5">5.0 Excelente</label>
-                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="4">4.0 Muy Bueno</label>
-                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="3">3.0 Bueno</label>
-                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="2">2.0 Regular</label>
-                    <label class="radio radioCalificacion"><input type="radio" name="puntaje" value="1">1.0 Malo</label>
-
-                </div>
-
-                <div class="form-group">
-
-                    <textarea class="form-control" rows="5" id="ComentarioCierreTicket" placeholder="Ayudanos a mejorar con un comentario"></textarea>
-
-                </div>
-
-                <div class="form-group">
-
-                    <button id="btnCalificacionTicket" class="btn btn-modal modalAceptarOperacion"><i class='fa fa-check'></i> Cerrar Ticket</button>
-                    <button id="btnCancelarCalificacionTicket" class="btn modalCancelarOperacion">Cancelar</button>
-
-                </div>
-
-
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div id="modalSeleccionarHistoricoTicket" class="modal fade modalSimplet" role="dialog">
-
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                <h4>Selecciona el historico</h4>
-            </div>
-            <div class="modal-body">
-
-                <input type="hidden" value="" id="folio_ticketHistorico">
-                <input type="hidden" value="" id="clienteHistorico">
-                <input type="hidden" value="" id="clvhistoricoTicket">
-
-                <div class="form-group text-center" id="selectContenidoHistorico">
-
-
-
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <button id="btnPasarHistoricoTicket" class="btn btn-modal modalAceptarOperacion"><i class='fa fa-check'></i> Archivar Ticket</button>
-                    <button id="btnCancelarArchivarTicket" class="btn modalCancelarOperacion">Cancelar</button>
-                </div>
-
-
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div id="modalCambiarContrasena" class="modal fade modalSimplet" role="dialog">
-
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header encabezado-ticket">
-                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                <h4 class="modal-title">Por seguridad cambie su contraseña </h4>
-
-            </div>
-            <div class="modal-body modal-body-contrasena">
-                <!--<h4>Por seguridad cambie su contraseña</h4>-->
-                <div class="form-group ">
-
-                    <div class="form-group">
-                        <label for="inputCambiarPassword">Escriba la nueva contraseña</label>
-                        <input type="password" class="form-control typepass" id="inputCambiarPassword">
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputCambiarPasswordDos">Repita la nueva contraseña</label>
-                        <input type="password" class="form-control typepass" id="inputCambiarPasswordDos">
-
-                    </div>
-
-                    <small> * La contraseña debe tener un mínimo de 8 caracteres y un máximo de 20.</small>
-
-                    </br>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <button id="btnCambiarContrasena" class="btn btn-modal modalAceptarOperacion"><i class='fa fa-check'></i> Cambiar Contraseña</button>
-                    <button class="btn modalCancelarOperacion" id="cancelaCambiarContra"><i class="fa fa-sign-out" aria-hidden="true"></i> Cancelar y Cerrar Sesión</button>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
+</div>-->
 
 
 
